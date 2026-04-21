@@ -26,6 +26,48 @@
     .thumb-wrap:hover img, .thumb-wrap:hover video { opacity: 0.88; }
     .thumb-wrap iframe { width: 100%; height: 200px; border: none; display: block; }
 
+    /* Play button overlay on video thumbnails */
+    .thumb-wrap:has(video)::after {
+      content: "▶";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 3.5rem;
+      height: 3.5rem;
+      border-radius: 50%;
+      background: rgba(20, 14, 10, 0.62);
+      color: rgba(255, 250, 240, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      padding-left: 0.18em;  /* optically center the triangle */
+      line-height: 1;
+      pointer-events: none;
+      transition: background 0.15s, transform 0.15s;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.28);
+    }
+    .thumb-wrap:has(video):hover::after {
+      background: rgba(20, 14, 10, 0.82);
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+    /* Tiny "video" label in the corner so it's obvious */
+    .thumb-wrap:has(video)::before {
+      content: "VIDEO";
+      position: absolute;
+      top: 0.45rem; right: 0.45rem;
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.18rem 0.4rem;
+      border-radius: 3px;
+      background: rgba(20, 14, 10, 0.62);
+      color: rgba(255, 250, 240, 0.95);
+      line-height: 1;
+      pointer-events: none;
+      z-index: 2;
+    }
+
     .note { font-size: 0.75rem; color: #7a6e60; line-height: 1.4; }
 
     .empty { grid-column: 1/-1; text-align: center; color: #8a7d6b; font-size: 0.9rem; padding: 4rem; }
@@ -65,7 +107,7 @@
             <img src="sandhaul/2026-04-21-14-47-day4a-slerp-variable-speed.png" alt="Day 4a — slerp rotation + variable speed frame" />
           </div>
           <div class="thumb-wrap">
-            <video src="sandhaul/2026-04-21-14-47-day4a-slerp-variable-speed.mp4" autoplay loop muted playsinline aria-label="Day 4a — cozy turning + corner slowdown"></video>
+            <video src="sandhaul/2026-04-21-14-47-day4a-slerp-variable-speed.mp4" loop muted playsinline preload="metadata" aria-label="Day 4a — cozy turning + corner slowdown"></video>
           </div>
         </div>
         <p class="note">Applied 3 of 4 cozy-motion algorithms from the new brain playbook (<code>knowledge/playbooks/vehicle-pathing.md</code>): (1) heading slerp-lag — truck's yaw eases toward the path tangent over ~200ms instead of snapping, (2) curvature-based variable speed — truck slows to 55% on sharp turns, accelerates on straights (slow-in/fast-out Disney principle), (3) design-time path-clearance validation — sweeps the curve and warns about station near-passes (catches 5 intentional near-passes at pile A loading point — belong-together exception, not a bug). Body roll + collision detection deferred to next pass.</p>
@@ -91,7 +133,7 @@
             <img src="sandhaul/2026-04-21-12-47-day3b-zoned-site.png" alt="Day 3b — respaced zoned layout frame" />
           </div>
           <div class="thumb-wrap">
-            <video src="sandhaul/2026-04-21-12-47-day3b-zoned-site.mp4" autoplay loop muted playsinline aria-label="Day 3b — truck traversing zoned site"></video>
+            <video src="sandhaul/2026-04-21-12-47-day3b-zoned-site.mp4" loop muted playsinline preload="metadata" aria-label="Day 3b — truck traversing zoned site"></video>
           </div>
         </div>
         <p class="note">Applied env-designer's new 1.5× inter-station spacing rule. Scene now reads as zones with breathing room: DIG zone (pile A + backhoe, left), MID zone (bulldozer, crane, mixer), ADMIN zone (storage + HQ along back wall), SERVICE zone (fuel station, right). Camera bumped to cam 19 to fit wider layout. Path rerouted with 1.5-unit clearance from stations (but no real collision detection yet — that's the next pass).</p>
@@ -117,7 +159,7 @@
             <img src="sandhaul/2026-04-21-12-27-day3-construction-site.png" alt="Day 3 — construction site frame" />
           </div>
           <div class="thumb-wrap">
-            <video src="sandhaul/2026-04-21-12-27-day3-construction-site.mp4" autoplay loop muted playsinline aria-label="Day 3 — truck navigating the site"></video>
+            <video src="sandhaul/2026-04-21-12-27-day3-construction-site.mp4" loop muted playsinline preload="metadata" aria-label="Day 3 — truck navigating the site"></video>
           </div>
         </div>
         <p class="note">Full environment redesign — Goodnight Goodnight Construction Site vibe. Removed all grass, cones, barriers, porta-potty. Added: crane, cement mixer (tilted drum), bulldozer, storage yard (stacked containers + lumber), fuel station with canopy + pumps, bigger 2-story site HQ. Truck now follows a figure-8 Path3D loop through the whole site (14 sec per cycle) instead of A→B→A straight line.</p>
@@ -144,7 +186,7 @@
             <img src="sandhaul/2026-04-21-11-57-day1-truck-motion.png" alt="Day 1 — frame" />
           </div>
           <div class="thumb-wrap">
-            <video src="sandhaul/2026-04-21-12-00-day1-truck-motion.mp4" autoplay loop muted playsinline aria-label="Day 1 — truck motion loop"></video>
+            <video src="sandhaul/2026-04-21-12-00-day1-truck-motion.mp4" loop muted playsinline preload="metadata" aria-label="Day 1 — truck motion loop"></video>
           </div>
         </div>
         <p class="note">Experiment graduated into main sandhaul. Truck animates A→B→A on a ping-pong timer (7-sec one-way). Aspect switched to iPhone landscape 1560×720 for the 7-day App Store sprint. Left: static frame mid-trip. Right: 14-sec loop showing 2 full cycles.</p>
