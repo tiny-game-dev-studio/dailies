@@ -98,6 +98,31 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-21 17:25</span>
+        <span class="session-label">Day 4f · bed tip animation on unload</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="sandhaul/2026-04-21-17-25-day4f-bed-tip-unload.png" alt="Day 4f — truck bed tipped up while unloading" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="sandhaul/2026-04-21-17-25-day4f-bed-tip-unload.mp4" poster="sandhaul/2026-04-21-17-25-day4f-bed-tip-unload.png" loop muted playsinline preload="metadata" aria-label="Day 4f — bed tips ~30° during unload, sand drains, pile B grows"></video></div>
+        </div>
+        <p class="note"><strong>Medium pass (~30 min):</strong> Truck bed now tips up ~30° during the UNLOADING state — the iconic dump truck gesture. Bed pivots around its rear edge (sand "slides out the back"). Uses ease-out ramp up (first 20% of unload), hold at max (middle 60%), ease-out ramp down (last 20%). Cab and chassis stay level — only the bed tips, like a real dump truck. Refactored <code>_make_dump_truck</code> to group bed parts under a pivot Node3D; sand_fill is now a child of the bed so it tips along with it.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the bed tip read as "dumping" the sand, or does it look weird?</li>
+            <li>Is 30° the right tip angle — too subtle, too drastic?</li>
+            <li>Does the whole unload sequence feel satisfying now? Bed tip + sand drain + pile B grow together?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-21 17:05</span>
         <span class="session-label">Day 4e · heaped sand mounds + drastic per-trip deltas</span>
       </div>
