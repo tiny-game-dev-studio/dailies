@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiny Diorama Co. — Dailies</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f5f0e8; font-family: system-ui, sans-serif; color: #3a3328; padding: 2rem; max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.25rem; }
+    .subtitle { font-size: 0.85rem; color: #8a7d6b; margin-bottom: 2rem; }
+
+    /* Feed grid */
+    #feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+
+    .session { border: 1px solid #ddd6c8; border-radius: 8px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+    .session-header { padding: 0.5rem 0.75rem; background: #ede8df; display: flex; justify-content: space-between; align-items: center; }
+    .session-date { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .session-label { font-size: 0.68rem; color: #8a7d6b; }
+
+    .session-body { padding: 0.6rem; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+
+    /* Thumbnail — click to zoom */
+    .thumb-wrap { cursor: zoom-in; border-radius: 4px; overflow: hidden; line-height: 0; position: relative; }
+    .thumb-wrap img, .thumb-wrap video { width: 100%; display: block; transition: opacity 0.15s; }
+    .thumb-wrap:hover img, .thumb-wrap:hover video { opacity: 0.88; }
+    .thumb-wrap iframe { width: 100%; height: 200px; border: none; display: block; }
+
+    .note { font-size: 0.75rem; color: #7a6e60; line-height: 1.4; }
+
+    .empty { grid-column: 1/-1; text-align: center; color: #8a7d6b; font-size: 0.9rem; padding: 4rem; }
+    .review-questions { margin-top: 0.75rem; background: #f5f0e8; border-radius: 6px; padding: 0.65rem 0.85rem; }
+    .review-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #8a7d6b; margin-bottom: 0.35rem; }
+    .review-questions ol { padding-left: 1.2rem; margin: 0 0 0.4rem; }
+    .review-questions li { font-size: 0.78rem; color: #3a3328; line-height: 1.5; margin-bottom: 0.2rem; }
+    .reply-prompt { font-size: 0.72rem; color: #8a7d6b; margin-top: 0.35rem; }
+    .reply-prompt code { background: #e8e2d8; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+
+    /* Lightbox */
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(30,24,18,0.88); z-index: 100; align-items: center; justify-content: center; cursor: zoom-out; }
+    #lightbox.open { display: flex; }
+    #lightbox img, #lightbox video { max-width: min(92vw, 1280px); max-height: 90vh; border-radius: 6px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); display: block; }
+    #lightbox-close { position: fixed; top: 1rem; right: 1.25rem; color: #fff; font-size: 1.8rem; cursor: pointer; opacity: 0.7; line-height: 1; }
+    #lightbox-close:hover { opacity: 1; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); color: #fff; font-size: 3.5rem; cursor: pointer; opacity: 0.55; line-height: 1; user-select: none; padding: 0.5rem 1rem; }
+    .lightbox-nav:hover { opacity: 1; }
+    #lightbox-prev { left: 0.5rem; }
+    #lightbox-next { right: 0.5rem; }
+    #lightbox-caption { position: fixed; bottom: 1.25rem; left: 50%; transform: translateX(-50%); color: #f0ead9; font-size: 0.82rem; letter-spacing: 0.04em; opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <h1>Tiny Diorama Co. — Dailies</h1>
+  <p class="subtitle">Public review log across all games · 5-breather cohort · <a href="https://github.com/tiny-game-dev-studio" style="color:#8a7d6b;">github</a></p>
+
+  <div id="feed">
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-21 12:27</span>
+        <span class="session-label">Day 3 · full construction site + curved path</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="sandhaul/2026-04-21-12-27-day3-construction-site.png" alt="Day 3 — construction site frame" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="sandhaul/2026-04-21-12-27-day3-construction-site.mp4" autoplay loop muted playsinline aria-label="Day 3 — truck navigating the site"></video>
+          </div>
+        </div>
+        <p class="note">Full environment redesign — Goodnight Goodnight Construction Site vibe. Removed all grass, cones, barriers, porta-potty. Added: crane, cement mixer (tilted drum), bulldozer, storage yard (stacked containers + lumber), fuel station with canopy + pumps, bigger 2-story site HQ. Truck now follows a figure-8 Path3D loop through the whole site (14 sec per cycle) instead of A→B→A straight line.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the new site feel like Goodnight Construction Site, or still off?</li>
+            <li>The crane is a bit subtle — want it bigger / more prominent as a landmark?</li>
+            <li>Truck path reads as "working through the site" or still too random?</li>
+            <li>What other equipment / station is missing? Crane operator shed? Worker figures?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-21 11:57</span>
+        <span class="session-label">Day 1 · truck motion + graduated to main project</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="sandhaul/2026-04-21-11-57-day1-truck-motion.png" alt="Day 1 — frame" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="sandhaul/2026-04-21-12-00-day1-truck-motion.mp4" autoplay loop muted playsinline aria-label="Day 1 — truck motion loop"></video>
+          </div>
+        </div>
+        <p class="note">Experiment graduated into main sandhaul. Truck animates A→B→A on a ping-pong timer (7-sec one-way). Aspect switched to iPhone landscape 1560×720 for the 7-day App Store sprint. Left: static frame mid-trip. Right: 14-sec loop showing 2 full cycles.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the 7-sec one-way pace feel right — or should the truck move faster/slower?</li>
+            <li>The truck passes through the backhoe's z-zone briefly. Fix in Day 3 when backhoe animates, or relocate one of them now?</li>
+            <li>iPhone landscape aspect — does the scene breathe right at this width, or does it feel stretched?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-21 10:12</span>
+        <span class="session-label">screenshot · scale comparison + terrain</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; margin-bottom: 0.75rem;">
+          <div>
+            <div class="thumb-wrap"><img src="sandhaul/2026-04-21-10-12-scale-a-cam12.png" alt="Scale A" /></div>
+            <p class="note" style="margin-top:0.3rem;"><strong>A — close (cam 12).</strong> Vehicles prominent, site dressing clear. Feels like crouching beside the site.</p>
+          </div>
+          <div>
+            <div class="thumb-wrap"><img src="sandhaul/2026-04-21-10-12-scale-b-cam17.png" alt="Scale B" /></div>
+            <p class="note" style="margin-top:0.3rem;"><strong>B — balanced (cam 17).</strong> Layout readable, vehicles still recognizable, terrain tells a story. Studio pick.</p>
+          </div>
+          <div>
+            <div class="thumb-wrap"><img src="sandhaul/2026-04-21-10-12-scale-c-cam24.png" alt="Scale C" /></div>
+            <p class="note" style="margin-top:0.3rem;"><strong>C — tiny (cam 24).</strong> Full train-set scale, everything miniature. Vehicles start to get lost.</p>
+          </div>
+        </div>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Which scale — A, B, or C? Does the scene feel like something you'd peer into, or does it feel like a map?</li>
+            <li>Added: grass patches, dirt track, rocks, fuel tank, site office, cones, barriers, porta-potty. What's missing? What feels out of place?</li>
+            <li>The grass patches are flat rectangles. Too geometric — should they be more organic, or is the toy-block aesthetic fine?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [A/B/C + notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-21 09:56</span>
+        <span class="session-label">screenshot · camera angle comparison</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem;">
+          <div>
+            <div class="thumb-wrap"><img src="sandhaul/2026-04-21-09-56-angle-a-35deg.png" alt="Angle A 35°" /></div>
+            <p class="note" style="margin-top:0.3rem;"><strong>A — 35° tilt.</strong> Balanced isometric. Good layout read, a bit flat.</p>
+          </div>
+          <div>
+            <div class="thumb-wrap"><img src="sandhaul/2026-04-21-09-56-angle-b-55deg.png" alt="Angle B 55°" /></div>
+            <p class="note" style="margin-top:0.3rem;"><strong>B — 55° tilt.</strong> More top-down. Loses depth, feels like a map.</p>
+          </div>
+          <div>
+            <div class="thumb-wrap"><img src="sandhaul/2026-04-21-09-56-angle-c-20deg.png" alt="Angle C 20°" /></div>
+            <p class="note" style="margin-top:0.3rem;"><strong>C — 20° tilt.</strong> Train-set eye level. Most diorama feel, vehicles have presence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-header">
+        <span class="session-date">2026-04-21 09:17</span>
+        <span class="session-label">screenshot · lighting-camera v2</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <img src="sandhaul/2026-04-21-09-17-lighting-camera-screenshot.png" alt="lighting-camera v2" />
+        </div>
+        <p class="note">Proper vehicles + diorama angle. Dump truck (yellow/orange) + backhoe with arm. Sand piles are sphere meshes. Ground darkened for contrast.</p>
+      </div>
+    </div>
+    <div class="session">
+      <div class="session-header">
+        <span class="session-date">2026-04-21 09:07</span>
+        <span class="session-label">screenshot · lighting-camera v1</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <img src="sandhaul/2026-04-21-09-07-lighting-camera-screenshot.png" alt="lighting-camera v1" />
+        </div>
+        <p class="note">First render. Box proxies only — testing warm directional light and diorama camera angle before adding real models.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox with arrow nav (handles img + video) -->
+  <div id="lightbox">
+    <span id="lightbox-close">&#x2715;</span>
+    <span id="lightbox-prev" class="lightbox-nav">&#x2039;</span>
+    <div id="lightbox-media"></div>
+    <span id="lightbox-next" class="lightbox-nav">&#x203A;</span>
+    <div id="lightbox-caption"></div>
+  </div>
+
+  <script>
+    const lb = document.getElementById('lightbox');
+    const lbMedia = document.getElementById('lightbox-media');
+    const lbCap = document.getElementById('lightbox-caption');
+    let lbGroup = [];
+    let lbIdx = 0;
+
+    function labelOf(el) {
+      return el.getAttribute('alt') || el.getAttribute('aria-label') || el.dataset.label || '';
+    }
+
+    function openLb(el) {
+      // Group = all media (img + video) in the same .session
+      const session = el.closest('.session');
+      lbGroup = Array.from(session.querySelectorAll('.thumb-wrap img, .thumb-wrap video'));
+      lbIdx = lbGroup.indexOf(el);
+      renderLb();
+      lb.classList.add('open');
+    }
+
+    function renderLb() {
+      const src = lbGroup[lbIdx];
+      const isVideo = src.tagName.toLowerCase() === 'video';
+      if (isVideo) {
+        lbMedia.innerHTML = '';
+        const v = document.createElement('video');
+        v.src = src.currentSrc || src.src;
+        v.autoplay = true; v.loop = true; v.muted = true; v.playsInline = true; v.controls = true;
+        lbMedia.appendChild(v);
+      } else {
+        lbMedia.innerHTML = `<img src="${src.src}" alt="${src.alt || ''}" />`;
+      }
+      const label = labelOf(src);
+      lbCap.textContent = lbGroup.length > 1
+        ? `${label} · ${lbIdx + 1} / ${lbGroup.length}`
+        : label;
+      document.getElementById('lightbox-prev').style.visibility = lbGroup.length > 1 ? 'visible' : 'hidden';
+      document.getElementById('lightbox-next').style.visibility = lbGroup.length > 1 ? 'visible' : 'hidden';
+    }
+
+    function nav(delta) {
+      lbIdx = (lbIdx + delta + lbGroup.length) % lbGroup.length;
+      renderLb();
+    }
+
+    function closeLb() {
+      lb.classList.remove('open');
+      lbMedia.innerHTML = ''; // stops video playback
+    }
+
+    document.getElementById('feed').addEventListener('click', e => {
+      const el = e.target.closest('.thumb-wrap')?.querySelector('img, video');
+      if (el) openLb(el);
+    });
+
+    document.getElementById('lightbox-prev').addEventListener('click', e => { e.stopPropagation(); nav(-1); });
+    document.getElementById('lightbox-next').addEventListener('click', e => { e.stopPropagation(); nav(1); });
+    lbMedia.addEventListener('click', e => e.stopPropagation());
+    lb.addEventListener('click', closeLb);
+    document.getElementById('lightbox-close').addEventListener('click', closeLb);
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') nav(-1);
+      if (e.key === 'ArrowRight') nav(1);
+    });
+  </script>
+</body>
+</html>
