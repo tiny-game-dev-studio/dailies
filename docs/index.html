@@ -98,6 +98,36 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-21 16:19</span>
+        <span class="session-label">Day 4d · real task flow (Lite) + red crane landmark</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="sandhaul/2026-04-21-16-19-day4d-task-flow-red-crane.png" alt="Day 4d — truck loading at pile A + red crane frame" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="sandhaul/2026-04-21-16-19-day4d-task-flow-red-crane.mp4" poster="sandhaul/2026-04-21-16-19-day4d-task-flow-red-crane.png" loop muted playsinline preload="metadata" aria-label="Day 4d — full LOAD/DRIVE/UNLOAD/DRIVE cycle"></video></div>
+        </div>
+        <p class="note"><strong>Two big changes shipped — <code>/shape</code>'s Quick + Lite bundle (~70 min total):</strong></p>
+        <ol style="font-size:0.75rem; color:#7a6e60; padding-left:1rem; margin-top:0.2rem;">
+          <li><strong>Crane: taller, RED, further back (z=-7.5).</strong> Boom extended 2× length, steeper angle, swapped yellow→red so it reads as a distinct landmark — not "another yellow vehicle."</li>
+          <li><strong>Real task flow state machine</strong> — truck now pauses at pile A (7 sec LOADING, bed visibly fills with sand, pile A shrinks), drives to pile B, pauses (12 sec UNLOADING, bed empties, pile B grows), drives back. Event-driven pile scaling (no more sine wave fakery). Each trip shrinks pile A ~8% and grows pile B ~10%; auto-resets after enough trips so the cycle is endless.</li>
+        </ol>
+        <p class="note" style="margin-top:0.4rem;">Skipped per <code>/shape</code>'s Lite scope: volume math (invisible to viewers), backhoe scoop animation, bed tip animation. Can layer on in follow-up passes if the core rhythm feels good.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Can you SEE the truck loading at A (bed filling, pile shrinking)? Is 7 sec the right duration?</li>
+            <li>Can you SEE the unload at B (bed emptying, pile growing)? Is 12 sec right?</li>
+            <li>Red crane read as a landmark now?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-21 15:34</span>
         <span class="session-label">Day 4c · timer task flow + bigger crane + wider canvas</span>
       </div>
