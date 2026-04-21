@@ -98,6 +98,32 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-21 15:24</span>
+        <span class="session-label">Day 4b · fix: forward-facing truck + wider layout</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="sandhaul/2026-04-21-15-24-day4b-forward-facing-spread.png" alt="Day 4b — widened layout frame" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="sandhaul/2026-04-21-15-24-day4b-forward-facing-spread.mp4" poster="sandhaul/2026-04-21-15-24-day4b-forward-facing-spread.png" loop muted playsinline preload="metadata" aria-label="Day 4b — truck now facing forward, wider layout"></video>
+          </div>
+        </div>
+        <p class="note"><strong>Two fixes shipped via new /shape skill (Quick + Medium, ~45 min total):</strong> (1) Truck was driving backwards — wrong yaw math; fixed by aligning the truck's local -Z (cab/front) with the path tangent using <code>atan2(-t.x, -t.z)</code>. (2) Scene was using only ~60% of the canvas; spread stations into a 16×10 layout (piles at x=±8, back wall at z=-5.5). Crane moved to center-back as a prominent landmark. Camera bumped to cam 22 to fit. Path simplified from 14 waypoints to 12 with fewer sharp corners — smoother sweep through the widened site.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Is the truck clearly driving FORWARD now (cab-first)?</li>
+            <li>Does the scene breathe right now — or has it gone too sparse?</li>
+            <li>Can you see the crane as the landmark, or is it still getting swallowed?</li>
+          </ol>
+          <p class="reply-prompt">Next up: /shape-ing the A→B task flow (item #6). Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-21 14:47</span>
         <span class="session-label">Day 4a · slerp rotation + curvature-based speed + path validation</span>
       </div>
@@ -107,7 +133,7 @@
             <img src="sandhaul/2026-04-21-14-47-day4a-slerp-variable-speed.png" alt="Day 4a — slerp rotation + variable speed frame" />
           </div>
           <div class="thumb-wrap">
-            <video src="sandhaul/2026-04-21-14-47-day4a-slerp-variable-speed.mp4" loop muted playsinline preload="metadata" aria-label="Day 4a — cozy turning + corner slowdown"></video>
+            <video src="sandhaul/2026-04-21-14-47-day4a-slerp-variable-speed.mp4" poster="sandhaul/2026-04-21-14-47-day4a-slerp-variable-speed.png" loop muted playsinline preload="metadata" aria-label="Day 4a — cozy turning + corner slowdown"></video>
           </div>
         </div>
         <p class="note">Applied 3 of 4 cozy-motion algorithms from the new brain playbook (<code>knowledge/playbooks/vehicle-pathing.md</code>): (1) heading slerp-lag — truck's yaw eases toward the path tangent over ~200ms instead of snapping, (2) curvature-based variable speed — truck slows to 55% on sharp turns, accelerates on straights (slow-in/fast-out Disney principle), (3) design-time path-clearance validation — sweeps the curve and warns about station near-passes (catches 5 intentional near-passes at pile A loading point — belong-together exception, not a bug). Body roll + collision detection deferred to next pass.</p>
@@ -133,7 +159,7 @@
             <img src="sandhaul/2026-04-21-12-47-day3b-zoned-site.png" alt="Day 3b — respaced zoned layout frame" />
           </div>
           <div class="thumb-wrap">
-            <video src="sandhaul/2026-04-21-12-47-day3b-zoned-site.mp4" loop muted playsinline preload="metadata" aria-label="Day 3b — truck traversing zoned site"></video>
+            <video src="sandhaul/2026-04-21-12-47-day3b-zoned-site.mp4" poster="sandhaul/2026-04-21-12-47-day3b-zoned-site.png" loop muted playsinline preload="metadata" aria-label="Day 3b — truck traversing zoned site"></video>
           </div>
         </div>
         <p class="note">Applied env-designer's new 1.5× inter-station spacing rule. Scene now reads as zones with breathing room: DIG zone (pile A + backhoe, left), MID zone (bulldozer, crane, mixer), ADMIN zone (storage + HQ along back wall), SERVICE zone (fuel station, right). Camera bumped to cam 19 to fit wider layout. Path rerouted with 1.5-unit clearance from stations (but no real collision detection yet — that's the next pass).</p>
@@ -159,7 +185,7 @@
             <img src="sandhaul/2026-04-21-12-27-day3-construction-site.png" alt="Day 3 — construction site frame" />
           </div>
           <div class="thumb-wrap">
-            <video src="sandhaul/2026-04-21-12-27-day3-construction-site.mp4" loop muted playsinline preload="metadata" aria-label="Day 3 — truck navigating the site"></video>
+            <video src="sandhaul/2026-04-21-12-27-day3-construction-site.mp4" poster="sandhaul/2026-04-21-12-27-day3-construction-site.png" loop muted playsinline preload="metadata" aria-label="Day 3 — truck navigating the site"></video>
           </div>
         </div>
         <p class="note">Full environment redesign — Goodnight Goodnight Construction Site vibe. Removed all grass, cones, barriers, porta-potty. Added: crane, cement mixer (tilted drum), bulldozer, storage yard (stacked containers + lumber), fuel station with canopy + pumps, bigger 2-story site HQ. Truck now follows a figure-8 Path3D loop through the whole site (14 sec per cycle) instead of A→B→A straight line.</p>
@@ -186,7 +212,7 @@
             <img src="sandhaul/2026-04-21-11-57-day1-truck-motion.png" alt="Day 1 — frame" />
           </div>
           <div class="thumb-wrap">
-            <video src="sandhaul/2026-04-21-12-00-day1-truck-motion.mp4" loop muted playsinline preload="metadata" aria-label="Day 1 — truck motion loop"></video>
+            <video src="sandhaul/2026-04-21-12-00-day1-truck-motion.mp4" poster="sandhaul/2026-04-21-11-57-day1-truck-motion.png" loop muted playsinline preload="metadata" aria-label="Day 1 — truck motion loop"></video>
           </div>
         </div>
         <p class="note">Experiment graduated into main sandhaul. Truck animates A→B→A on a ping-pong timer (7-sec one-way). Aspect switched to iPhone landscape 1560×720 for the 7-day App Store sprint. Left: static frame mid-trip. Right: 14-sec loop showing 2 full cycles.</p>
