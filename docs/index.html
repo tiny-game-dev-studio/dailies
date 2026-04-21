@@ -56,6 +56,32 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-21 14:47</span>
+        <span class="session-label">Day 4a · slerp rotation + curvature-based speed + path validation</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="sandhaul/2026-04-21-14-47-day4a-slerp-variable-speed.png" alt="Day 4a — slerp rotation + variable speed frame" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="sandhaul/2026-04-21-14-47-day4a-slerp-variable-speed.mp4" autoplay loop muted playsinline aria-label="Day 4a — cozy turning + corner slowdown"></video>
+          </div>
+        </div>
+        <p class="note">Applied 3 of 4 cozy-motion algorithms from the new brain playbook (<code>knowledge/playbooks/vehicle-pathing.md</code>): (1) heading slerp-lag — truck's yaw eases toward the path tangent over ~200ms instead of snapping, (2) curvature-based variable speed — truck slows to 55% on sharp turns, accelerates on straights (slow-in/fast-out Disney principle), (3) design-time path-clearance validation — sweeps the curve and warns about station near-passes (catches 5 intentional near-passes at pile A loading point — belong-together exception, not a bug). Body roll + collision detection deferred to next pass.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the truck feel cozier in motion? Turning is now lagged/eased instead of snappy.</li>
+            <li>Speed variation — can you FEEL it slow for corners and speed up on straights? Too subtle, too exaggerated, or right?</li>
+            <li>Want body roll / lean-into-turn applied next, or focus on something else first?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-21 12:47</span>
         <span class="session-label">Day 3b · spacing pass — zoned layout</span>
       </div>
