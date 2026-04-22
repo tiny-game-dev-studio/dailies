@@ -98,6 +98,37 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-21 20:07</span>
+        <span class="session-label">Day 5a · backhoe scoop animation + tap-to-accelerate loading</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="sandhaul/2026-04-21-20-07-day5a-backhoe-scoop-tap-to-load.png" alt="Day 5a — backhoe mid-scoop during loading" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="sandhaul/2026-04-21-20-07-day5a-backhoe-scoop-tap-to-load.mp4" poster="sandhaul/2026-04-21-20-07-day5a-backhoe-scoop-tap-to-load.png" loop muted playsinline preload="metadata" aria-label="Day 5a — autonomous scoop cycle during loading"></video></div>
+        </div>
+        <p class="note"><strong>Big-ish medium pass (~90 min, /shape-bundled):</strong></p>
+        <ol style="font-size:0.75rem; color:#7a6e60; padding-left:1rem; margin-top:0.2rem;">
+          <li><strong>Backhoe now animates during LOADING.</strong> Arm refactored into a pivoting group (boom + dipper + bucket swing together). ~1 scoop per 1.5 sec autonomous. Sine-wave easing. Dipper extends additionally at peak for a real articulation feel.</li>
+          <li><strong>Tap-to-accelerate</strong> (iOS touch + Mac mouse). During LOADING, tap anywhere to trigger an immediate scoop + cargo bump (+15%). Mash to load faster. LOADING exits early when cargo hits 1.0.</li>
+          <li><strong>Autonomous mode still works without taps</strong> — the game loops itself. Tap is pure acceleration, not required. Preserves the cozy sigh-game ethos (watchable while doing nothing).</li>
+        </ol>
+        <p class="note" style="margin-top:0.4rem;"><em>The MP4 captures the autonomous mode only (no simulated taps). To experience tap-to-load, run the project locally and tap/click during loading.</em></p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the backhoe scoop animation read as "digging into pile A"?</li>
+            <li>Is the scoop rhythm (1.5s/scoop) right — too fast, too slow?</li>
+            <li>When you test locally, does tap-to-load feel satisfying and optional (not mandatory)?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-21 17:25</span>
         <span class="session-label">Day 4f · bed tip animation on unload</span>
       </div>
