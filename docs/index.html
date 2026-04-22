@@ -98,27 +98,29 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
-        <span class="session-date">2026-04-22 16:30</span>
-        <span class="session-label">terrain-shape · Phase 1b — dozer tilts with terrain 🛻</span>
+        <span class="session-date">2026-04-22 17:00</span>
+        <span class="session-label">terrain-shape · Phase 1c — tilt redesign (visual-only, no physics fight) 🛻</span>
       </div>
       <div class="session-body">
         <div class="thumb-wrap">
-          <video src="terrain-shape/2026-04-22-phase1b-tilt.mp4" poster="terrain-shape/2026-04-22-phase1b-tilt.png" loop muted playsinline preload="metadata" aria-label="Terrain-shape Phase 1b — dozer tilts with terrain slope"></video>
+          <video src="terrain-shape/2026-04-22-phase1c-tilt-redesign.mp4" poster="terrain-shape/2026-04-22-phase1c-tilt-redesign.png" loop muted playsinline preload="metadata" aria-label="Terrain-shape Phase 1c — visual tilt, upright collider, clean controls"></video>
         </div>
-        <p class="note"><strong>Your feedback:</strong> "The vehicle treats its base as a flat surface. The dozer needs to tilt and go up and down and into the hole." ✓</p>
-        <p class="note" style="margin-top:0.3rem;"><strong>What changed:</strong></p>
+        <p class="note"><strong>Your feedback:</strong> "We went too far. Turning isn't smooth anymore and driving feels weird. Less aggressive pitching." ✓</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>The Phase 1b problem (now reverted):</strong> I was slerping the <em>entire physics body basis</em> each frame toward the terrain normal. That meant yaw (your turn input) was also being smoothed — every frame, the tilt lerp was dragging the yaw back toward a previous sample. On top of that, the tilted collider intersected the ground, so I had to hard-snap Y, which replaced gravity and made the motion feel synthetic.</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>The redesign — separate physics from visual:</strong></p>
         <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
-          <li><strong>Pitch + roll from terrain normal.</strong> Each frame we sample 4 heights around the dozer (±0.55m on X and Z), compute the surface normal via cross-product, and slerp the body's basis toward it at 8/sec. Cozy re-alignment — no snappy rubber-banding.</li>
-          <li><strong>Yaw decoupled from tilt.</strong> Turn input still drives a clean Y-only heading; the terrain just layers pitch/roll on top. Steering feels flat and predictable, but the body leans correctly.</li>
-          <li><strong>Direct Y snap instead of gravity.</strong> The tilted box collider was intersecting the ground (corners dig in). Now we snap <code>global_position.y</code> to the sampled terrain height + 0.08m clearance. Body rides the surface cleanly.</li>
+          <li><strong>Body stays upright.</strong> The CharacterBody3D + box collider rotate only on Y (yaw). Gravity + <code>is_on_floor</code> + <code>move_and_slide</code> work exactly like before any tilt existed. Turning is back to instant/smooth.</li>
+          <li><strong>Tilt lives on a child visual node.</strong> All the mesh boxes are parented to a <code>Node3D</code> child instead of the body directly. That child gets a pitch-and-roll-only basis each frame.</li>
+          <li><strong>Smooth the normal, not the basis.</strong> The terrain normal is lerped at 6/sec <em>before</em> being converted into a tilt basis. Because smoothing is on the input (the normal) and not on the output (the body rotation), it can't interfere with yaw.</li>
+          <li><strong>No more Y-snap hack.</strong> Body bottom rests on the heightmap via physics. No corners-into-ground issue because the collider is never tilted.</li>
         </ul>
-        <p class="note" style="margin-top:0.3rem;">Blade noses down on descents, rises on climbs, rolls sideways on traversal. This is the foundation for "push dirt → make ramp → drive over ramp" — the body will correctly tilt onto whatever new shapes you dozer into existence.</p>
+        <p class="note" style="margin-top:0.3rem;">Net result: controls feel like flat-ground driving, but the dozer visibly leans into slopes. Visual tilt is subtle by design — readable without being bouncy.</p>
         <div class="review-questions">
           <p class="review-label">Review</p>
           <ol>
-            <li>Tilt responsiveness — too fast / too slow / just right at 8 lerp/sec?</li>
-            <li>Going into the dip — does it feel <em>deep</em> enough, or should I make the dip steeper/lower?</li>
-            <li>Ready for Phase 2 (deformation — blade pushes dirt) or something else first?</li>
+            <li>Turning feel good now?</li>
+            <li>Tilt visible enough, or too subtle? (Dial via <code>NORMAL_LERP</code>, currently 6/sec.)</li>
+            <li>Ready for Phase 2 (blade deforms terrain) or park this?</li>
           </ol>
           <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
         </div>
