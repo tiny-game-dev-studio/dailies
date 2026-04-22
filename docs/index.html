@@ -98,6 +98,34 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 16:30</span>
+        <span class="session-label">terrain-shape · Phase 1b — dozer tilts with terrain 🛻</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <video src="terrain-shape/2026-04-22-phase1b-tilt.mp4" poster="terrain-shape/2026-04-22-phase1b-tilt.png" loop muted playsinline preload="metadata" aria-label="Terrain-shape Phase 1b — dozer tilts with terrain slope"></video>
+        </div>
+        <p class="note"><strong>Your feedback:</strong> "The vehicle treats its base as a flat surface. The dozer needs to tilt and go up and down and into the hole." ✓</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>What changed:</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><strong>Pitch + roll from terrain normal.</strong> Each frame we sample 4 heights around the dozer (±0.55m on X and Z), compute the surface normal via cross-product, and slerp the body's basis toward it at 8/sec. Cozy re-alignment — no snappy rubber-banding.</li>
+          <li><strong>Yaw decoupled from tilt.</strong> Turn input still drives a clean Y-only heading; the terrain just layers pitch/roll on top. Steering feels flat and predictable, but the body leans correctly.</li>
+          <li><strong>Direct Y snap instead of gravity.</strong> The tilted box collider was intersecting the ground (corners dig in). Now we snap <code>global_position.y</code> to the sampled terrain height + 0.08m clearance. Body rides the surface cleanly.</li>
+        </ul>
+        <p class="note" style="margin-top:0.3rem;">Blade noses down on descents, rises on climbs, rolls sideways on traversal. This is the foundation for "push dirt → make ramp → drive over ramp" — the body will correctly tilt onto whatever new shapes you dozer into existence.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Tilt responsiveness — too fast / too slow / just right at 8 lerp/sec?</li>
+            <li>Going into the dip — does it feel <em>deep</em> enough, or should I make the dip steeper/lower?</li>
+            <li>Ready for Phase 2 (deformation — blade pushes dirt) or something else first?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-22 15:00</span>
         <span class="session-label">NEW EXPERIMENT · terrain-shape · Phase 1 — drivable heightmap</span>
       </div>
