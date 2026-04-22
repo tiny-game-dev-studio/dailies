@@ -98,6 +98,35 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 10:30</span>
+        <span class="session-label">NEW EXPERIMENT · backhoe-scoop · Phase 1 scoop mechanic</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <img src="backhoe-scoop/2026-04-22-10-30-phase1-scoop-mechanic.png" alt="backhoe-scoop Phase 1 — stationary backhoe facing granular ball pile" />
+        </div>
+        <p class="note"><strong>New experiment #2:</strong> <code>experiments/backhoe-scoop/</code>. Stationary backhoe with a 3-DOF articulated arm and a hollow AnimatableBody3D bucket. 120 small sand balls (radius 0.08, mass 0.055) — chunky gravel scale. Validates the scoop mechanic before adding a truck in Phase 2.</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>Controls (all keyboard):</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><code>A / D</code> or <code>← / →</code>: swing arm left/right (aim)</li>
+          <li><code>W / S</code> or <code>↑ / ↓</code>: raise / lower arm (dig)</li>
+          <li><code>Space</code> (hold): tip bucket forward to dump; release to level</li>
+        </ul>
+        <p class="note" style="margin-top:0.3rem;"><strong>The bucket auto-stays-level</strong> as you raise and lower the arm (so scooped balls don't fall out) — space-bar overrides that to pour. Open at top + front; walls on back + sides + floor + low front lip so balls stay in during transport.</p>
+        <p class="note" style="margin-top:0.3rem;"><em>To try it:</em> <code>experiments/backhoe-scoop/project.godot</code>. Lower the bucket into the pile, lift, swing to aim, hold Space to pour.</p>
+        <div class="review-questions">
+          <p class="review-label">The real question (answer after playing)</p>
+          <ol>
+            <li>Is the scoop mechanic satisfying on its own — just moving sand around?</li>
+            <li>Does the bucket pick up the right amount of sand per scoop, or does it feel too empty / too full?</li>
+            <li>Does the 3-key control scheme (swing / pitch / tip) feel intuitive or confusing?</li>
+          </ol>
+          <p class="reply-prompt">If fun → Phase 2 adds a parked truck bed as drop target. Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-22 10:00</span>
         <span class="session-label">sand-push · Phase 1b · push fixes + tracks + edge walls</span>
       </div>
