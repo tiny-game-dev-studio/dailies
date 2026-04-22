@@ -98,6 +98,35 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 14:00</span>
+        <span class="session-label">Zen Smash · Week 2 session 1 · procedural sound pass 🔊</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <video src="zen-smash/2026-04-22-09-15-wk2s1-procedural-sound-pass.mp4" poster="zen-smash/2026-04-22-09-15-wk2s1-procedural-sound-pass.png" loop muted playsinline preload="metadata" aria-label="Zen Smash with procedural audio — engine, impact thunks, backup beep"></video>
+        </div>
+        <p class="note"><strong>Sound has audio now. 🔊 Click the thumbnail to open in the lightbox — audio plays there (thumbnail preview stays silent).</strong></p>
+        <p class="note" style="margin-top:0.3rem;">All three sounds are <strong>procedurally generated in GDScript</strong> (no downloads, no licensing): raw PCM sample buffers converted to <code>AudioStreamWAV</code>. Placeholders until Jamis sources real CC0 sounds — easy to swap later.</p>
+        <ol style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><strong>Engine loop</strong> — 1-sec seamless: 60Hz bass rumble + 120Hz harmonic + 12Hz diesel throb + grit noise. Volume scales with dozer speed. Plays continuously.</li>
+          <li><strong>Impact thunk</strong> — 180ms: noise burst + 90Hz sub-body, exp decay. Plays when dozer push-impulse &gt; 0.35. Random pitch shift for variety.</li>
+          <li><strong>Backup beep</strong> — 220ms square wave at 560Hz, soft attack/release to avoid clicks. Timer fires every 0.55s while reversing.</li>
+        </ol>
+        <p class="note" style="margin-top:0.4rem;"><em>Mark any of the three you don't like and I'll either re-tune the procedural version OR swap for a specific freesound.org CC0 clip.</em></p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Engine — right character (diesel/tractor) or too synth-y?</li>
+            <li>Impact — does it sound like bricks/wood/stone, or too generic?</li>
+            <li>Backup beep — pitch and pulse rate right?</li>
+            <li>Does the whole thing feel dramatically more alive with sound on?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes or "swap sound N"]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-22 13:00</span>
         <span class="session-label">🎬 COMMISSIONED · Zen Smash — free sampler, ships first</span>
       </div>
@@ -671,7 +700,8 @@
         lbMedia.innerHTML = '';
         const v = document.createElement('video');
         v.src = src.currentSrc || src.src;
-        v.autoplay = true; v.loop = true; v.muted = true; v.playsInline = true; v.controls = true;
+        // Open unmuted so any audio in the MP4 plays. Thumbnails stay muted.
+        v.autoplay = true; v.loop = true; v.muted = false; v.playsInline = true; v.controls = true;
         lbMedia.appendChild(v);
       } else {
         lbMedia.innerHTML = `<img src="${src.src}" alt="${src.alt || ''}" />`;
