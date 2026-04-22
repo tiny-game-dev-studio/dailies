@@ -98,6 +98,29 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 12:00</span>
+        <span class="session-label">NEW EXPERIMENT · doze-smash · Phase 1 destruction</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <video src="doze-smash/2026-04-22-08-00-phase1-destruction-demo.mp4" poster="doze-smash/2026-04-22-08-00-phase1-destruction-demo.png" loop muted playsinline preload="metadata" aria-label="doze-smash — dozer plows through brick wall, log cabin, stone tower"></video>
+        </div>
+        <p class="note"><strong>Experiment #3:</strong> <code>experiments/doze-smash/</code>. Same dozer from sand-push, now aimed at destructible structures: a red brick wall (40 loose bricks, offset-stacked), a wooden log cabin (10 stacked logs, cylinders), and a tall grey stone tower (12 stacked blocks, slightly jittered so it's tippy).</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>Physics approach:</strong> every brick / log / block is a <code>RigidBody3D</code> with <code>can_sleep=true</code> (still bodies skip physics work). Dozer applies speed-scaled impulse on contact — no scripted knockdowns, just real physics. All 62 pieces share collision layer 1; bricks/logs/blocks collide with each other AND the ground AND the dozer.</p>
+        <p class="note" style="margin-top:0.3rem;"><em>Demo video shows the 20-sec autopilot run: turn-left-charge-brick → reverse-turn-right-charge-cabin → turn-left-charge-tower → victory lap. Play at <code>experiments/doze-smash/project.godot</code> to drive into them yourself (WASD or arrows).</em></p>
+        <div class="review-questions">
+          <p class="review-label">The real question</p>
+          <ol>
+            <li>Is smashing structures satisfying? Do they topple in a believable, cozy-physics way?</li>
+            <li>Which of the three feels best — bricks, logs, or tower?</li>
+            <li>Does this validate the <code>game-demolition</code> idea, or does it feel thin without dynamite?</li>
+          </ol>
+          <p class="reply-prompt">If satisfying → Phase 2 = dynamite (place + detonate = outward impulse radius). Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-22 11:12</span>
         <span class="session-label">sand-push · /demo-reel — autopilot gameplay video</span>
       </div>
