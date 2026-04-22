@@ -98,6 +98,35 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 15:00</span>
+        <span class="session-label">NEW EXPERIMENT · terrain-shape · Phase 1 — drivable heightmap</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <video src="terrain-shape/2026-04-22-phase1-drivable-heightmap.mp4" poster="terrain-shape/2026-04-22-phase1-drivable-heightmap.png" loop muted playsinline preload="metadata" aria-label="Terrain-shape Phase 1 — dozer driving on non-flat heightmap terrain"></video>
+        </div>
+        <p class="note"><strong>Your ask:</strong> "Mounds of dirt. The dozer can shift dirt and change the platform/ground. You make a ramp, then drive over it." Change the environment → the environment becomes the new reality to drive on.</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>Phase 1 (this clip) proves the foundation:</strong> non-flat terrain that the dozer can actually drive on. The ground is a 33×33 heightmap with procedural rolling hills, a visible <em>mound</em> (back-right) and a <em>dip</em> (front-left). Dozer uses gravity + a <code>floor_max_angle</code> of 55° so it can climb moderate slopes. Edge walls keep it on the map.</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>What's already working:</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><code>SurfaceTool</code> builds the visual mesh from the heights array (auto-normals)</li>
+          <li><code>HeightMapShape3D</code> gives pixel-perfect collision — dozer tracks the surface</li>
+          <li>Same <code>heights: PackedFloat32Array</code> drives both visual and collision → a single source of truth for Phase 2 deformation</li>
+        </ul>
+        <p class="note" style="margin-top:0.3rem;"><strong>Phase 2 (next, if this feels right):</strong> dozer blade collision modifies heights in a radius, mesh + collision both regenerate each frame the blade is engaged. "Push dirt into a ramp, then drive over the ramp." That's the actual vibe you described.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Does driving over the mound/dip feel good <em>as-is</em>, or does the slope need tuning (steeper? gentler?)</li>
+            <li>Scale feel right? Terrain is ~11m × 11m. Dozer is ~1.2m wide.</li>
+            <li>Go Phase 2 (deformation) this session, or park it and ship zen-smash first?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-22 14:30</span>
         <span class="session-label">Zen Smash · Week 2 session 1b · variety pass (now 7 structure types)</span>
       </div>
