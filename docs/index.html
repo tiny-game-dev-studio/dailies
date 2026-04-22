@@ -98,6 +98,29 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-21 20:45</span>
+        <span class="session-label">NEW EXPERIMENT · sand-push · Phase 1 scaffold</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <img src="sand-push/2026-04-21-20-45-phase1-starting-scene.png" alt="Sand-push experiment — bulldozer facing ball-pit sand pile" />
+        </div>
+        <p class="note"><strong>New standalone experiment:</strong> <code>experiments/sand-push/</code>. Separate project from Sandhaul — not merging in, not risking the main game. Tests whether "drive a bulldozer + push a sand pile around" is fun enough to become breather #2.</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>Phase 1 MVP shipped:</strong> drivable bulldozer (WASD or arrow keys — forward/back + steering), ball-pit sand (36 RigidBody3D spheres that settle into a pile via physics), the bulldozer's collision box nudges spheres on contact. No heightmap deformation yet — that's Phase 3 if this feels fun at ball-pit fidelity.</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>To try it:</strong> <code>/Users/jamis/dev_sideprojects/tiny-game-dev-studio/experiments/sand-push/project.godot</code>. Open in Godot, F5 to play, WASD or arrow keys to drive. Shove the ball pile around. Screenshot shows the starting state — sand already settled, bulldozer facing it.</p>
+        <div class="review-questions">
+          <p class="review-label">The real question (answer after playing it)</p>
+          <ol>
+            <li>Is pushing 36 sand balls around with a toy bulldozer <em>satisfying</em>? (Don't look for polish yet — just the feel.)</li>
+            <li>Does the bulldozer control intuitively? Too fast / too slow / too jerky?</li>
+            <li>Does the sand feel "sand-like" enough, or does it feel like marbles?</li>
+          </ol>
+          <p class="reply-prompt">If fun → Phase 2 (more balls, better drive). If flat → kill or pivot. Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-21 20:07</span>
         <span class="session-label">Day 5a · backhoe scoop animation + tap-to-accelerate loading</span>
       </div>
