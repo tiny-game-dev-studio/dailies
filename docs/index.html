@@ -98,6 +98,33 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 11:05</span>
+        <span class="session-label">backhoe-scoop · Phase 1c · fairness pass — dig pit + bucket fixes</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <video src="backhoe-scoop/2026-04-22-07-05-phase1c-pit-dig.mp4" poster="backhoe-scoop/2026-04-22-07-05-phase1c-pit-dig.png" loop muted playsinline preload="metadata" aria-label="backhoe digs INTO a pit — fixed ball physics"></video>
+        </div>
+        <p class="note"><strong>Fairness fixes (your Day 4e feedback classified as blocking bugs, not vibe):</strong></p>
+        <ol style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><strong>Dig PIT in the ground.</strong> Ground split into 4 slabs around a sunken square hole. Pit floor at y=-0.55 with 4 inward-facing dirt walls. Balls now spawn INSIDE the pit below ground — backhoe must dip below y=0 to scoop (what you actually wanted).</li>
+          <li><strong>Bucket no longer leaks balls.</strong> Walls thickened from 0.05 to 0.09 (was thinner than ball radius — balls tunneled through). Front lip raised to half-height so loads don't slosh out during transport. Balls get <code>continuous_cd=true</code> to prevent physics tunneling at fast arm movements.</li>
+          <li><strong>Arm reach extended.</strong> Boom length 1.6 → 2.3 + PITCH_MAX 0.55 → 0.75, so bucket dips below ground INTO the pit (previously only reached ground level).</li>
+        </ol>
+        <p class="note" style="margin-top:0.4rem;"><em>Demo reel re-recorded via <code>/demo-reel</code> autopilot. Same 18-sec sequence as before (dig / swing / pour / repeat) but now the scoop actually digs into the pit and the bucket holds the load.</em></p>
+        <div class="review-questions">
+          <p class="review-label">Honest evaluation</p>
+          <ol>
+            <li>Does the dig-into-pit mechanic read as "real scooping" now?</li>
+            <li>Are balls actually captured in the bucket during lift/transport (no more leakage)?</li>
+            <li>Try it live at <code>experiments/backhoe-scoop/project.godot</code> — does it FEEL satisfying, or is it still flat?</li>
+          </ol>
+          <p class="reply-prompt">If still flat → kill signal, move to destruction/crane/pour experiments. If satisfying → we know the mechanic is a keeper. Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-22 10:47</span>
         <span class="session-label">backhoe-scoop · Phase 1b · autopilot demo video</span>
       </div>
