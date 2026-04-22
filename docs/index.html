@@ -98,6 +98,37 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 10:47</span>
+        <span class="session-label">backhoe-scoop · Phase 1b · autopilot demo video</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <video src="backhoe-scoop/2026-04-22-06-47-phase1b-scripted-demo.mp4" poster="backhoe-scoop/2026-04-22-06-47-phase1b-scripted-demo.png" loop muted playsinline preload="metadata" aria-label="backhoe-scoop autopilot demo — scoop / swing / pour"></video>
+        </div>
+        <p class="note"><strong>Self-demo, scripted autopilot</strong> (since I can't play live during Movie Mode recording). A <code>demo_autopilot.gd</code> autoload synthesizes keyboard actions via <code>Input.action_press/release</code> on a timed script — <code>main.gd</code> sees the same input events it would from a human player. 18-sec sequence:</p>
+        <ol style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li>Settle (0–2s) — pile of 120 sand balls drops and settles</li>
+          <li>Scoop #1 (2–4.4s) — arm lowers into pile, balls tumble in</li>
+          <li>Lift + swing right (4.4–8s) — bucket stays level, holds balls</li>
+          <li>Pour #1 (8–10s) — tip bucket forward, balls spill to the side</li>
+          <li>Swing back + scoop #2 (10–14.4s) — repeat at original pile</li>
+          <li>Lift + swing far left + pour #2 (14.4–18s) — second spill to the other side</li>
+        </ol>
+        <p class="note" style="margin-top:0.4rem;"><strong>Fixes bundled:</strong> moved backhoe closer to pile (was 3.4u out of reach), tuned arm geometry + pitch range so the bucket dips to ground level without clipping, reframed camera to show both backhoe and pile.</p>
+        <p class="note" style="margin-top:0.3rem;"><em>Play it yourself at <code>experiments/backhoe-scoop/project.godot</code> — autopilot only runs in Movie Mode recording; normal playback uses your keyboard input.</em></p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the scoop actually pick up and transfer balls in the video? Is the amount satisfying, or too sparse?</li>
+            <li>Is the scoop-swing-pour rhythm cozy, or does it feel mechanical?</li>
+            <li>When you try it with your own keyboard, does the 3-axis control feel natural?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-22 10:30</span>
         <span class="session-label">NEW EXPERIMENT · backhoe-scoop · Phase 1 scoop mechanic</span>
       </div>
