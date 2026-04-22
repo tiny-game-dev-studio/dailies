@@ -98,6 +98,34 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 10:00</span>
+        <span class="session-label">sand-push · Phase 1b · push fixes + tracks + edge walls</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <img src="sand-push/2026-04-22-10-00-phase1b-fixed-push-tracks-walls.png" alt="sand-push Phase 1b — fixed dozer height, balls visible ahead" />
+        </div>
+        <p class="note"><strong>Four fixes shipped (Medium, ~35 min):</strong></p>
+        <ol style="font-size:0.75rem; color:#7a6e60; padding-left:1rem; margin-top:0.2rem;">
+          <li><strong>Root-cause bug found:</strong> the dozer's collision box was 35 cm <em>above</em> the ground, so it literally flew over the balls instead of touching them. Dropped the body to y=0; collider now covers y=[0, 0.9] — hits every sphere. PUSH_SCALE also tuned: speed × 0.45 × impulse instead of speed × 1.2 × 0.1. Should feel like a real shove.</li>
+          <li><strong>Visible tracks behind the dozer.</strong> Every 0.12 sec while moving, a dark dirt rectangle is dropped under each track. Fades to transparent over 4.5 sec. Shows up clearly on the sandy ground.</li>
+          <li><strong>Edge walls</strong> — invisible StaticBody3D around the 16×16 playfield on collision layer 2. Dozer includes layer 2 in its collision mask → stops at the edge. Sand is on layer 1 only → sand passes through the walls and falls off the canvas. Shoved balls that fall below y=−3 are auto-deleted.</li>
+          <li><strong>Same keyboard controls</strong>: WASD or arrow keys.</li>
+        </ol>
+        <p class="note" style="margin-top:0.4rem;"><em>Can't demo push/tracks/falling in a no-input MP4. Run locally and shove the pile toward an edge — balls should fall off, dozer should stop at the edge.</em></p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Is pushing the sand with the dozer satisfying now?</li>
+            <li>Do visible tracks fade at a good rate (too fast / too slow)?</li>
+            <li>Falling-off-the-edge — fun, or does it feel empty when balls disappear?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-21 20:45</span>
         <span class="session-label">NEW EXPERIMENT · sand-push · Phase 1 scaffold</span>
       </div>
