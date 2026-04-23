@@ -194,6 +194,32 @@
   <div id="feed">
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-23 13:08</span>
+        <span class="session-label">siege · trebuchet-arc — arm swings, rock arcs</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-13-08-trebuchet-arc.png" alt="Rock in mid-flight above castle wall after trebuchet fires" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-23-13-08-trebuchet-arc.mp4" poster="siege/2026-04-23-13-08-trebuchet-arc.png" loop muted playsinline preload="metadata" aria-label="Trebuchet arm swings, rock launches and arcs over castle wall, resets and repeats"></video>
+          </div>
+        </div>
+        <p class="note">Trebuchet arm animates on a state-machine loop: windup → swing (cubic ease-in) → rock launches at release angle → arcs under gravity → resets. Two full cycles in ~11 seconds. Rock is a RigidBody3D with manual gravity applied in <code>_process</code>.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the arc feel satisfying — right speed, right peak height?</li>
+            <li>The rock flies over the wall currently — should it hit the wall face instead, or is "over the wall" the right target?</li>
+            <li>Is the trebuchet big enough in frame, or should it be larger / camera tighter?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-23 12:59</span>
         <span class="session-label">siege · Aesthetic locked ✓ — low-poly, afternoon light, torches</span>
       </div>
