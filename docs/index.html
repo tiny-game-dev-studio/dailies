@@ -6,19 +6,25 @@
   <title>Tiny Diorama Co. — Dailies</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #f5f0e8; font-family: system-ui, sans-serif; color: #3a3328; padding: 2rem; max-width: 960px; margin: 0 auto; }
+    body { background: #f5f0e8; font-family: system-ui, sans-serif; color: #3a3328; padding: 2rem; max-width: 1120px; margin: 0 auto; }
     h1 { font-size: 1.1rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.25rem; }
     .subtitle { font-size: 0.85rem; color: #8a7d6b; margin-bottom: 2rem; }
 
-    /* Feed grid */
-    #feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    /* Feed grid — bigger row gap so cards breathe, same column behavior */
+    #feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem 1rem; }
 
     .session { border: 1px solid #ddd6c8; border-radius: 8px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
-    .session-header { padding: 0.5rem 0.75rem; background: #ede8df; display: flex; justify-content: space-between; align-items: center; }
+    .session-header { padding: 0.7rem 1rem; background: #ede8df; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
     .session-date { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
     .session-label { font-size: 0.68rem; color: #8a7d6b; }
 
-    .session-body { padding: 0.6rem; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+    .session-body { padding: 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+
+    /* Inline comparison — two (or more) thumbs side by side in one card, for
+       'a vs b' entries. Collapses to stacked on narrow viewports. */
+    .compare-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; }
+    .compare-grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    @media (max-width: 720px) { .compare-grid, .compare-grid.cols-3 { grid-template-columns: 1fr; } }
 
     /* Thumbnail — click to zoom */
     .thumb-wrap { cursor: zoom-in; border-radius: 4px; overflow: hidden; line-height: 0; position: relative; }
@@ -192,7 +198,7 @@
         <span class="session-label">siege · Lighting experiment — golden hour vs blue dusk + torches + smaller voxels</span>
       </div>
       <div class="session-body">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+        <div class="compare-grid">
           <div class="thumb-wrap">
             <img src="siege/2026-04-23-12-50-low-poly-golden.png" alt="Low-poly castle — golden hour, amber sun low on horizon, torch glow on walls" />
           </div>
