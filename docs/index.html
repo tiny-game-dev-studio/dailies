@@ -192,6 +192,32 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-23 15:09</span>
+        <span class="session-label">siege · trebuchet-arc v2 — correct physics, hits wall, wider field</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-15-09-trebuchet-arc-v2.png" alt="Trebuchet arm forward after firing, castle wall in background" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-23-15-09-trebuchet-arc-v2.mp4" poster="siege/2026-04-23-15-09-trebuchet-arc-v2.png" loop muted playsinline preload="metadata" aria-label="Trebuchet fires correctly: CW faces wall and drops, sling swings up and over, rock arcs toward wall"></video>
+          </div>
+        </div>
+        <p class="note">Corrected trebuchet orientation: CW (dark box) now faces the wall and drops first, sling swings up and over from behind. Rock launches at ~23° past vertical and arcs ~18m to hit the wall face. Trebuchet and wall at opposite ends of the field.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the arm swing read correctly now — CW drops toward wall, sling arcs over?</li>
+            <li>Arc speed and height — feels satisfying, or needs tuning?</li>
+            <li>The trebuchet is small in frame relative to the wall — should it be larger, or is this the right scale for a siege scene?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="zen-farm" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-23 14:51</span>
