@@ -192,6 +192,32 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-23 15:17</span>
+        <span class="session-label">siege · wall-breach — bricks scatter on impact, wall rebuilds</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-15-17-wall-breach.png" alt="Rock mid-impact in wall face, bricks beginning to scatter" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-23-15-17-wall-breach.mp4" poster="siege/2026-04-23-15-17-wall-breach.png" loop muted playsinline preload="metadata" aria-label="Trebuchet fires, rock arcs 18m, smashes into brick wall, bricks scatter, wall rebuilds, repeats"></video>
+          </div>
+        </div>
+        <p class="note">Full loop working: trebuchet cocks → CW drops → rock arcs 18m → smashes RigidBody3D brick wall (9×6 staggered blocks) → bricks scatter under physics → wall rebuilds for next shot. Rock mass 10kg vs brick mass 0.8kg gives satisfying scatter. Wall resets each cycle.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the brick scatter feel satisfying — too stiff, too chaotic, or about right?</li>
+            <li>Should the hole in the wall persist longer before rebuilding?</li>
+            <li>Next: add a rubble/dust puff on impact, or move on to the full game scene?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="zen-farm" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-23 15:09</span>
