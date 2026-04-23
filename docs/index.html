@@ -98,6 +98,34 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 21:00</span>
+        <span class="session-label">terrain-shape · Phase 2 — blade drop + dirt deform 🛠️</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <video src="terrain-shape/2026-04-22-phase2-blade-deform.mp4" poster="terrain-shape/2026-04-22-phase2-blade-deform.png" loop muted playsinline preload="metadata" aria-label="Terrain-shape Phase 2 — blade scrapes dirt, terrain reshapes"></video>
+        </div>
+        <p class="note"><strong>The thesis, closed:</strong> change the environment → environment becomes the new reality to drive on.</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>What's working:</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><strong>Blade control.</strong> Blade is up by default. <em>Hold Space</em> → blade drops (smooth 6/sec lerp between an "up/tucked back" pose and a "down/flat" pose). Release → lifts.</li>
+          <li><strong>Scrape + deposit.</strong> When blade is committed down, moving forward, on floor: sample heightmap cells in a swath in front of the blade, shave any cell above the blade's cutting floor, accumulate the shaved volume, and deposit it as a tight pile just ahead.</li>
+          <li><strong>Shared heightmap, shared reality.</strong> The same <code>heights</code> PackedFloat32Array feeds both the visual mesh and the <code>HeightMapShape3D</code> collision. Both rebuild on a dirty-flag at end of each tick. So when you push dirt, the <em>physics</em> sees the new shape — the dozer then drives over its own work correctly, tracks climb + tilt adapts to the new normal.</li>
+        </ul>
+        <p class="note" style="margin-top:0.3rem;"><em>Demo:</em> 2.5s settle → blade down, drive forward carving a trench and pushing a pile → release blade → 180° turn → drive back over the carved/piled area. Compare the terrain behind the dozer at t=2 vs. t=12.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Does the scrape/deposit read clearly? Or does the pile need to be more pronounced?</li>
+            <li>Blade-drop feel — hold feels right, or would you prefer toggle?</li>
+            <li>This closes Phase 2. Next: graduate this into a game concept (mission arc from <code>ideas/</code>), or build another experiment first?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-22 17:30</span>
         <span class="session-label">terrain-shape · Phase 1d — tracks sink into the dirt 🛻</span>
       </div>
