@@ -186,6 +186,32 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-23 12:50</span>
+        <span class="session-label">siege · Lighting experiment — golden hour vs blue dusk + torches + smaller voxels</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-12-50-low-poly-golden.png" alt="Low-poly castle — golden hour, amber sun low on horizon, torch glow on walls" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-12-50-voxel-dusk.png" alt="Voxel castle — blue dusk, torches prominent, voxels at 0.125m (1/4 original size)" />
+          </div>
+        </div>
+        <p class="note"><strong>Left: low-poly, golden hour.</strong> Sun low and amber, warm sky, torches on towers and wall walkway. <strong>Right: voxel, blue dusk.</strong> Sun nearly set, cool blue ambient, torches do the heavy lifting. Voxel size reduced to 0.125m (1/4 of original) — fine grid visible on wall face.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Golden hour (left) vs blue dusk (right) — which time of day feels right for siege?</li>
+            <li>The voxel blocks at 0.125m are much finer — does the wall texture read well, or too subtle?</li>
+            <li>Should torches be on both styles, or only one?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="zen-farm" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-23 12:40</span>
@@ -1007,7 +1033,9 @@
       },
       'siege-castle': {
         label: 'Siege Castle',
-        games: {}, // fill in as new games start
+        games: {
+          'siege': { label: 'Siege', color: '#7a5a3a' },
+        },
       },
     };
     const OTHER_FAMILY = { label: 'Other', games: {} };
