@@ -161,7 +161,7 @@
   </style>
 </head>
 <body>
-  <h1>Tiny Diorama Co. — Dailies</h1>
+  <h1><a href="#" id="logo-link" style="color:inherit; text-decoration:none;">Tiny Diorama Co. — Dailies</a></h1>
   <p class="subtitle">Public review log across all games · 5-breather cohort · <a href="https://github.com/tiny-game-dev-studio" style="color:#8a7d6b;">github</a></p>
 
   <section id="activity">
@@ -1417,16 +1417,18 @@
         feedEmpty.classList.toggle('hidden', visibleCount > 0);
       }
 
-      // URL hash (don't push history on initial load)
-      const hash = isAll ? '' : `#family=${key}`;
+      // URL slug (hash-based, static-site-friendly). `#family-key`; no hash = all.
+      const hash = isAll ? '' : `#${key}`;
       if (window.location.hash !== hash) {
         history.replaceState(null, '', hash || window.location.pathname);
       }
     }
 
     function initFromHash() {
-      const m = window.location.hash.match(/^#family=([a-z0-9-]+)$/i);
-      const key = m ? m[1] : 'all';
+      const raw = window.location.hash.replace(/^#/, '');
+      // Back-compat: old ?family=foo-style hash
+      const legacy = raw.match(/^family=([a-z0-9-]+)$/i);
+      const key = legacy ? legacy[1] : (raw || 'all');
       const valid = key === 'all' || key === 'other' || key in FAMILIES;
       applyFilter(valid ? key : 'all');
     }
@@ -1438,6 +1440,13 @@
     buildLanding(_sessions);
     initFromHash();
     window.addEventListener('hashchange', initFromHash);
+
+    // Logo click → site root (clear filter, scroll to top).
+    document.getElementById('logo-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      applyFilter('all');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     // ──────────── Lightbox (existing) ────────────
     const lb = document.getElementById('lightbox');
