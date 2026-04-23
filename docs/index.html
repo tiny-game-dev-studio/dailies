@@ -187,6 +187,32 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-23 12:38</span>
+        <span class="session-label">siege · Aesthetics gate — low-poly vs voxel</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-12-38-low-poly.png" alt="Low-poly castle wall — smooth slab, round towers, BoxMesh crenellations" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-12-38-voxel.png" alt="Voxel castle wall — 0.5m cube grid, checker grass, square towers" />
+          </div>
+        </div>
+        <p class="note"><strong>Left: low-poly.</strong> Smooth slab wall, CylinderMesh round towers, arch gate. Reads like Tiny Glade / Mini Motorways. <strong>Right: voxel.</strong> 0.5m unit cubes, checker grass, square towers. Reads like a cozy toy set — destruction looks more satisfying on blocky things.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Which direction feels right for the siege world — smooth low-poly or chunky voxel?</li>
+            <li>Should the towers be round (low-poly) or square (voxel) — or does that depend on the style pick?</li>
+            <li>Does either scene pass the diorama test as-is, or does something need adjusting before we move to mechanics?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="terrain-shape" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 21:45</span>
@@ -951,6 +977,12 @@
           'doze-smash':    { label: 'Doze Smash',    color: '#8a5a2a' },
           'zen-smash':     { label: 'Zen Smash',     color: '#5a8a9a' },
           'terrain-shape': { label: 'Terrain Shape', color: '#7a9a4a' },
+        },
+      },
+      'zen-farm': {
+        label: 'Zen Farm',
+        games: {
+          'zen-farm': { label: 'Zen Farm', color: '#6a9a5a' },
         },
       },
       'siege-castle': {
