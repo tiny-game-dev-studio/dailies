@@ -95,14 +95,16 @@
     #activity { margin: 0.5rem 0 1.25rem; }
     #activity-title { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #8a7d6b; margin-bottom: 0.35rem; display: flex; justify-content: space-between; align-items: baseline; }
     #activity-title .range { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.7rem; }
-    #activity-bar { width: 100%; height: 32px; border-radius: 4px; overflow: hidden; background: #ede8df; display: flex; }
-    .day-cell { flex: 1 1 0; height: 100%; display: flex; flex-direction: column; cursor: pointer; position: relative; }
-    .day-cell.empty { background: #ede8df; }
-    .day-cell .seg { flex: 1 1 0; min-height: 0; }
-    .day-cell:hover { outline: 2px solid #3a3328; outline-offset: -2px; z-index: 2; }
-    #activity-months { display: flex; margin-top: 0.2rem; font-size: 0.62rem; color: #8a7d6b; letter-spacing: 0.04em; text-transform: uppercase; }
-    #activity-months .month-tick { flex: 0 0 auto; }
-    #activity-legend { margin-top: 0.55rem; display: flex; flex-wrap: wrap; gap: 0.35rem 0.6rem; font-size: 0.68rem; color: #5a5248; }
+    #activity-grid { display: flex; flex-direction: column; gap: 4px; }
+    .month-row { display: flex; align-items: center; gap: 0.6rem; }
+    .month-label { flex: 0 0 4.5rem; font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #8a7d6b; text-align: right; }
+    .week-cells { flex: 1 1 auto; display: flex; gap: 3px; height: 22px; }
+    .week-cell { flex: 1 1 0; border-radius: 3px; overflow: hidden; background: #ede8df; display: flex; flex-direction: column; cursor: pointer; position: relative; }
+    .week-cell.empty { background: #ede8df; cursor: default; }
+    .week-cell .seg { flex: 1 1 0; min-height: 0; }
+    .week-cell:not(.empty):hover { outline: 2px solid #3a3328; outline-offset: -1px; z-index: 2; }
+    .week-cell.contains-today { box-shadow: inset 0 0 0 1px #3a3328; }
+    #activity-legend { margin-top: 0.6rem; display: flex; flex-wrap: wrap; gap: 0.35rem 0.6rem; font-size: 0.68rem; color: #5a5248; }
     .legend-chip { display: inline-flex; align-items: center; gap: 0.3rem; }
     .legend-chip .dot { width: 0.6rem; height: 0.6rem; border-radius: 2px; flex: 0 0 auto; }
     .legend-family { font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #8a7d6b; font-size: 0.62rem; margin-right: 0.15rem; }
@@ -165,8 +167,7 @@
 
   <section id="activity">
     <div id="activity-title"><span>Activity</span><span class="range" id="activity-range"></span></div>
-    <div id="activity-bar" role="img" aria-label="Daily activity timeline colored by game"></div>
-    <div id="activity-months" aria-hidden="true"></div>
+    <div id="activity-grid" role="img" aria-label="Weekly activity grid colored by game"></div>
     <div id="activity-legend"></div>
   </section>
   <div id="activity-tooltip"></div>
@@ -959,7 +960,6 @@
     };
     const OTHER_FAMILY = { label: 'Other', games: {} };
     const OTHER_COLOR = '#8a7d6b';
-    const ACTIVITY_DAYS = 60;
 
     // Reverse map: game slug → family key + color
     function familyOfGame(game) {
@@ -996,95 +996,126 @@
       });
     }
 
-    // ──────────── Activity bar ────────────
+    // ──────────── Activity grid (month rows × 5 week cells) ────────────
+    const WEEKS_PER_MONTH = 5; // days 1-7, 8-14, 15-21, 22-28, 29-end
+    const MAX_MONTHS = 12;     // cap rows so the grid doesn't grow unbounded
     function buildActivity(sessions) {
-      const bar = document.getElementById('activity-bar');
-      const months = document.getElementById('activity-months');
+      const grid = document.getElementById('activity-grid');
       const legend = document.getElementById('activity-legend');
       const rangeLbl = document.getElementById('activity-range');
-      bar.innerHTML = '';
-      months.innerHTML = '';
+      grid.innerHTML = '';
       legend.innerHTML = '';
 
-      // Build day array from (today - ACTIVITY_DAYS + 1) to today
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      const days = [];
-      for (let i = ACTIVITY_DAYS - 1; i >= 0; i--) {
-        const d = new Date(today);
-        d.setDate(d.getDate() - i);
-        const y = d.getFullYear();
-        const m = String(d.getMonth() + 1).padStart(2, '0');
-        const dd = String(d.getDate()).padStart(2, '0');
-        days.push({ date: d, key: `${y}-${m}-${dd}`, counts: {} });
-      }
 
-      // Bucket sessions by day → game
-      const dayMap = Object.fromEntries(days.map(d => [d.key, d]));
+      // Find earliest session date; default to current month if none.
+      let earliest = today;
       for (const s of sessions) {
-        const bucket = dayMap[s.dayKey];
-        if (!bucket) continue;
-        bucket.counts[s.game] = (bucket.counts[s.game] || 0) + 1;
+        if (!s.dayKey) continue;
+        const d = new Date(s.dayKey + 'T00:00:00');
+        if (!isNaN(d) && d < earliest) earliest = d;
+      }
+      const startMonth = new Date(earliest.getFullYear(), earliest.getMonth(), 1);
+      const endMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+
+      // Enumerate months oldest → newest, capped at MAX_MONTHS most recent.
+      const months = [];
+      const cursor = new Date(startMonth);
+      while (cursor <= endMonth) {
+        months.push(new Date(cursor));
+        cursor.setMonth(cursor.getMonth() + 1);
+      }
+      const display = months.slice(-MAX_MONTHS);
+
+      // Bucket sessions by month+weekIdx (0-4).
+      const bucketKey = (y, m, wi) => `${y}-${m}-${wi}`;
+      const buckets = {};
+      const weekIdxOfDom = dom => Math.min(WEEKS_PER_MONTH - 1, Math.floor((dom - 1) / 7));
+      for (const s of sessions) {
+        if (!s.dayKey) continue;
+        const d = new Date(s.dayKey + 'T00:00:00');
+        if (isNaN(d)) continue;
+        const k = bucketKey(d.getFullYear(), d.getMonth(), weekIdxOfDom(d.getDate()));
+        const b = buckets[k] || (buckets[k] = { counts: {}, days: new Set() });
+        b.counts[s.game] = (b.counts[s.game] || 0) + 1;
+        b.days.add(s.dayKey);
       }
 
-      // Earliest vs latest label
-      const first = days[0].date;
-      const last = days[days.length - 1].date;
-      const fmt = d => d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-      rangeLbl.textContent = `${fmt(first)} — today`;
+      // Range label
+      const fmtMo = d => d.toLocaleString(undefined, { month: 'short', year: 'numeric' });
+      rangeLbl.textContent = display.length === 1
+        ? fmtMo(display[0])
+        : `${fmtMo(display[0])} — ${fmtMo(display[display.length - 1])}`;
 
-      // Render cells
-      days.forEach(d => {
-        const cell = document.createElement('div');
-        cell.className = 'day-cell';
-        const entries = Object.entries(d.counts);
-        if (entries.length === 0) {
-          cell.classList.add('empty');
-        } else {
-          // Sort by count desc, then stack vertically
+      // Render one row per month.
+      display.forEach(mDate => {
+        const y = mDate.getFullYear();
+        const m = mDate.getMonth();
+        const lastDay = new Date(y, m + 1, 0).getDate();
+
+        const row = document.createElement('div');
+        row.className = 'month-row';
+
+        const label = document.createElement('div');
+        label.className = 'month-label';
+        label.textContent = mDate.toLocaleString(undefined, { month: 'short', year: '2-digit' });
+        row.appendChild(label);
+
+        const cells = document.createElement('div');
+        cells.className = 'week-cells';
+
+        for (let wi = 0; wi < WEEKS_PER_MONTH; wi++) {
+          const dayStart = wi * 7 + 1;
+          const dayEnd = Math.min(dayStart + 6, lastDay);
+          // Week 5 = day 29..lastDay (may be 0-3 days); hide if empty range (month had ≤28 days).
+          if (dayStart > lastDay) {
+            const spacer = document.createElement('div');
+            spacer.className = 'week-cell empty';
+            cells.appendChild(spacer);
+            continue;
+          }
+          const weekStart = new Date(y, m, dayStart);
+          const weekEnd = new Date(y, m, dayEnd);
+          const bucket = buckets[bucketKey(y, m, wi)] || { counts: {}, days: new Set() };
+          const entries = Object.entries(bucket.counts);
+
+          const cell = document.createElement('div');
+          cell.className = 'week-cell';
+          if (entries.length === 0) cell.classList.add('empty');
+          // Future weeks — mute further.
+          if (weekStart > today) cell.style.opacity = '0.45';
+          // Mark the current week
+          if (today >= weekStart && today <= new Date(y, m, dayEnd, 23, 59, 59)) {
+            cell.classList.add('contains-today');
+          }
+
           entries.sort((a, b) => b[1] - a[1]);
           for (const [game, count] of entries) {
             const seg = document.createElement('div');
             seg.className = 'seg';
             seg.style.background = familyOfGame(game).color;
-            seg.style.flexGrow = count; // weighted by count within the day
+            seg.style.flexGrow = count;
             cell.appendChild(seg);
           }
-        }
-        cell.dataset.day = d.key;
-        cell.addEventListener('mouseenter', e => showTooltip(e, d));
-        cell.addEventListener('mousemove', e => moveTooltip(e));
-        cell.addEventListener('mouseleave', hideTooltip);
-        cell.addEventListener('click', () => {
-          // Click a day → filter to the dominant game's family
-          const top = Object.entries(d.counts).sort((a, b) => b[1] - a[1])[0];
-          if (top) applyFilter(familyOfGame(top[0]).key);
-        });
-        bar.appendChild(cell);
-      });
 
-      // Month ticks
-      let currentMonth = -1;
-      let tickWidthDays = 0;
-      const pushTick = (label, spanDays) => {
-        const tick = document.createElement('div');
-        tick.className = 'month-tick';
-        tick.style.flexBasis = `${(spanDays / ACTIVITY_DAYS) * 100}%`;
-        tick.textContent = label;
-        months.appendChild(tick);
-      };
-      let tickLabel = '';
-      days.forEach((d, i) => {
-        const m = d.date.getMonth();
-        if (m !== currentMonth) {
-          if (tickWidthDays > 0) pushTick(tickLabel, tickWidthDays);
-          currentMonth = m;
-          tickLabel = d.date.toLocaleString(undefined, { month: 'short' });
-          tickWidthDays = 1;
-        } else {
-          tickWidthDays++;
+          // Tooltip data
+          const weekData = {
+            start: weekStart, end: weekEnd, counts: bucket.counts, days: bucket.days,
+          };
+          cell.addEventListener('mouseenter', e => showTooltip(e, weekData));
+          cell.addEventListener('mousemove', e => moveTooltip(e));
+          cell.addEventListener('mouseleave', hideTooltip);
+          if (entries.length > 0) {
+            cell.addEventListener('click', () => {
+              const top = entries[0];
+              applyFilter(familyOfGame(top[0]).key);
+            });
+          }
+          cells.appendChild(cell);
         }
-        if (i === days.length - 1) pushTick(tickLabel, tickWidthDays);
+        row.appendChild(cells);
+        grid.appendChild(row);
       });
 
       // Legend grouped by family
@@ -1110,15 +1141,18 @@
       }
     }
 
-    // Tooltip
+    // Tooltip — accepts either a single day ({date, counts}) or a week ({start, end, counts}).
     const tooltip = document.getElementById('activity-tooltip');
     function showTooltip(e, d) {
-      const entries = Object.entries(d.counts).sort((a, b) => b[1] - a[1]);
-      const dateStr = d.date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+      const entries = Object.entries(d.counts || {}).sort((a, b) => b[1] - a[1]);
+      const fmt = dt => dt.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+      const header = d.start
+        ? (d.start.toDateString() === d.end.toDateString() ? fmt(d.start) : `${fmt(d.start)} — ${fmt(d.end)}`)
+        : d.date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
       if (entries.length === 0) {
-        tooltip.innerHTML = `<div class="tt-date">${dateStr}</div><div style="color:#a89d8a;">no dailies</div>`;
+        tooltip.innerHTML = `<div class="tt-date">${header}</div><div style="color:#a89d8a;">no dailies</div>`;
       } else {
-        let html = `<div class="tt-date">${dateStr}</div>`;
+        let html = `<div class="tt-date">${header}</div>`;
         for (const [game, count] of entries) {
           const f = familyOfGame(game);
           html += `<div class="tt-row"><span class="dot" style="background:${f.color}"></span>${f.gameLabel} ×${count}</div>`;
