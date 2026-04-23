@@ -98,6 +98,35 @@
   <div id="feed">
     <div class="session" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-22 21:45</span>
+        <span class="session-label">terrain-shape · Phase 2b — pile accumulates in front of blade 🏔️</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <video src="terrain-shape/2026-04-22-phase2b-pile-accumulates.mp4" poster="terrain-shape/2026-04-22-phase2b-pile-accumulates.png" loop muted playsinline preload="metadata" aria-label="Dozer pushes a visible pile of sand in front of the blade"></video>
+        </div>
+        <p class="note"><strong>Your feedback:</strong> "Can the sand accumulate in front of the blade as it's pushing?" ✓</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>The fix — scrape and deposit zones now form a conveyor belt:</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><strong>Scrape zone sits AT the blade edge.</strong> Cells directly under the blade's cutting line get shaved to the cutting floor.</li>
+          <li><strong>Deposit zone sits 1 cell IN FRONT.</strong> All shaved dirt lands into a tight, 1-cell-deep band right ahead of the blade.</li>
+          <li><strong>Non-overlapping.</strong> As the dozer drives forward, cells that were deposit-cells last tick become scrape-cells this tick — so the pile rolls forward with the blade, picking up new terrain along the way. The longer you push, the more the pile grows.</li>
+          <li><strong>Narrower deposit swath.</strong> Dirt concentrates into fewer cells, so the pile reads as a distinct ridge instead of a smeared bump.</li>
+        </ul>
+        <p class="note" style="margin-top:0.3rem;"><em>Watch the mid-scene mound form around t=5s — that's entirely the dozer's work. When the dozer turns and drives away, the pile persists.</em></p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Pile height feels right, or still too small?</li>
+            <li>Should the pile FALL OFF to the sides (natural angle of repose) for a more rounded look, or is a flat-topped ridge fine?</li>
+            <li>Ready to graduate this mechanic into a game concept (one of the mission ideas), or more experiment time first?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-22 21:00</span>
         <span class="session-label">terrain-shape · Phase 2 — blade drop + dirt deform 🛠️</span>
       </div>
