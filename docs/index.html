@@ -89,14 +89,104 @@
     #lightbox-prev { left: 0.5rem; }
     #lightbox-next { right: 0.5rem; }
     #lightbox-caption { position: fixed; bottom: 1.25rem; left: 50%; transform: translateX(-50%); color: #f0ead9; font-size: 0.82rem; letter-spacing: 0.04em; opacity: 0.85; }
+
+    /* ──────────── Activity bar + filters + landing ──────────── */
+
+    #activity { margin: 0.5rem 0 1.25rem; }
+    #activity-title { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #8a7d6b; margin-bottom: 0.35rem; display: flex; justify-content: space-between; align-items: baseline; }
+    #activity-title .range { font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.7rem; }
+    #activity-bar { width: 100%; height: 32px; border-radius: 4px; overflow: hidden; background: #ede8df; display: flex; }
+    .day-cell { flex: 1 1 0; height: 100%; display: flex; flex-direction: column; cursor: pointer; position: relative; }
+    .day-cell.empty { background: #ede8df; }
+    .day-cell .seg { flex: 1 1 0; min-height: 0; }
+    .day-cell:hover { outline: 2px solid #3a3328; outline-offset: -2px; z-index: 2; }
+    #activity-months { display: flex; margin-top: 0.2rem; font-size: 0.62rem; color: #8a7d6b; letter-spacing: 0.04em; text-transform: uppercase; }
+    #activity-months .month-tick { flex: 0 0 auto; }
+    #activity-legend { margin-top: 0.55rem; display: flex; flex-wrap: wrap; gap: 0.35rem 0.6rem; font-size: 0.68rem; color: #5a5248; }
+    .legend-chip { display: inline-flex; align-items: center; gap: 0.3rem; }
+    .legend-chip .dot { width: 0.6rem; height: 0.6rem; border-radius: 2px; flex: 0 0 auto; }
+    .legend-family { font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #8a7d6b; font-size: 0.62rem; margin-right: 0.15rem; }
+
+    #activity-tooltip { position: fixed; z-index: 50; background: #2a241c; color: #f0ead9; font-size: 0.7rem; padding: 0.35rem 0.55rem; border-radius: 4px; pointer-events: none; box-shadow: 0 2px 10px rgba(0,0,0,0.25); opacity: 0; transition: opacity 0.1s; white-space: nowrap; }
+    #activity-tooltip.show { opacity: 1; }
+    #activity-tooltip .tt-date { font-weight: 700; margin-bottom: 0.15rem; }
+    #activity-tooltip .tt-row { display: flex; align-items: center; gap: 0.3rem; }
+    #activity-tooltip .tt-row .dot { width: 0.55rem; height: 0.55rem; border-radius: 2px; }
+
+    #filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+    .filter-pill { font: inherit; font-size: 0.75rem; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid #ddd6c8; background: #fff; color: #3a3328; cursor: pointer; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .filter-pill:hover { border-color: #8a7d6b; }
+    .filter-pill.active { background: #3a3328; color: #f5f0e8; border-color: #3a3328; }
+    .filter-pill .count { font-size: 0.68rem; opacity: 0.7; }
+    .filter-pill.empty { color: #8a7d6b; background: #ede8df; border-style: dashed; cursor: pointer; }
+    .filter-pill .fam-dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; flex: 0 0 auto; }
+
+    /* Landing view (only visible when filter is "all") */
+    #landing { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 1.5rem; }
+    #landing.hidden { display: none; }
+    .strip-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+    .strip-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #3a3328; display: flex; align-items: center; gap: 0.45rem; }
+    .strip-title .fam-dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; flex: 0 0 auto; }
+    .strip-title .strip-count { font-weight: 400; color: #8a7d6b; font-size: 0.72rem; letter-spacing: 0; text-transform: none; }
+    .see-all { font-size: 0.72rem; color: #8a7d6b; text-decoration: none; border-bottom: 1px dotted #bbb1a0; cursor: pointer; background: none; border-left: 0; border-top: 0; border-right: 0; padding: 0; font-family: inherit; }
+    .see-all:hover { color: #3a3328; border-bottom-color: #3a3328; }
+
+    #latest-hero .latest-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0.75rem; }
+    @media (max-width: 720px) { #latest-hero .latest-grid { grid-template-columns: 1fr; } }
+    #latest-hero .hero-slot .preview-card { height: 100%; }
+
+    .family-strip.empty-strip { opacity: 0.6; }
+    .strip-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    @media (max-width: 720px) { .strip-cards { grid-template-columns: 1fr 1fr; } }
+
+    .preview-card { border: 1px solid #ddd6c8; border-left: 3px solid #8a7d6b; border-radius: 6px; background: #fff; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; text-align: left; font: inherit; padding: 0; color: inherit; transition: transform 0.1s, box-shadow 0.1s; }
+    .preview-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(58,51,40,0.12); }
+    .preview-card .preview-thumb { width: 100%; aspect-ratio: 16 / 10; background: #ede8df center/cover no-repeat; position: relative; }
+    .preview-card .preview-thumb.has-video::after { content: "▶"; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 2rem; height: 2rem; border-radius: 50%; background: rgba(20,14,10,0.62); color: rgba(255,250,240,0.95); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding-left: 0.12em; }
+    .preview-card .preview-meta { padding: 0.5rem 0.65rem; display: flex; flex-direction: column; gap: 0.2rem; }
+    .preview-card .preview-date { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #8a7d6b; }
+    .preview-card .preview-label { font-size: 0.75rem; color: #3a3328; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    .preview-card.hero { border-left-width: 4px; }
+    .preview-card.hero .preview-thumb { aspect-ratio: 16 / 9; }
+    .preview-card.hero .preview-label { -webkit-line-clamp: 3; font-size: 0.82rem; }
+
+    .empty-strip-note { font-size: 0.72rem; color: #8a7d6b; font-style: italic; padding: 0.5rem 0; }
+
+    /* Feed visibility when filtered */
+    #feed.filtered .session.hidden-by-filter { display: none; }
+    #feed-empty { grid-column: 1/-1; text-align: center; color: #8a7d6b; font-size: 0.9rem; padding: 3rem 1rem; }
+    #feed-empty.hidden { display: none; }
   </style>
 </head>
 <body>
   <h1>Tiny Diorama Co. — Dailies</h1>
   <p class="subtitle">Public review log across all games · 5-breather cohort · <a href="https://github.com/tiny-game-dev-studio" style="color:#8a7d6b;">github</a></p>
 
+  <section id="activity">
+    <div id="activity-title"><span>Activity</span><span class="range" id="activity-range"></span></div>
+    <div id="activity-bar" role="img" aria-label="Daily activity timeline colored by game"></div>
+    <div id="activity-months" aria-hidden="true"></div>
+    <div id="activity-legend"></div>
+  </section>
+  <div id="activity-tooltip"></div>
+
+  <nav id="filters" aria-label="Filter by game family"></nav>
+
+  <main id="landing">
+    <section id="latest-hero">
+      <div class="strip-header">
+        <div class="strip-title">Latest</div>
+      </div>
+      <div class="latest-grid"></div>
+    </section>
+    <section id="family-strips"></section>
+  </main>
+
+  <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
+
   <div id="feed">
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="terrain-shape" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 21:45</span>
         <span class="session-label">terrain-shape · Phase 2b — pile accumulates in front of blade 🏔️</span>
@@ -125,7 +215,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="terrain-shape" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 21:00</span>
         <span class="session-label">terrain-shape · Phase 2 — blade drop + dirt deform 🛠️</span>
@@ -153,7 +243,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="terrain-shape" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 17:30</span>
         <span class="session-label">terrain-shape · Phase 1d — tracks sink into the dirt 🛻</span>
@@ -179,7 +269,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="terrain-shape" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 17:00</span>
         <span class="session-label">terrain-shape · Phase 1c — tilt redesign (visual-only, no physics fight) 🛻</span>
@@ -209,7 +299,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="terrain-shape" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 15:00</span>
         <span class="session-label">NEW EXPERIMENT · terrain-shape · Phase 1 — drivable heightmap</span>
@@ -238,7 +328,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="zen-smash" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 14:30</span>
         <span class="session-label">Zen Smash · Week 2 session 1b · variety pass (now 7 structure types)</span>
@@ -268,7 +358,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="zen-smash" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 14:00</span>
         <span class="session-label">Zen Smash · Week 2 session 1 · procedural sound pass 🔊</span>
@@ -297,7 +387,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="zen-smash" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 13:00</span>
         <span class="session-label">🎬 COMMISSIONED · Zen Smash — free sampler, ships first</span>
@@ -315,7 +405,7 @@
         </ol>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="doze-smash" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 12:00</span>
         <span class="session-label">NEW EXPERIMENT · doze-smash · Phase 1 destruction</span>
@@ -338,7 +428,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sand-push" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 11:12</span>
         <span class="session-label">sand-push · /demo-reel — autopilot gameplay video</span>
@@ -351,7 +441,7 @@
         <p class="note" style="margin-top:0.3rem;"><em>Play live at <code>experiments/sand-push/project.godot</code> (WASD + arrow keys). Autopilot is scrubbed from the project after recording — your keyboard works normally.</em></p>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="backhoe-scoop" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 11:05</span>
         <span class="session-label">backhoe-scoop · Phase 1c · fairness pass — dig pit + bucket fixes</span>
@@ -378,7 +468,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="backhoe-scoop" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 10:47</span>
         <span class="session-label">backhoe-scoop · Phase 1b · autopilot demo video</span>
@@ -409,7 +499,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="backhoe-scoop" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 10:30</span>
         <span class="session-label">NEW EXPERIMENT · backhoe-scoop · Phase 1 scoop mechanic</span>
@@ -438,7 +528,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sand-push" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-22 10:00</span>
         <span class="session-label">sand-push · Phase 1b · push fixes + tracks + edge walls</span>
@@ -466,7 +556,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sand-push" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 20:45</span>
         <span class="session-label">NEW EXPERIMENT · sand-push · Phase 1 scaffold</span>
@@ -489,7 +579,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 20:07</span>
         <span class="session-label">Day 5a · backhoe scoop animation + tap-to-accelerate loading</span>
@@ -520,7 +610,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 17:25</span>
         <span class="session-label">Day 4f · bed tip animation on unload</span>
@@ -545,7 +635,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 17:05</span>
         <span class="session-label">Day 4e · heaped sand mounds + drastic per-trip deltas</span>
@@ -571,7 +661,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 16:19</span>
         <span class="session-label">Day 4d · real task flow (Lite) + red crane landmark</span>
@@ -601,7 +691,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 15:34</span>
         <span class="session-label">Day 4c · timer task flow + bigger crane + wider canvas</span>
@@ -626,7 +716,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 15:24</span>
         <span class="session-label">Day 4b · fix: forward-facing truck + wider layout</span>
@@ -652,7 +742,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 14:47</span>
         <span class="session-label">Day 4a · slerp rotation + curvature-based speed + path validation</span>
@@ -678,7 +768,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 12:47</span>
         <span class="session-label">Day 3b · spacing pass — zoned layout</span>
@@ -704,7 +794,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 12:27</span>
         <span class="session-label">Day 3 · full construction site + curved path</span>
@@ -731,7 +821,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 11:57</span>
         <span class="session-label">Day 1 · truck motion + graduated to main project</span>
@@ -757,7 +847,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 10:12</span>
         <span class="session-label">screenshot · scale comparison + terrain</span>
@@ -788,7 +878,7 @@
         </div>
       </div>
     </div>
-    <div class="session" style="grid-column: 1/-1;">
+    <div class="session" data-game="sandhaul" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-21 09:56</span>
         <span class="session-label">screenshot · camera angle comparison</span>
@@ -810,7 +900,7 @@
         </div>
       </div>
     </div>
-    <div class="session">
+    <div class="session" data-game="sandhaul">
       <div class="session-header">
         <span class="session-date">2026-04-21 09:17</span>
         <span class="session-label">screenshot · lighting-camera v2</span>
@@ -822,7 +912,7 @@
         <p class="note">Proper vehicles + diorama angle. Dump truck (yellow/orange) + backhoe with arm. Sand piles are sphere meshes. Ground darkened for contrast.</p>
       </div>
     </div>
-    <div class="session">
+    <div class="session" data-game="sandhaul">
       <div class="session-header">
         <span class="session-date">2026-04-21 09:07</span>
         <span class="session-label">screenshot · lighting-camera v1</span>
@@ -846,6 +936,424 @@
   </div>
 
   <script>
+    // ──────────── Game families config ────────────
+    // Add new games here when a new project starts. `data-game="<slug>"` on each
+    // <div class="session"> drives everything below. Games not listed here land
+    // in the "Other" family (neutral grey).
+    const FAMILIES = {
+      'construction-site': {
+        label: 'Construction Site',
+        games: {
+          'sandhaul':      { label: 'Sandhaul',      color: '#c69a4a' },
+          'backhoe-scoop': { label: 'Backhoe Scoop', color: '#a6743a' },
+          'sand-push':     { label: 'Sand Push',     color: '#d4b86a' },
+          'doze-smash':    { label: 'Doze Smash',    color: '#8a5a2a' },
+          'zen-smash':     { label: 'Zen Smash',     color: '#5a8a9a' },
+          'terrain-shape': { label: 'Terrain Shape', color: '#7a9a4a' },
+        },
+      },
+      'siege-castle': {
+        label: 'Siege Castle',
+        games: {}, // fill in as new games start
+      },
+    };
+    const OTHER_FAMILY = { label: 'Other', games: {} };
+    const OTHER_COLOR = '#8a7d6b';
+    const ACTIVITY_DAYS = 60;
+
+    // Reverse map: game slug → family key + color
+    function familyOfGame(game) {
+      for (const [key, fam] of Object.entries(FAMILIES)) {
+        if (fam.games[game]) return { key, fam, color: fam.games[game].color, gameLabel: fam.games[game].label };
+      }
+      return { key: 'other', fam: OTHER_FAMILY, color: OTHER_COLOR, gameLabel: game };
+    }
+
+    // ──────────── Collect sessions from #feed ────────────
+    function collectSessions() {
+      const nodes = Array.from(document.querySelectorAll('#feed .session'));
+      return nodes.map(el => {
+        const dateEl = el.querySelector('.session-date');
+        const labelEl = el.querySelector('.session-label');
+        const game = el.getAttribute('data-game') || 'unknown';
+        const dateStr = dateEl ? dateEl.textContent.trim() : '';
+        // "2026-04-22 21:45" → Date at local time; for grouping we only care about YYYY-MM-DD
+        const dayKey = dateStr.slice(0, 10);
+        const fam = familyOfGame(game);
+        // First media thumbnail (img src OR video poster)
+        let thumbUrl = '';
+        let isVideo = false;
+        const firstImg = el.querySelector('.thumb-wrap img');
+        const firstVid = el.querySelector('.thumb-wrap video');
+        if (firstVid) { thumbUrl = firstVid.getAttribute('poster') || ''; isVideo = true; }
+        if (!thumbUrl && firstImg) { thumbUrl = firstImg.getAttribute('src') || ''; }
+        return {
+          el, game, dateStr, dayKey,
+          labelText: labelEl ? labelEl.textContent.trim() : '',
+          familyKey: fam.key, familyLabel: fam.fam.label, gameLabel: fam.gameLabel, color: fam.color,
+          thumbUrl, isVideo,
+        };
+      });
+    }
+
+    // ──────────── Activity bar ────────────
+    function buildActivity(sessions) {
+      const bar = document.getElementById('activity-bar');
+      const months = document.getElementById('activity-months');
+      const legend = document.getElementById('activity-legend');
+      const rangeLbl = document.getElementById('activity-range');
+      bar.innerHTML = '';
+      months.innerHTML = '';
+      legend.innerHTML = '';
+
+      // Build day array from (today - ACTIVITY_DAYS + 1) to today
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const days = [];
+      for (let i = ACTIVITY_DAYS - 1; i >= 0; i--) {
+        const d = new Date(today);
+        d.setDate(d.getDate() - i);
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        days.push({ date: d, key: `${y}-${m}-${dd}`, counts: {} });
+      }
+
+      // Bucket sessions by day → game
+      const dayMap = Object.fromEntries(days.map(d => [d.key, d]));
+      for (const s of sessions) {
+        const bucket = dayMap[s.dayKey];
+        if (!bucket) continue;
+        bucket.counts[s.game] = (bucket.counts[s.game] || 0) + 1;
+      }
+
+      // Earliest vs latest label
+      const first = days[0].date;
+      const last = days[days.length - 1].date;
+      const fmt = d => d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+      rangeLbl.textContent = `${fmt(first)} — today`;
+
+      // Render cells
+      days.forEach(d => {
+        const cell = document.createElement('div');
+        cell.className = 'day-cell';
+        const entries = Object.entries(d.counts);
+        if (entries.length === 0) {
+          cell.classList.add('empty');
+        } else {
+          // Sort by count desc, then stack vertically
+          entries.sort((a, b) => b[1] - a[1]);
+          for (const [game, count] of entries) {
+            const seg = document.createElement('div');
+            seg.className = 'seg';
+            seg.style.background = familyOfGame(game).color;
+            seg.style.flexGrow = count; // weighted by count within the day
+            cell.appendChild(seg);
+          }
+        }
+        cell.dataset.day = d.key;
+        cell.addEventListener('mouseenter', e => showTooltip(e, d));
+        cell.addEventListener('mousemove', e => moveTooltip(e));
+        cell.addEventListener('mouseleave', hideTooltip);
+        cell.addEventListener('click', () => {
+          // Click a day → filter to the dominant game's family
+          const top = Object.entries(d.counts).sort((a, b) => b[1] - a[1])[0];
+          if (top) applyFilter(familyOfGame(top[0]).key);
+        });
+        bar.appendChild(cell);
+      });
+
+      // Month ticks
+      let currentMonth = -1;
+      let tickWidthDays = 0;
+      const pushTick = (label, spanDays) => {
+        const tick = document.createElement('div');
+        tick.className = 'month-tick';
+        tick.style.flexBasis = `${(spanDays / ACTIVITY_DAYS) * 100}%`;
+        tick.textContent = label;
+        months.appendChild(tick);
+      };
+      let tickLabel = '';
+      days.forEach((d, i) => {
+        const m = d.date.getMonth();
+        if (m !== currentMonth) {
+          if (tickWidthDays > 0) pushTick(tickLabel, tickWidthDays);
+          currentMonth = m;
+          tickLabel = d.date.toLocaleString(undefined, { month: 'short' });
+          tickWidthDays = 1;
+        } else {
+          tickWidthDays++;
+        }
+        if (i === days.length - 1) pushTick(tickLabel, tickWidthDays);
+      });
+
+      // Legend grouped by family
+      for (const [famKey, fam] of Object.entries(FAMILIES)) {
+        const gameSlugs = Object.keys(fam.games);
+        if (gameSlugs.length === 0) continue;
+        const famLabel = document.createElement('span');
+        famLabel.className = 'legend-family';
+        famLabel.textContent = fam.label;
+        legend.appendChild(famLabel);
+        gameSlugs.forEach(slug => {
+          const chip = document.createElement('span');
+          chip.className = 'legend-chip';
+          const dot = document.createElement('span');
+          dot.className = 'dot';
+          dot.style.background = fam.games[slug].color;
+          const txt = document.createElement('span');
+          txt.textContent = fam.games[slug].label;
+          chip.appendChild(dot);
+          chip.appendChild(txt);
+          legend.appendChild(chip);
+        });
+      }
+    }
+
+    // Tooltip
+    const tooltip = document.getElementById('activity-tooltip');
+    function showTooltip(e, d) {
+      const entries = Object.entries(d.counts).sort((a, b) => b[1] - a[1]);
+      const dateStr = d.date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+      if (entries.length === 0) {
+        tooltip.innerHTML = `<div class="tt-date">${dateStr}</div><div style="color:#a89d8a;">no dailies</div>`;
+      } else {
+        let html = `<div class="tt-date">${dateStr}</div>`;
+        for (const [game, count] of entries) {
+          const f = familyOfGame(game);
+          html += `<div class="tt-row"><span class="dot" style="background:${f.color}"></span>${f.gameLabel} ×${count}</div>`;
+        }
+        tooltip.innerHTML = html;
+      }
+      moveTooltip(e);
+      tooltip.classList.add('show');
+    }
+    function moveTooltip(e) {
+      const pad = 12;
+      let x = e.clientX + pad;
+      let y = e.clientY + pad;
+      // Keep on screen
+      const rect = tooltip.getBoundingClientRect();
+      if (x + rect.width > window.innerWidth - 8) x = e.clientX - rect.width - pad;
+      if (y + rect.height > window.innerHeight - 8) y = e.clientY - rect.height - pad;
+      tooltip.style.left = `${x}px`;
+      tooltip.style.top = `${y}px`;
+    }
+    function hideTooltip() { tooltip.classList.remove('show'); }
+
+    // ──────────── Filter pills ────────────
+    function buildFilters(sessions) {
+      const nav = document.getElementById('filters');
+      nav.innerHTML = '';
+
+      const counts = { all: sessions.length };
+      for (const s of sessions) counts[s.familyKey] = (counts[s.familyKey] || 0) + 1;
+
+      const makePill = ({ key, label, count, famColor, empty }) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'filter-pill' + (empty ? ' empty' : '');
+        btn.dataset.family = key;
+        if (famColor) {
+          const dot = document.createElement('span');
+          dot.className = 'fam-dot';
+          dot.style.background = famColor;
+          btn.appendChild(dot);
+        }
+        const lbl = document.createElement('span');
+        lbl.textContent = label;
+        btn.appendChild(lbl);
+        const cnt = document.createElement('span');
+        cnt.className = 'count';
+        cnt.textContent = count;
+        btn.appendChild(cnt);
+        btn.addEventListener('click', () => applyFilter(key));
+        nav.appendChild(btn);
+        return btn;
+      };
+
+      makePill({ key: 'all', label: 'All', count: counts.all });
+      for (const [key, fam] of Object.entries(FAMILIES)) {
+        const c = counts[key] || 0;
+        // Representative color: first game in family, else neutral
+        const firstGame = Object.values(fam.games)[0];
+        makePill({ key, label: fam.label, count: c, famColor: firstGame ? firstGame.color : null, empty: c === 0 });
+      }
+      if (counts.other) {
+        makePill({ key: 'other', label: 'Other', count: counts.other, famColor: OTHER_COLOR });
+      }
+    }
+
+    // ──────────── Landing view (latest hero + family strips) ────────────
+    function makePreviewCard(sess, hero = false) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'preview-card' + (hero ? ' hero' : '');
+      btn.style.borderLeftColor = sess.color;
+      btn.dataset.game = sess.game;
+      const thumb = document.createElement('div');
+      thumb.className = 'preview-thumb' + (sess.isVideo ? ' has-video' : '');
+      if (sess.thumbUrl) thumb.style.backgroundImage = `url("${sess.thumbUrl}")`;
+      const meta = document.createElement('div');
+      meta.className = 'preview-meta';
+      const dateEl = document.createElement('span');
+      dateEl.className = 'preview-date';
+      dateEl.textContent = sess.dateStr;
+      const lblEl = document.createElement('span');
+      lblEl.className = 'preview-label';
+      lblEl.textContent = sess.labelText;
+      meta.appendChild(dateEl);
+      meta.appendChild(lblEl);
+      btn.appendChild(thumb);
+      btn.appendChild(meta);
+      btn.addEventListener('click', () => {
+        // Switch to that family's filter and scroll to the session
+        applyFilter(sess.familyKey);
+        // After next paint, scroll
+        requestAnimationFrame(() => {
+          sess.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+      return btn;
+    }
+
+    function buildLanding(sessions) {
+      const heroGrid = document.querySelector('#latest-hero .latest-grid');
+      const strips = document.getElementById('family-strips');
+      heroGrid.innerHTML = '';
+      strips.innerHTML = '';
+
+      // Most recent 3 sessions as hero
+      const sorted = [...sessions].sort((a, b) => (a.dateStr < b.dateStr ? 1 : -1));
+      const hero = sorted.slice(0, 3);
+      hero.forEach((s, i) => {
+        const slot = document.createElement('div');
+        slot.className = 'hero-slot';
+        slot.appendChild(makePreviewCard(s, i === 0));
+        heroGrid.appendChild(slot);
+      });
+
+      // One strip per defined family (plus "Other" if any)
+      const familyOrder = Object.keys(FAMILIES).slice();
+      // Sort by most-recently-active
+      const latestPerFamily = {};
+      for (const s of sorted) {
+        if (!(s.familyKey in latestPerFamily)) latestPerFamily[s.familyKey] = s.dateStr;
+      }
+      familyOrder.sort((a, b) => {
+        const da = latestPerFamily[a] || '';
+        const db = latestPerFamily[b] || '';
+        return da < db ? 1 : -1;
+      });
+      if (sessions.some(s => s.familyKey === 'other')) familyOrder.push('other');
+
+      for (const famKey of familyOrder) {
+        const fam = FAMILIES[famKey] || OTHER_FAMILY;
+        const famSessions = sorted.filter(s => s.familyKey === famKey);
+        const firstGame = Object.values(fam.games)[0];
+        const famColor = firstGame ? firstGame.color : OTHER_COLOR;
+
+        const strip = document.createElement('section');
+        strip.className = 'family-strip' + (famSessions.length === 0 ? ' empty-strip' : '');
+
+        const header = document.createElement('div');
+        header.className = 'strip-header';
+        const title = document.createElement('div');
+        title.className = 'strip-title';
+        const dot = document.createElement('span');
+        dot.className = 'fam-dot';
+        dot.style.background = famColor;
+        title.appendChild(dot);
+        const lbl = document.createElement('span');
+        lbl.textContent = fam.label;
+        title.appendChild(lbl);
+        const cnt = document.createElement('span');
+        cnt.className = 'strip-count';
+        cnt.textContent = `· ${famSessions.length} ${famSessions.length === 1 ? 'entry' : 'entries'}`;
+        title.appendChild(cnt);
+        header.appendChild(title);
+
+        if (famSessions.length > 0) {
+          const seeAll = document.createElement('button');
+          seeAll.type = 'button';
+          seeAll.className = 'see-all';
+          seeAll.textContent = 'see all →';
+          seeAll.addEventListener('click', () => applyFilter(famKey));
+          header.appendChild(seeAll);
+        }
+        strip.appendChild(header);
+
+        if (famSessions.length === 0) {
+          const note = document.createElement('div');
+          note.className = 'empty-strip-note';
+          note.textContent = 'No dailies yet — coming soon.';
+          strip.appendChild(note);
+        } else {
+          const cards = document.createElement('div');
+          cards.className = 'strip-cards';
+          famSessions.slice(0, 3).forEach(s => cards.appendChild(makePreviewCard(s)));
+          strip.appendChild(cards);
+        }
+        strips.appendChild(strip);
+      }
+    }
+
+    // ──────────── Filter state ────────────
+    let currentFilter = 'all';
+    function applyFilter(key) {
+      currentFilter = key;
+      const isAll = key === 'all';
+      const landing = document.getElementById('landing');
+      const feed = document.getElementById('feed');
+      const feedEmpty = document.getElementById('feed-empty');
+
+      // Pills
+      document.querySelectorAll('#filters .filter-pill').forEach(p => {
+        p.classList.toggle('active', p.dataset.family === key);
+      });
+
+      if (isAll) {
+        landing.classList.remove('hidden');
+        feed.style.display = 'none';
+        feedEmpty.classList.add('hidden');
+      } else {
+        landing.classList.add('hidden');
+        feed.style.display = '';
+        feed.classList.add('filtered');
+        let visibleCount = 0;
+        document.querySelectorAll('#feed .session').forEach(s => {
+          const game = s.getAttribute('data-game');
+          const fk = familyOfGame(game).key;
+          const match = (key === fk);
+          s.classList.toggle('hidden-by-filter', !match);
+          if (match) visibleCount++;
+        });
+        feedEmpty.classList.toggle('hidden', visibleCount > 0);
+      }
+
+      // URL hash (don't push history on initial load)
+      const hash = isAll ? '' : `#family=${key}`;
+      if (window.location.hash !== hash) {
+        history.replaceState(null, '', hash || window.location.pathname);
+      }
+    }
+
+    function initFromHash() {
+      const m = window.location.hash.match(/^#family=([a-z0-9-]+)$/i);
+      const key = m ? m[1] : 'all';
+      const valid = key === 'all' || key === 'other' || key in FAMILIES;
+      applyFilter(valid ? key : 'all');
+    }
+
+    // ──────────── Bootstrap ────────────
+    const _sessions = collectSessions();
+    buildActivity(_sessions);
+    buildFilters(_sessions);
+    buildLanding(_sessions);
+    initFromHash();
+    window.addEventListener('hashchange', initFromHash);
+
+    // ──────────── Lightbox (existing) ────────────
     const lb = document.getElementById('lightbox');
     const lbMedia = document.getElementById('lightbox-media');
     const lbCap = document.getElementById('lightbox-caption');
