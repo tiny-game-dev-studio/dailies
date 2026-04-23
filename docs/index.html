@@ -128,35 +128,38 @@
     .filter-pill.empty { color: #8a7d6b; background: #ede8df; border-style: dashed; cursor: pointer; }
     .filter-pill .fam-dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; flex: 0 0 auto; }
 
-    /* Landing view (only visible when filter is "all") */
-    #landing { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 1.5rem; }
+    /* Landing view (only visible when filter is "all") — generous vertical
+       rhythm between strips so each heading has real breathing room above it
+       (anchor point for the section, not pushed against the previous row). */
+    #landing { display: flex; flex-direction: column; gap: 3rem; margin-bottom: 2.5rem; }
     #landing.hidden { display: none; }
-    .strip-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
-    .strip-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #3a3328; display: flex; align-items: center; gap: 0.45rem; }
-    .strip-title .fam-dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; flex: 0 0 auto; }
-    .strip-title .strip-count { font-weight: 400; color: #8a7d6b; font-size: 0.72rem; letter-spacing: 0; text-transform: none; }
-    .see-all { font-size: 0.72rem; color: #8a7d6b; text-decoration: none; border-bottom: 1px dotted #bbb1a0; cursor: pointer; background: none; border-left: 0; border-top: 0; border-right: 0; padding: 0; font-family: inherit; }
+    #family-strips { display: flex; flex-direction: column; gap: 3rem; }
+    .strip-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1rem; }
+    .strip-title { font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #3a3328; display: flex; align-items: center; gap: 0.55rem; line-height: 1.2; }
+    .strip-title .fam-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; flex: 0 0 auto; }
+    .strip-title .strip-count { font-weight: 400; color: #8a7d6b; font-size: 0.78rem; letter-spacing: 0; text-transform: none; }
+    .see-all { font-size: 0.75rem; color: #8a7d6b; text-decoration: none; border-bottom: 1px dotted #bbb1a0; cursor: pointer; background: none; border-left: 0; border-top: 0; border-right: 0; padding: 0 0 1px; font-family: inherit; letter-spacing: 0.01em; }
     .see-all:hover { color: #3a3328; border-bottom-color: #3a3328; }
 
-    #latest-hero .latest-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 0.75rem; }
+    #latest-hero .latest-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; }
     @media (max-width: 720px) { #latest-hero .latest-grid { grid-template-columns: 1fr; } }
     #latest-hero .hero-slot .preview-card { height: 100%; }
 
     .family-strip.empty-strip { opacity: 0.6; }
-    .strip-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+    .strip-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     @media (max-width: 720px) { .strip-cards { grid-template-columns: 1fr 1fr; } }
 
     .preview-card { border: 1px solid #ddd6c8; border-left: 3px solid #8a7d6b; border-radius: 6px; background: #fff; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; text-align: left; font: inherit; padding: 0; color: inherit; transition: transform 0.1s, box-shadow 0.1s; }
     .preview-card:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(58,51,40,0.12); }
     .preview-card .preview-thumb { width: 100%; aspect-ratio: 16 / 10; background: #ede8df center/cover no-repeat; position: relative; }
     .preview-card .preview-thumb.has-video::after { content: "▶"; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 2rem; height: 2rem; border-radius: 50%; background: rgba(20,14,10,0.62); color: rgba(255,250,240,0.95); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding-left: 0.12em; }
-    .preview-card .preview-meta { padding: 0.5rem 0.65rem; display: flex; flex-direction: column; gap: 0.2rem; }
-    .preview-card .preview-date { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #8a7d6b; }
-    .preview-card .preview-label { font-size: 0.75rem; color: #3a3328; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .preview-card .preview-meta { padding: 0.65rem 0.8rem 0.75rem; display: flex; flex-direction: column; gap: 0.3rem; }
+    .preview-card .preview-date { font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #8a7d6b; }
+    .preview-card .preview-label { font-size: 0.8rem; color: #3a3328; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
     .preview-card.hero { border-left-width: 4px; }
     .preview-card.hero .preview-thumb { aspect-ratio: 16 / 9; }
-    .preview-card.hero .preview-label { -webkit-line-clamp: 3; font-size: 0.82rem; }
+    .preview-card.hero .preview-label { -webkit-line-clamp: 3; font-size: 0.88rem; line-height: 1.45; }
 
     .empty-strip-note { font-size: 0.72rem; color: #8a7d6b; font-style: italic; padding: 0.5rem 0; }
 
@@ -192,6 +195,31 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-23 15:52</span>
+        <span class="session-label">siege · wall-breach v2 — explosive scatter, bricks fly</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-15-52-wall-breach-v2.png" alt="Bricks flying in every direction after trebuchet impact" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-23-15-52-wall-breach-v2.mp4" poster="siege/2026-04-23-15-52-wall-breach-v2.png" loop muted playsinline preload="metadata" aria-label="Rock hits wall, radial explosion impulse launches bricks into the sky, wall rebuilds, repeats"></video>
+          </div>
+        </div>
+        <p class="note">Fixed: switched from contact-propagation to a manual radial blast impulse (BLAST_STRENGTH=32, radius=2.8m) triggered when rock crosses the wall plane. Bricks mass reduced 0.8→0.2kg, damping near-zero. Upward bias (+0.5 Y) makes bricks fly UP as well as out. Towers survive; wall section explodes.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the explosion feel right now, or too strong / too uniform?</li>
+            <li>Should some bricks be heavier (stay near wall) while lighter ones fly far?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-23 15:17</span>
