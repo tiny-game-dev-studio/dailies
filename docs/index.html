@@ -197,6 +197,33 @@
   <div id="feed">
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 17:32</span>
+        <span class="session-label">siege · MVP v5 — level validator + map-difficulty fix (twin concentric rings)</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-17-32-mvp-v5-validator-and-fixed-map.png" alt="Twin concentric mountain rings — outer bowl (r=18-23) with three winding canyons cut in, inner ring (r=11-13) with single south gap. Attackers walk a corridor between the two rings to find the gap, then enter the killing field at the south outer wall gate. 14 defenders layered: canyon ambush archers, corridor crossfire, gate kill zone." />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-24-17-32-mvp-v5-validator-and-fixed-map.mp4" poster="siege/2026-04-24-17-32-mvp-v5-validator-and-fixed-map.png" loop muted playsinline preload="metadata" aria-label="Demo: 8 troops mass-push SW canyon (the validator-proven winning strategy). Attackers wind through the SW zigzag, walk the inter-ring corridor under archer crossfire, breach the south gate."></video>
+          </div>
+        </div>
+        <p class="note"><strong>Two-headed v5:</strong> built a <strong>headless level validator</strong> (<code>godot --headless --path siege/ -- --validate</code>) that enumerates 21 representative troop placements and prints a verdict matrix in &lt;2s. Then used it to fix the v4 map. <strong>Validator confirmed Jamis's playtest:</strong> v4 was 100% win rate (every spam strategy won — even 4 troops via any single route). v5 fixes added a second inner mountain ring with a single south gap, winding canyons that exit the outer ring at r=16, and 14 layered defenders covering the corridor between rings. <strong>Result:</strong> v5 runs at 33% win rate. Mass SW (29% wins) and mass N (36% wins) are competitive heavy-commit attacks; mass E is a trap (14%); split forces fail (no front breaks through). Validator is reusable for every future level — re-run after any map change to catch trivially-solvable maps before shipping. Strategic depth restored.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>The twin-ring map readable as a "maze you walk through" from the diorama angle, or does the inner ring blend into the outer one?</li>
+            <li>33% win rate — does that feel right for "interesting choice", or do you want it tighter (closer to 25%) so wins feel earned?</li>
+            <li>The validator output text — useful as a daily artifact, or would you rather just see playtest videos and skip the matrix?</li>
+            <li>Worth promoting <code>--validate</code> to a reusable <code>/level-validate</code> skill now, or wait until siege has a 2nd level?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 16:58</span>
         <span class="session-label">siege · MVP v4 — Krak/Carcassonne fortress (mountain bowl + concentric defenses + winding canyons)</span>
       </div>
