@@ -197,6 +197,34 @@
   <div id="feed">
     <div class="session" data-game="enders-game" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 06:26</span>
+        <span class="session-label">enders-game · Gate 2.5 — book-accurate maneuvers (wall → star → wall)</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="enders-game/2026-04-24-06-26-battle-room-maneuvers.png" alt="Mid-maneuver frame: one astronaut perched on top of the central gray star block (GRAB state), another mid-flight between two stars with body oriented forward toward target" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="enders-game/2026-04-24-06-26-battle-room-maneuvers.mp4" poster="enders-game/2026-04-24-06-26-battle-room-maneuvers.png" loop muted playsinline preload="metadata" aria-label="16 second loop: blue astronaut pushes off the back wall, flies to the top of a star, waits, pushes off to another star, flies back to the wall. Red astronaut simultaneously pushes off the left wall, lands on a side star, pushes off to the floor, flies back up to the wall. All zero-gravity, single push = ballistic travel, velocity zeros on grab."</video>
+          </div>
+        </div>
+        <p class="note"><strong>Phase 2.5 — scripted zero-G maneuvers.</strong> New sub-experiment <code>experiments/enders-game/battle-room-maneuvers/</code>. Each soldier has a 4-point route (wall → star → star/floor → wall, then loops). State machine per soldier: <em>WAIT</em> (<code>RigidBody3D.freeze = true</code>, clung to a surface, 1.6s pause) → <em>PUSH</em> (unfreeze, set <code>linear_velocity = normalized(target - pos) * 1.2</code>, <code>look_at</code> target, small tumble) → <em>FLY</em> (pure ballistic — physics doesn't touch them again since gravity=0, damping=0) → <em>GRAB</em> (within 0.30m of target: zero velocity, snap position, freeze, back to WAIT). Two soldiers staggered so at any moment one is flying and one is clung. Book-accurate: soldier pushes once, coasts, grabs. No thrusters mid-flight.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does the push/coast/grab rhythm read as Battle Room? Or want the flight time longer (slower push) for more suspense?</li>
+            <li>Perch — a soldier on top of a star feels right for "grabbing cover," or want them tucked flush against the side (behind the star, not on top)?</li>
+            <li>Rotation during flight — look_at + small forward-axis tumble. Too much/too little?</li>
+            <li>More soldiers doing their own routes (4? 6?), or keep to 2 for readability?</li>
+            <li>Ready for Phase 3 (laser-freeze) on top of this motion system, or push the maneuvers further first?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="enders-game" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 01:53</span>
         <span class="session-label">enders-game · Gate 2 — zero-G drift (6 astronauts bouncing)</span>
       </div>
