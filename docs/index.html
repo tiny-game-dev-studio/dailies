@@ -197,6 +197,28 @@
   <div id="feed">
     <div class="session" data-game="enders-game" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 01:40</span>
+        <span class="session-label">enders-game · Gate 1 v5 — soldier scale + combat poses</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <img src="enders-game/2026-04-24-01-40-battle-room-v5-posed.png" alt="Battle Room with tiny soldier figurines relative to star blocks and gates. Blue team pushes off their blue gate with aim + swim + roll poses; red team returns fire with shoot + jump-start + crouch poses. Each figure frozen at a specific animation sample time, no more T-poses" />
+        </div>
+        <p class="note"><strong>Phase 1 v5 — scale + poses corrected.</strong> Soldier scale 0.55 → <strong>0.22</strong> so a figure is ~40cm tall, ≈1/10 the cube height, well below the star-block obstacles — matches the book where "stars" are room-sized cover and soldiers are small against them. Enumerated the Quaternius UAL glb (45 anims) and assigned combat-appropriate poses frozen via <code>AnimationPlayer.play + advance(t) + pause()</code>: <em>Blue team</em> — Pistol_Aim_Neutral, Swim_Fwd, Roll (pushing inward from their gate). <em>Red team</em> — Pistol_Shoot, Jump_Start, Crouch_Fwd (defensive return fire from around the stars). No more T-poses.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Scale right now, or still too big/small?</li>
+            <li>Poses — read as zero-G combat, or want specific adjustments (more tucked? arms holding weapons?)</li>
+            <li>Some figures are hard to read against the dark interior even with emissive suits. Add a subtle per-soldier fill light, or bump the emission energy?</li>
+            <li>Ready for Phase 2 (zero-G drift physics — the posed soldiers start tumbling slowly)?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="enders-game" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 01:32</span>
         <span class="session-label">enders-game · Gate 1 v4 — soldiers positioned (6 figurines, 2 teams)</span>
       </div>
