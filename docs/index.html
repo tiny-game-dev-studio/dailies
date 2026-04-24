@@ -197,6 +197,33 @@
   <div id="feed">
     <div class="session" data-game="enders-game" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 01:53</span>
+        <span class="session-label">enders-game · Gate 2 — zero-G drift (6 astronauts bouncing)</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="enders-game/2026-04-24-01-53-battle-room-drift.png" alt="Mid-drift frame: six tiny astronauts in pose scattered throughout the Battle Room cube, having drifted from their starting positions and bounced off walls and star blocks" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="enders-game/2026-04-24-01-53-battle-room-drift.mp4" poster="enders-game/2026-04-24-01-53-battle-room-drift.png" loop muted playsinline preload="metadata" aria-label="14 second loop: six little astronauts drift through the Battle Room cube at zero gravity, bouncing off walls and floating obstacle blocks, orientations rotating freely because there's nothing to orient to"></video>
+          </div>
+        </div>
+        <p class="note"><strong>Phase 2 — zero-G drift.</strong> New sub-experiment <code>experiments/enders-game/battle-room-drift/</code>. Copy of cube-scifi with each soldier wrapped in a <code>RigidBody3D</code>: <code>gravity_scale = 0</code>, <code>linear_damp = 0</code>, <code>angular_damp = 0</code>, a capsule collider around the visible figure, and random slow <code>linear_velocity</code> ±0.35 m/s + <code>angular_velocity</code> ±0.45 rad/s. Cube walls and star blocks are StaticBodies with a shared <code>PhysicsMaterial</code> (<code>bounce = 1.0, friction = 0.0</code>) so soldiers ricochet indefinitely without losing energy. Ceiling + front + right wall are collider-only (invisible) so the cutaway view is preserved while soldiers still bounce off all 6 faces. Poses stay frozen — the <em>figure</em> holds its combat attitude while the body tumbles.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Drift speed — right "floaty" pace, or slow it down / speed it up?</li>
+            <li>Bounce feel — does the elastic wall read as zero-G, or does it feel rubber-bally? Want some tiny energy loss so they eventually settle, or keep perpetual?</li>
+            <li>Tumble rate — readable rotation, or so spinny it looks silly?</li>
+            <li>Ready for Phase 3 (laser fires from a gate, hit freezes the soldier mid-drift)?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="enders-game" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 01:48</span>
         <span class="session-label">enders-game · Gate 1 v6 — little space suits</span>
       </div>
