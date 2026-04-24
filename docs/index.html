@@ -197,6 +197,32 @@
   <div id="feed">
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-23 22:27</span>
+        <span class="session-label">siege · Visual experiment — Forward+ vs GL Compatibility</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-16-24-week2b-distance.png" alt="GL Compatibility — flat lighting, orange ambient wash" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-23-22-27-forward-plus.png" alt="Forward+ — SDFGI bounce light, SSAO, glow, ACES tonemap, MultiMesh scatter" />
+          </div>
+        </div>
+        <p class="note"><strong>Left: GL Compatibility (current).</strong> <strong>Right: Forward+ with full stack</strong> — SDFGI global illumination (bounce light inside courtyard), SSAO (towers grounded), Glow (torch bloom), ACES tonemap (filmic contrast), DOF (subtle miniature hint), MultiMesh ground scatter (rocks + grass tufts). Same geometry, same GDScript. Renderer switch + ~60 lines of Environment config.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Does Forward+ look worth switching to? Performance on export would need a test but it should be fine for desktop.</li>
+            <li>The DOF is subtle (amount=0.06) — should it be stronger to really sell the "toy on a table" read?</li>
+            <li>The ACES tonemap cools the amber wash from the warm sun — preference?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-23 22:05</span>
         <span class="session-label">siege · KayKit hex v2 — proper assembly</span>
       </div>
