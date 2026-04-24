@@ -195,6 +195,38 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-24 09:05</span>
+        <span class="session-label">siege · BATCH siege-bad-north-1 — 4 system spikes (planning / terrain / auto-engage / wall-HP)</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-09-05-bad-north-1-v1-s2-planning-phase-deploy.png" alt="v1 — planning UI top-down: 6 attack rings around castle, 3 placed (red/brown/ochre), roster bottom-left with selection highlight" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-09-05-bad-north-1-v2-s3-terrain-attack-routing.png" alt="v2 — terrain routing: castle, snow-capped mountains east+west, blue river east, attack rings (green=open, red X=blocked)" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-09-05-bad-north-1-v3-s6-auto-engage-units.png" alt="v3 — auto-engage: red attackers and steel defenders mid-combat at multiple points around the castle, HP bars visible" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-09-05-bad-north-1-v4-s8-wall-hp-states.png" alt="v4 — wall HP states: wall in DAMAGED stage with gap, partial crenellations, rubble in breach, HP bar shrunk" />
+          </div>
+        </div>
+        <p class="note"><strong>First batch on the new framing</strong> — "Bad North, but you're the attacker, land-based". Each variant is a self-contained Godot project at <code>experiments/siege-bad-north-1/v*</code>, scaffolded from <code>experiments/_kit/</code>. <strong>v1</strong>: planning UI works (click attack rings to drop units). <strong>v2</strong>: green/red attack-point markers convey terrain blocking; arrows failed (look_at-before-add_child). <strong>v3</strong>: units auto-walk and engage; combat resolves via tick. <strong>v4</strong>: wall has 3 distinct visual stages + HP bar — much cleaner than brick scatter. Total batch time ~11min.</p>
+        <div class="review-questions">
+          <p class="review-label">Triage — pick a verdict per variant + name a winner</p>
+          <ol>
+            <li>v1, v2, v3, v4: KEEP / KILL / PROMOTE / TWEAK / FREEZE?</li>
+            <li>Winner of the batch (or "no clear winner")?</li>
+            <li>Next move: NARROW (deepen winner) / EXPLORE (more backlog ideas) / CROSS (combine winners) / DONE?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="enders-game" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-24 06:26</span>
