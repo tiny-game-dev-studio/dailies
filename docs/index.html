@@ -197,6 +197,33 @@
   <div id="feed">
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 16:31</span>
+        <span class="session-label">siege · MVP v3 — flow-field pathing + ambush archers + larger map (path choice now matters)</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-16-31-mvp-v3-planning.png" alt="Planning state on the bigger 48x48 map: dense mountain walls north and south with narrow gaps, dense forest west, river+bridge east, mountain spurs at corners. 4 entry rings clearly behind their chokepoints." />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-24-16-31-mvp-v3.mp4" poster="siege/2026-04-24-16-31-mvp-v3-end.png" loop muted playsinline preload="metadata" aria-label="Demo: place 4 troops at south canyon + 3 at west forest, leave 1 reserve, start battle. Units flow-field path through canyon and forest. Ambush archers stay idle (no targets came east). Victory."></video>
+          </div>
+        </div>
+        <p class="note"><strong>The path-choice upgrade.</strong> Map scaled 36→48m. <strong>Dijkstra flow field</strong> computed at battle start — every cell knows its distance-to-castle. Units gradient-descend → they actually ROUTE around mountains, OVER bridges, SLOWLY through forests. Mountains BLOCK pathing (not just visual). Water blocks except on bridges. Forest cells multiply step cost ×3. Path costs print to console at startup: <code>south_canyon=21.0, north_pass=21.0, east_bridge=26.9, west_forest=28.4</code>. <strong>Ambush:</strong> 3 archer defenders posted on the east mountain ridge fire arrows (range 5.5m, 0.5 damage per shot) at any attacker who walks nearby — east is now a death zone. Defenders rebalanced for ~3 viable strategies: south-heavy + west-flank (this demo), east-heavy mass push (must absorb arrows), or split-with-decoy. Many losing strategies (spread thin, all-east without absorbing archers, etc.). ~30min iteration.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Run it: <code>godot --path siege/</code> — try a few different placements. Do you feel the trade-offs?</li>
+            <li>Are 3 archers + ~7 melee a reasonable difficulty? Too hard / too easy?</li>
+            <li>The flow field handles 48×48 in ~ms; works fine. Should we publish path costs in-game too (player-visible distance number on each entry ring)?</li>
+            <li>Late-release reserves still deferred. Want to do that next?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 16:16</span>
         <span class="session-label">siege · MVP v2 — diorama camera, 4 chokepoints, START button, big victory disc, reserves</span>
       </div>
