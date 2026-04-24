@@ -197,6 +197,38 @@
   <div id="feed">
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 14:22</span>
+        <span class="session-label">siege · BATCH siege-reverse-td-1 — reverse-TD flow across 4 map topologies (NARROW from bad-north-1/v2)</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-14-22-reverse-td-1-v1-three-fronts.png" alt="v1 three-fronts: castle + 3 entry points (S/E/W); attackers (red) marching from all three; defenders concentrated south" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-14-22-reverse-td-1-v2-canyon-funnel.png" alt="v2 canyon-funnel: castle behind mountain wall with narrow canyon south; attackers split between canyon (6) and long west flank (4)" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-14-22-reverse-td-1-v3-island-bridges.png" alt="v3 island-bridges: castle on island in moat; 2 wooden bridges (S+W) as only entries; attackers approaching both bridges" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-14-22-reverse-td-1-v4-open-field.png" alt="v4 open-field: no obstacles, 5 entry points around castle, 2 attackers per entry, 1 defender per cardinal — swarm tactic" />
+          </div>
+        </div>
+        <p class="note"><strong>Reverse tower defense flow.</strong> Player pre-assigned troops to each entry point; on launch, units march and engage automatically. Same mechanic in 4 different map topologies. Top-down camera so the assault reads like a TD board. <strong>v1</strong>: 3 fronts, defense concentrated south — reward attacking flanks. <strong>v2</strong>: canyon funnel — slam through chokepoint or take the long flank. <strong>v3</strong>: island with 2 bridges — bridges are the only crossings, defenders camp them. <strong>v4</strong>: open field with 5 entries — defenders spread thin. Built from <code>experiments/_kit/</code> with a shared reverse-TD core (movement + combat tick + HP bars). Total batch time ~7min.</p>
+        <div class="review-questions">
+          <p class="review-label">Triage — pick a verdict per variant + name a winner + next move</p>
+          <ol>
+            <li>v1, v2, v3, v4: KEEP / KILL / PROMOTE / TWEAK / FREEZE?</li>
+            <li>Which topology felt most interesting (the winner)?</li>
+            <li>Next move: NARROW (deepen winner: tune defender placement / unit counts / map size in 4 variants of the SAME topology), EXPLORE (test other ideas in backlog like s5 gold or s7 targeting), CROSS (combine reverse-TD with planning UI from bad-north-1/v1), or DONE?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 09:05</span>
         <span class="session-label">siege · BATCH siege-bad-north-1 — 4 system spikes (planning / terrain / auto-engage / wall-HP)</span>
       </div>
