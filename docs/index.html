@@ -197,6 +197,33 @@
   <div id="feed">
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 00:35</span>
+        <span class="session-label">siege · Experiment — manual archer aim, defender ragdoll</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-00-35-archer-aim.png" alt="Arrow has hit the defender — body parts (helmet, head, plume, pike) flying in the air above the wall" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-24-00-35-archer-aim.mp4" poster="siege/2026-04-24-00-35-archer-aim.png" loop muted playsinline preload="metadata" aria-label="Archer aims, charges bow, fires arrow that arcs over to the defender pacing on the wall, scoring a hit and ragdolling the defender into pieces"></video>
+          </div>
+        </div>
+        <p class="note"><strong>experiments/archer-aim — first manually-controlled unit.</strong> W/S aim angle (5°–75°), hold Space to charge bow (POWER_MIN→POWER_MAX, ~0.8s for full draw, bowstring pulls back, power bar fills), release to fire. Arrow arcs under gravity. Trajectory preview shows 14 ghost dots updating live as you aim. Defender body parts (torso/head/helmet/red plume/pike) are pre-built RigidBody3Ds frozen until hit — on impact they unfreeze and ragdoll with the arrow's velocity + jitter. The plume gives the defender visual punch on the wall.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Aim feel — is the W/S+Space combo right, or do you want mouse/click instead?</li>
+            <li>Trajectory preview — useful (love Angry Birds energy) or too obvious (kills the challenge)?</li>
+            <li>Ragdoll — satisfying, or needs more (dust puff, blood splat, scream)?</li>
+            <li>Ready to integrate this into siege/ as a 3rd assignable unit (press 3 → archer)?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-23 23:48</span>
         <span class="session-label">siege · Week 4 — restart loop + pacing wall defender</span>
       </div>
