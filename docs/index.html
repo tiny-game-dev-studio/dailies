@@ -197,6 +197,33 @@
   <div id="feed">
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 16:04</span>
+        <span class="session-label">siege · ⭐ MVP shipped — playable Level 1 (PROMOTE from 3 batches)</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-16-04-mvp-level1-planning.png" alt="Planning state: 5 troops at south canyon entry, 3 at north flank entry, troop pool depleted, ready to start battle" />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-24-16-04-mvp-level1.mp4" poster="siege/2026-04-24-16-04-mvp-level1-victory.png" loop muted playsinline preload="metadata" aria-label="Siege MVP full loop: arrive at map, place 5 troops south + 3 north, click start, watch the assault, victory disc rises from castle"></video>
+          </div>
+        </div>
+        <p class="note"><strong>Siege MVP is playable.</strong> Loop: <em>arrive at map → place 8 troops between 2 entry points → press Space → watch the assault → victory or defeat → R to restart</em>. Built by promoting 3 ideas (s2 planning, s3 terrain routing, s6 auto-engage) from the bandit-pattern batch tree (bad-north-1 → reverse-td-1 → environments-1). Map: canyon south + moat ring with 2 bridges + flank-blocking mountain rim + light forests. Victory shows a gold disc with red star pattern rising from the castle keep — readable from the top-down camera. Old trebuchet/breach version preserved as <code>main_legacy_trebuchet.gd</code>. Total promote-and-ship time: ~22min.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Run it: <code>/Applications/Godot.app/Contents/MacOS/Godot --path siege/</code> — does the planning → battle → resolve loop feel right?</li>
+            <li>Combat resolves in ~10s after Space. Too fast / too slow / right?</li>
+            <li>Victory indicator (gold disc + red star) — readable enough? Too subtle / overdone / right?</li>
+            <li>What's missing for a 30-second "I want to play again" feeling?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 15:34</span>
         <span class="session-label">siege · BATCH siege-environments-1 — bigger map, canyon + moat baseline + 1 environmental layer (CROSS reverse-td-1/v2+v3)</span>
       </div>
