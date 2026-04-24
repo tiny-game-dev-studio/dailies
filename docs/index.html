@@ -197,6 +197,28 @@
   <div id="feed">
     <div class="session" data-game="enders-game" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 01:32</span>
+        <span class="session-label">enders-game · Gate 1 v4 — soldiers positioned (6 figurines, 2 teams)</span>
+      </div>
+      <div class="session-body">
+        <div class="thumb-wrap">
+          <img src="enders-game/2026-04-24-01-32-battle-room-v4-soldiers.png" alt="Battle Room cube with six Quaternius Universal Animation Library soldiers positioned inside: 3 blue team near the blue gate, 3 red team near the red gate. Each tinted with emissive team-color flash-suit material and set at a tumbling zero-G rotation. Scale 0.55 so figures read clearly against the dark interior" />
+        </div>
+        <p class="note"><strong>Phase 1 v4 — soldiers in the room.</strong> Six Quaternius Universal Animation Library figures (CC0) dropped in from <code>/Users/jamis/Downloads/Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb</code>, copied into <code>experiments/enders-game/cube-scifi/assets/soldier.glb</code>. Three per team, positioned near each team's gate with random tumble rotations to sell zero-G. Materials overridden to emissive flash-suit colors (blue <code>#3895ff</code>, red <code>#ff5139</code>) via recursive <code>MeshInstance3D</code> override. No animation playing — figures are in T-pose, which accidentally reads fine for "arms-out zero-G floating" but feels static. Scale 0.55 so a soldier is ~10% of the cube height, matching book proportions.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Do the soldier positions read — clustered near own gate, drifting? Or do you want them more scattered / more combat-staged?</li>
+            <li>T-pose — keep as zero-G float, or find an idle/floating animation from the UAL library? (It has many; I can enumerate.)</li>
+            <li>Team suits — emissive reads well, but the core body is dark. Want brighter suits, helmet tint, or visible teammate-vs-enemy face distinction?</li>
+            <li>Six soldiers — right count for the scene, or denser (12+ for crowded) / sparser (3v3)?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="enders-game" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 01:29</span>
         <span class="session-label">enders-game · Gate 1 v3 — edges faded + orbit camera</span>
       </div>
