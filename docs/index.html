@@ -197,6 +197,39 @@
   <div id="feed">
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 20:47</span>
+        <span class="session-label">siege · MVP v6 — HUD (troop counter + START button) + soft collision + iPhone deploy</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-20-47-mvp-v6-hud-and-collision.png" alt="HUD overlay: top-left 'Troops: 0/8' counter, bottom-right green START button. Twin-ring castle map below — three winding canyons, twin mountain rings, central keep with moat." />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-24-20-47-mvp-v6-hud-and-collision.mp4" poster="siege/2026-04-24-20-47-mvp-v6-hud-and-collision.png" loop muted playsinline preload="metadata" aria-label="Demo: 4 troops placed at SW canyon, 4 at N pass — counter ticks down 8 → 0, START button greys to green when first troop placed. Battle plays out with units now actually colliding with mountain walls (no more clipping through)."></video>
+          </div>
+        </div>
+        <p class="note"><strong>Three production fixes for iPhone playtest readiness:</strong>
+        <ol>
+          <li><strong>HUD readability</strong> — top-left counter (<code>Troops: N / 8</code>) updates instantly on every place/undo. Bottom-right green START button anchors to corner so it stays put when the iOS camera orbits/zooms; greyed-out until you place at least one troop.</li>
+          <li><strong>Soft collision</strong> — units used to clip diagonally through mountain corners and walk on the moat (Dijkstra picked any-cost neighbor, then stepped blindly). New <code>_move_with_slide()</code> tries full step → X-only → Z-only; if all three land in a blocked cell the unit pauses one tick and the flow re-routes next tick. No physics, no node-per-mountain — same toy motion, just no cheating.</li>
+          <li><strong>iPhone deploy infra</strong> — built a shared <code>/deploy-iphone</code> skill at the studio level (<code>.claude/commands/deploy-iphone.md</code>). Scaffolds <code>tools/{export-ios.sh, deploy.sh}</code> + <code>export_presets.cfg</code> + <code>ios-assets/icon-1024.png</code> from the proven zen-smash pattern. Reusable for any future game.</li>
+        </ol>
+        <strong>Validator notes:</strong> win rate dropped from 33% → 10% after collision fix — that's the wall-blocking working as intended (previously inflated by corner-clipping). Will tune defenders downward after a real iPhone playtest. <strong>iOS-only camera</strong> (1-finger orbit, 2-finger pinch/pan) shipped in v5; desktop/dailies stay on the locked diorama angle so studio artifacts stay on-brand.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>HUD readable in sunlight on the iPhone? (Counter has black shadow + white text; START button is bright green.)</li>
+            <li>Watch the demo MP4 — units are now visibly walking around mountain feet rather than through them. Does that read as "the maps actually matter now"?</li>
+            <li>10% win rate is brutal. Want me to lower defender count from 14 → 11, or drop ARROW_DMG from 0.30 → 0.22, or both? (My instinct: defender count first.)</li>
+            <li>Should the in-world troop pool discs at the bottom of the map go away now that the HUD shows the count, or keep them as the "click affordance" feedback?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 17:32</span>
         <span class="session-label">siege · MVP v5 — level validator + map-difficulty fix (twin concentric rings)</span>
       </div>
