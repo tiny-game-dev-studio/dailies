@@ -197,6 +197,39 @@
   <div id="feed">
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-24 22:38</span>
+        <span class="session-label">siege · MVP v7 — Bad-North camera + StarCraft-lite tap-orders + redesigned castle</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-24-22-38-mvp-v7-bigger-castle-orders-bn-camera.png" alt="The new castle dominates the centre of the map: cream keep with red conical tower roofs, four corner towers each topped with gold balls, a tall central spire with red banner. Surrounding twin mountain rings + winding canyons in muted grey for contrast." />
+          </div>
+          <div class="thumb-wrap">
+            <video src="siege/2026-04-24-22-38-mvp-v7-bigger-castle-orders-bn-camera.mp4" poster="siege/2026-04-24-22-38-mvp-v7-bigger-castle-orders-bn-camera.png" loop muted playsinline preload="metadata" aria-label="Demo: 4 SW + 4 N troops placed via HUD, START pressed, units march toward south gate via flow field. Mid-battle a left-flank rally order is issued by tapping (-9, 0, 9) — surviving units re-route to the blue X marker, ignoring enemies along the way."></video>
+          </div>
+        </div>
+        <p class="note"><strong>Three big changes after Bad North research + your "make the castle stand out" note:</strong>
+        <ol>
+          <li><strong>Bad-North-faithful camera</strong> — perspective FOV 30° (the "almost ortho" diorama look), <strong>pitch locked at 60°</strong>, no pan, <strong>2-finger twist for yaw</strong>, pinch for zoom. Plus HUD <code>↶</code> / <code>↷</code> buttons bottom-left for <strong>snap-90° rotate</strong> (the signature Bad North pattern: rotate is the cheapest action because the camera can never show you a bad angle). All eased; nothing is 1:1 with input. Desktop unchanged.</li>
+          <li><strong>StarCraft-lite tap-orders</strong> — during BATTLE, tap anywhere on the map (or click on desktop) and all surviving attackers re-route to that point. They <strong>ignore enemies along the way unless within 1.5m</strong> (vs default 0.85m engage range), so they don't dawdle. Implementation: fresh Dijkstra flow toward the tap point, swapped in per-unit; auto-clears when units arrive. Pulsing blue X marker shows the rally point.</li>
+          <li><strong>Castle redesign</strong> — was a 3m grey box that vanished against grey mountains. Now: 4.6m cream keep with crenellations, four corner towers with <strong>red conical roofs + gold balls</strong>, tall central spire with red banner. Unmistakable focal point even at full zoom-out. Strong contrast vs muted grey terrain.</li>
+        </ol>
+        <strong>Camera research:</strong> spawned a research agent that triangulated Steam threads, GDC notes, and mobile reviews. Key finding: Bad North uses <em>perspective</em> with narrow FOV (not ortho), <em>locked pitch ~60°</em> (never side-on or top-down), and <em>tap-snap-90 + hold-continuous</em> on PC's A/D keys. We had built free-orbit ortho — ditched it.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Castle: too red? Right amount? Should the central spire be even taller?</li>
+            <li>Camera feel — locked pitch + 2-finger twist on iPhone: discoverable, or do we need a one-finger fallback?</li>
+            <li>Tap-orders feel: tapping a destination during battle and watching units re-route — is "global rally point" the right scope, or do you want per-group control (tap a unit then tap destination)?</li>
+            <li>Snap-90 rotate buttons: are <code>↶</code> / <code>↷</code> readable, or should they be labelled "Rotate L / R"?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 20:47</span>
         <span class="session-label">siege · MVP v6 — HUD (troop counter + START button) + soft collision + iPhone deploy</span>
       </div>
