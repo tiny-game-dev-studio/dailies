@@ -260,6 +260,44 @@
     </div>
     <div class="session" data-game="siege" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-26 16:02</span>
+        <span class="session-label">siege · BATCH siege-castle-champion-1 — 4 champion-trigger-chain freeze frames (aesthetics-first)</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.5rem;">
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-26-16-02-castle-champion-v1-kill-2-then-drop.png" alt="v1: champion stands atop the gate. Two red beacons rise above the wall marking the 2 drawbridge guards inside who must die. When both fall the drawbridge drops automatically." />
+            <p class="note" style="margin:0.3rem 0 0 0; font-size:0.85em;"><strong>v1 — kill-2-then-drop:</strong> 2 red beacons mark the guards the champion must kill. Drawbridge falls when both die.</p>
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-26-16-02-castle-champion-v2-crank-the-wheel.png" alt="v2: champion at wooden crank wheel on top of gate. Blue progress ring at feet ~60% full. Defenders converge from interior — any defender within 1.5m resets the timer." />
+            <p class="note" style="margin:0.3rem 0 0 0; font-size:0.85em;"><strong>v2 — crank-the-wheel:</strong> blue progress ring at champion's feet (60% full). Defenders converge — any adjacent defender resets timer.</p>
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-26-16-02-castle-champion-v3-plant-bomb.png" alt="v3: black-iron bomb at gate base, fuse glowing orange, champion fleeing back up wall (small silhouette right). Orange beacon above bomb signals countdown." />
+            <p class="note" style="margin:0.3rem 0 0 0; font-size:0.85em;"><strong>v3 — plant-bomb:</strong> bomb at gate base, fuse lit, orange countdown beacon. Champion may die after planting; doesn't matter.</p>
+          </div>
+          <div class="thumb-wrap">
+            <img src="siege/2026-04-26-16-02-castle-champion-v4-signal-flare.png" alt="v4: champion atop gate fires red flare arcing into sky. Glowing red entry portal opens BEHIND castle (north side), 3 fresh attackers spawn there. Drawbridge stays raised — bypasses front entirely." />
+            <p class="note" style="margin:0.3rem 0 0 0; font-size:0.85em;"><strong>v4 — signal-flare:</strong> flare arcs into sky, rear entry portal opens behind castle, 3 fresh attackers spawn there.</p>
+          </div>
+        </div>
+        <p class="note"><strong>The pivot in action:</strong> castle now fills 80% of the map (Helm's Deep — long stone wall, raised drawbridge, oil cauldrons above the gate, wall archers, cliffs flanking, moat + causeway approach). All 4 variants share the same Helm's-Deep base; only the <strong>champion's trigger action</strong> differs. These are AESTHETIC FREEZE FRAMES — no AI, no logic, just "what's the satisfying moment look like for each mechanic?" Logic comes after Jamis picks a winner.
+        <br><br><strong>Design space saved:</strong> <code>siege/ideas.md</code> §"Design space — Castle-IS-The-Map" archives all 4 castle topologies, 3 champion sub-axes (arrival / trigger / risk), defender world-state objects, player-agency patterns. Future batches draw from there.</p>
+        <div class="review-questions">
+          <p class="review-label">Triage</p>
+          <ol>
+            <li>Which variant's payoff moment feels most "ah, <em>that's</em> the move"? Look at the freeze frame and project: does this read as the satisfying beat?</li>
+            <li>Are the visual cues (red beacons / blue progress ring / orange countdown / red flare arc + portal) readable from the diorama angle, or do any get lost?</li>
+            <li>Castle aesthetic — Helm's-Deep cliffs + wall + drawbridge: cozy enough? Or too grey / too military?</li>
+            <li>Did surfacing this batch spark a 5th variant idea worth adding?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code> — verdicts (KEEP/KILL/PROMOTE/TWEAK/FREEZE per variant) + a winner</p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-24 22:38</span>
         <span class="session-label">siege · MVP v7 — Bad-North camera + StarCraft-lite tap-orders + redesigned castle</span>
       </div>
