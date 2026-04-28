@@ -197,6 +197,36 @@
   <div id="feed">
     <div class="session" data-game="siege-scene" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-28 03:30</span>
+        <span class="session-label">siege-scene · Phase 1 — iso angle, smaller troops, tabletop castle, more chaos ⚔️</span>
+      </div>
+      <div class="session-body">
+        <p class="note"><strong>Reworked the siege scene</strong> based on feedback: switch to a true ortho-iso angle, dial humanoids down to 0.55× scale so the castle dominates, restore the boardgame-diorama warm-cream-stone palette, and pile on more chaos — multiple ladder teams, charging swordsmen, fallen casualties scattered across the dirt patch, second banner-bearer rallying, more arrows in flight, additional battlefield smoke columns from burning siege gear.</p>
+        <div class="thumb-wrap">
+          <img src="siege-scene/2026-04-27-siege_iso_chaos.png" alt="Iso ortho siege scene. The castle uses the warm cream tabletop-aesthetic stone of the boardgame-diorama series — outer + inner crenellated curtain walls, four round corner towers with red conical roofs and red flags, a tall central keep, gatehouse with two flanking gate-towers, iron portcullis at the gate, square moat, wooden drawbridge. The whole castle dominates the canvas. The defenders on the wall walks are small (about a third of the wall height) — five blue-tunic archers drawing bows on outer + inner walks, and one oil-pourer on the gatehouse top with a dark-oil stream + emissive orange flame falling toward the ground. East of the gate, a chaotic battlefield is filled with red-tunic attackers at troop scale: a ladder team carrying a siege ladder against the north wall, a battering-ram crew at the drawbridge with a wheeled iron-headed ram, a second ladder team with their own ladder against the south wall, ten or so charging swordsmen running forward across the dirt patch with swords raised, four fallen casualties laid sideways in the dirt, two banner-bearers (one mid-field rallying, one back behind the archers), four field archers drawing bows, eight small arrows arcing in the air over the battlefield, and two columns of smoke rising from burning siege gear with small orange flames at their bases. Soft warm afternoon key light, cool sky fill, AgX Base Contrast color management." />
+        </div>
+        <p class="note" style="margin-top:0.4rem;"><strong>What changed since Phase 0:</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><strong>Ortho-iso camera</strong> — same camera grammar as the boardgame-diorama series (34° pitch / 30° yaw, ortho_scale 26). Architectural, clean read of the castle.</li>
+          <li><strong>HUMAN_SCALE = 0.55</strong> — every figurine dimension multiplied. Troops now ~1m tall against ~2.4m walls, so the castle is the obvious hero.</li>
+          <li><strong>Tabletop palette restored</strong> — warm cream stone (was muted gray), saturated terracotta roofs, brighter red banners. Lighting now warm afternoon key + cool sky fill (was dusk-orange).</li>
+          <li><strong>Chaos wave</strong> — added 10 charging swordsmen, 4 more fallen, 2nd ladder team, 2nd banner-bearer, 2 more field archers, 5 more arrows in flight, 2 battlefield-fire smoke columns. Counts: ~26 attackers + ~6 defenders + the ram + 2 ladders + arrows + smoke.</li>
+          <li><strong>New 'charge' pose</strong> in the figurine helper — arm forward, sword raised. Extends the existing pose system (idle/archer/tipping/ladder/ram/banner/fallen/charge).</li>
+        </ul>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Scale right? Or scale humans down further (0.45×, 0.40×) for even more "tiny troops vs huge castle"?</li>
+            <li>Battlefield density: more attackers, or this is enough chaos?</li>
+            <li>Camera framing: pull back further to show all four wall sides, or stay close on the gate?</li>
+            <li>Add tactical labels overlay (like a Total War screenshot) or stay clean?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="siege-scene" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-28 02:30</span>
         <span class="session-label">siege-scene · Phase 0 — proper cinematic siege at human scale ⚔️🔥</span>
       </div>
