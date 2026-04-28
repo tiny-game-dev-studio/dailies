@@ -195,6 +195,38 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="siege-scene" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-28 02:30</span>
+        <span class="session-label">siege-scene · Phase 0 — proper cinematic siege at human scale ⚔️🔥</span>
+      </div>
+      <div class="session-body">
+        <p class="note"><strong>Stepped away from the tabletop boardgame look.</strong> No painted-edge frame, no node graph. Real-scale castle, real-scale humanoids (head + torso + arms + legs at ~1.8m), perspective camera at a low cinematic angle, warm sunset lighting. New experiment: <code>experiments/siege-scene/</code>.</p>
+        <div class="thumb-wrap">
+          <img src="siege-scene/2026-04-27-siege_hero.png" alt="Cinematic siege scene. A stone castle with outer and inner curtain walls fills most of the frame. The outer wall is square with crenellations and four round corner towers topped with red conical roofs and red flags on poles. A taller gatehouse with two flanking round towers stands at the eastern wall, with an iron portcullis grid in the gate opening. Behind the outer wall, a roughly three-meter gap opens onto an inner curtain wall, also crenellated, and behind that rises a tall square keep with a red banner. A square moat of blue-green water surrounds the castle, with a wood-plank drawbridge crossing the moat at the gate. Defender figurines in blue tunics with metal helmets stand on the outer wall walks drawing bows, two on the north walk and one on the south walk. An oil-pourer defender stands atop the gatehouse, tipping a vat — a stream of dark oil and orange flame falls toward the ground below the gate, with three small dark smoke puffs drifting up and away. On the battlefield east of the castle: a battering ram on a wood-and-iron wheeled frame is positioned at the drawbridge with two red-tunic attackers gripping it. A two-figure ladder team carries a long siege ladder leaning against the north outer wall. Two field archers in red kneel further back drawing their own bows. A banner-bearer with a red flag stands behind them. A fallen attacker lies sideways in the trampled-dirt patch in front of the gate. A few small arrows are visible in flight in the air between the field archers and the wall." />
+        </div>
+        <p class="note" style="margin-top:0.4rem;"><strong>What's in the scene:</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><strong>Castle architecture</strong> — outer square wall, inner square wall (~3m gap between them), four corner towers + gatehouse with two flanking towers, central keep, crenellations everywhere, banners on every tower.</li>
+          <li><strong>Siege features</strong> — moat (water-blue ring), wooden drawbridge across it, iron portcullis at the gate (vertical + horizontal bar grid), trampled-dirt battlefield in front, charred ground under the burning oil.</li>
+          <li><strong>Defenders (6)</strong> — three archers on the outer wall walks drawing bows (with stylized bow + bowstring + nocked arrow), two archers on the inner wall walks, one oil-pourer on the gatehouse top tipping a vat (dark oil stream + emissive orange flame cones below).</li>
+          <li><strong>Attackers (8)</strong> — two-figure ladder team carrying a siege ladder against the wall, two-figure ram crew at the drawbridge with the iron-headed wheeled ram, two field archers drawing bows, one banner-bearer with red flag pole + cloth, one fallen attacker laid sideways near the moat. Plus a few stylized arrows in flight.</li>
+          <li><strong>Cinematic lighting</strong> — warm low sun (energy 4, color slightly orange), cool sky fill, warm ground bounce, AgX Punchy color management for richer contrast. Sunset world tint.</li>
+          <li><strong>Camera</strong> — perspective (35mm lens), pulled back to (28, -18, 8) looking at (2, 0.5, 2.4) so the entire battlefield + castle frames cleanly.</li>
+        </ul>
+        <p class="note" style="margin-top:0.3rem;"><strong>What's still loose:</strong> figurines are humanoid but blocky — the arm-pose system is parametric but joints are rigid (no elbows). Bows are 3-segment cylinders, not curved. Smoke is just spheres (would benefit from EEVEE volumetric). Castle interiors are empty — could populate the gap between walls with visible defenders running ladders / interior buildings.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Reads as siege? Or want it pushed further (more chaos, more figurines, fire spreading)?</li>
+            <li>Camera angle — keep this 3/4-back, or also do a low-front "attacker's POV" shot?</li>
+            <li>Articulated figurines (elbow joint, knee joint) for the next pass, or stay rigid?</li>
+            <li>Push to a Cycles render for a hero shot (slower but better light)?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="boardgame-diorama" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-28 01:30</span>
@@ -2375,6 +2407,12 @@
         label: 'Boardgame Diorama',
         games: {
           'boardgame-diorama': { label: 'Boardgame Diorama', color: '#c69a4a' },
+        },
+      },
+      'siege-scene': {
+        label: 'Siege Scene',
+        games: {
+          'siege-scene': { label: 'Siege Scene', color: '#a04a3a' },
         },
       },
     };
