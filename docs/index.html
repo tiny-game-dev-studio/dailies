@@ -197,6 +197,37 @@
   <div id="feed">
     <div class="session" data-game="boardgame-diorama" style="grid-column: 1/-1;">
       <div class="session-header">
+        <span class="session-date">2026-04-28 01:30</span>
+        <span class="session-label">boardgame-diorama · L6 siege scale — troops invading through the layers ⚔️</span>
+      </div>
+      <div class="session-body">
+        <p class="note"><strong>Re-scoped Level 6 for the siege fantasy:</strong> bigger walls, tighter camera, much bigger figurines, and many more of them — staged across distinct invasion layers so you can read the assault as a sequence of beats.</p>
+        <div class="thumb-wrap">
+          <img src="boardgame-diorama/2026-04-27-level6_walled_city_siege.png" alt="Iso ortho diorama. Large oval double-curtain-walled medieval city dominates the canvas. Outer wall has 16 round towers with alternating red and slate conical roofs. Inner wall has 14 more towers, slightly taller. Inside the inner ring: clustered town houses with red roofs, a basilica with slate-roof nave and tall slate spire near center, and a four-towered chateau with a gold flag at the western end (the objective). A barbican gatehouse juts out from the eastern outer wall, with a long dirt causeway extending off-board to the east. Troop figurines are now ~50 percent larger and staged at distinct siege layers: a wave of seven red-livery attackers in the staging area off the eastern causeway; two more attackers breaching at the barbican gate; three attackers already pushed through into the gap between the outer and inner walls. Five blue-livery defenders are perched on outer wall walks, three more on the higher inner wall walks. A purple-and-gold lord figurine stands at the chateau door as the last-stand objective." />
+        </div>
+        <p class="note" style="margin-top:0.4rem;"><strong>What changed from the L6 hero shot:</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><strong>Walls bigger</strong> — outer oval 2.55×1.85 → 3.05×2.20, inner 1.95×1.40 → 2.20×1.55. Outer towers 14 → 16, inner 12 → 14. More layer between rings.</li>
+          <li><strong>Camera tighter</strong> — ortho_scale 9.5 → 7.0. The double-walled city now fills the frame edge-to-edge.</li>
+          <li><strong>Figurines bigger</strong> — new <code>add_big_figurine()</code> helper at 1.55× the standard size, used for every L6 figurine. Reads as troops, not pieces.</li>
+          <li><strong>Many more troops</strong> — 7 staging attackers + 2 breaching the gate + 3 already in the gap between walls + 5 outer defenders + 3 inner defenders + lord = 21 figurines staged across the siege beats.</li>
+          <li><strong>Path nodes for the assault</strong> — staging → barbican → between-walls → inner gate → town center → chateau (6 nodes). The board now visibly tells the story of the attack as a chain of positions.</li>
+        </ul>
+        <p class="note" style="margin-top:0.3rem;"><strong>Reads:</strong> red attackers piling at the gate while their wave forms in the staging area, a small spearhead already inside the outer ring threatening the inner wall, blue defenders spread across both rampart layers trying to slow each push. A turn-based puzzle on top of this would be playable as-is — pieces have positions, layers have meaning, the objective (chateau flag) is visually distinct.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Layer-readability working? Or want a top-down "tactical map" companion shot for layout clarity?</li>
+            <li>Add siege engines (trebuchet, ladders, battering ram) at the staging area or save for next iteration?</li>
+            <li>Push to a small playable Godot prototype — turn-based, attackers move toward the chateau, defenders move along ramparts?</li>
+            <li>Vary attacker palette (some banner-bearing, some sapper-style) to add tactical class read?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+    <div class="session" data-game="boardgame-diorama" style="grid-column: 1/-1;">
+      <div class="session-header">
         <span class="session-date">2026-04-28 00:30</span>
         <span class="session-label">boardgame-diorama · Level 4 (zoom) + Famous Fortress Trio 🏰⛩️</span>
       </div>
