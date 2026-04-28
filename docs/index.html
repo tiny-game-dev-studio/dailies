@@ -197,41 +197,42 @@
   <div id="feed">
     <div class="session" data-game="lashings-cam" style="grid-column: 1/-1;">
       <div class="session-header">
-        <span class="session-date">2026-04-27 20:30</span>
-        <span class="session-label">lashings-cam · Phase 0 — Blender camera-angle probe (5 cams, Stormlight tungsten lighting) 🌀</span>
+        <span class="session-date">2026-04-27 20:55</span>
+        <span class="session-label">lashings-cam · Phase 1 — Cozy diorama pivot 🏡 + cam rotates with the lash</span>
       </div>
       <div class="session-body">
-        <p class="note"><strong>New family pivot — first visual probe.</strong> No Godot scene yet, no Lash mechanic — just a static Blender (EEVEE) render of a 50m hotel-style corridor with a low-poly soldier capsule, lit with warm tungsten sconces (Stormlight cue) plus a cool blue rake from the breach door at the far end. Five candidate camera angles to compare before any prototyping.</p>
+        <p class="note"><strong>Aesthetic reset:</strong> dropped the moody-action tungsten look — feedback was "I want more cozy miniature-town feel." Re-rendered as a Tiny Glade / Townscaper / Mini Motorways cutaway: ortho iso angle, soft daylight, warm pastel palette (cream walls, terracotta doors, wood trim), open-topped diorama box. Soldier figurine simplified to a blue-body / orange-vest / cream-head toy (≈1.4m at corridor scale).</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>Camera rotates with the lash.</strong> Four variants showing the same corridor at the same player position, with the camera physically rolling around the corridor's long axis as gravity changes. Cutaway is dynamic — the two walls between camera and corridor center are always hidden, so we look INTO the box from the rolled angle.</p>
         <div class="compare-grid">
           <div class="thumb-wrap">
-            <img src="lashings-cam/2026-04-27-cam_A_overshoulder.png" alt="Cam A — over-shoulder 3rd-person, FOV 65, eye-height. Player capsule centered, breach door visible deep in the corridor with cool blue light spilling toward the camera." />
+            <img src="lashings-cam/2026-04-27-cozy_01_floor.png" alt="Variant 1 — no lash, default gravity. Player stands on the corridor floor; camera looks down + side iso. Cutaway: ceiling and left wall removed; we look in from above-front." />
           </div>
           <div class="thumb-wrap">
-            <img src="lashings-cam/2026-04-27-cam_B_wide.png" alt="Cam B — wider 3rd-person, FOV 80, mid-height. More establishing. Corridor recedes; the soldier reads as small but the full geometry is legible." />
+            <img src="lashings-cam/2026-04-27-cozy_02_right.png" alt="Variant 2 — player lashes to the right wall. Camera rolls 90° clockwise around the corridor's long axis; world appears tipped. Same diorama, viewed from below-front-right." />
           </div>
         </div>
         <div class="compare-grid">
           <div class="thumb-wrap">
-            <img src="lashings-cam/2026-04-27-cam_C_longaxis.png" alt="Cam C — long-axis ortho. Soldier silhouetted against the bright breach door at the end of the corridor, sells the 'one figure, one hallway, one objective' frame." />
+            <img src="lashings-cam/2026-04-27-cozy_03_ceiling.png" alt="Variant 3 — player lashes to the ceiling. Camera rolls 180°; corridor inverts in frame. Player walks on the ceiling; what was 'down' is now 'up.'" />
           </div>
           <div class="thumb-wrap">
-            <img src="lashings-cam/2026-04-27-cam_D_firstperson.png" alt="Cam D — first-person, FOV 90. Dramatic perspective; corridor recedes hard. Useful for nausea baseline only — the silhouette (the whole point of Lashings) is missing." />
+            <img src="lashings-cam/2026-04-27-cozy_04_left.png" alt="Variant 4 — player lashes to the left wall. Camera rolls 90° counter-clockwise; mirror of variant 2." />
           </div>
         </div>
-        <div class="compare-grid">
-          <div class="thumb-wrap">
-            <img src="lashings-cam/2026-04-27-cam_E_heroic.png" alt="Cam E — heroic low angle, FOV 70. Looking up at the soldier from 0.5m height; the figure looms against the corridor's vanishing point." />
-          </div>
-          <div></div>
-        </div>
-        <p class="note" style="margin-top:0.4rem;"><strong>My read:</strong> A and B both work — A is the tightest (the player IS the frame), B is the most cinematic. C is unexpectedly the strongest "this is what the game is about" shot (silhouette + breach + hallway) and might earn a place as a transition cam or a framing for the cinematic intro shot. D feels like a corridor walking sim — kills the silhouette, drop it. E is a great hero shot but probably special-occasion (lash-aim moment, finishing blow) rather than gameplay default.</p>
+        <p class="note" style="margin-top:0.4rem;"><strong>What's working:</strong> the cozy palette + cutaway diorama feel reads in variant 1 — soldier figurine clear, doors + wood trim charming, soft daylight. The camera-rolls-with-the-lash mechanic is illustrated, but rolled variants 2–4 are harder to read in a still frame than they'd be in motion (where the rotation itself sells the verb).</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>What's still off:</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li>The figurine only reads clearly in variant 1; rolled views show the corridor exterior more than the interior. Probably wants a smaller corridor cross-section or a tighter cam zoom in motion.</li>
+          <li>No texture / pattern detail yet — walls are flat-shaded pastels.</li>
+          <li>No miniature props (signs, baseboards painted in different colors, lamp sconces) — Townscaper-y cuteness isn't fully there.</li>
+        </ul>
         <div class="review-questions">
           <p class="review-label">Review</p>
           <ol>
-            <li>Default gameplay cam: A (tight) or B (wide)? Or a slider between them based on speed?</li>
-            <li>Is C earning a place — cinematic intro / scene transitions only?</li>
-            <li>Stormlight lighting reads? Or push warmer / cooler / more contrast?</li>
-            <li>Corridor texture — too flat / too plain? Need wallpaper, scuffs, signage detail before the next iteration?</li>
+            <li>Cozy palette + figurine on the right track? Push warmer / cooler / more saturated?</li>
+            <li>Is the iso angle right, or do you want a steeper top-down (Mini Motorways-y) or shallower (Tiny Glade-y)?</li>
+            <li>Camera-rotates-with-lash: read better in the still, or worth jumping to a 4-second animated GIF showing the actual rotation?</li>
+            <li>Add textured / pattern walls + miniature props next, or fix layout first?</li>
           </ol>
           <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
         </div>
