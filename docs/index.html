@@ -221,6 +221,33 @@
         </div>
       </div>
     </div>
+    <div class="session" data-game="boardgame-diorama" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-28 17:00</span>
+        <span class="session-label">boardgame-diorama · meeple redesign — chunky tabletop pawns 🪖</span>
+      </div>
+      <div class="session-body">
+        <p class="note"><strong>Going back to the boardgame castles — those topologies were nearly perfect, just the humans needed to look different.</strong> Replaced the chess-pawn figurine (cylinder body + sphere head) with a chunky boardgame-meeple: oversized round head, blocky torso, single painted color, conical helmet, and a pose-specific weapon (spear, bow + arrow, sword, axe). Added a <code>pose</code> param so the same builder makes guards, archers, raiders, and captains. Populated L4 hilltop fortress with siege figures — blue spearmen on every wall segment, archers on the keep, captain at the gate, red attacker column up the switchback path, raiders skirmishing in the village.</p>
+
+        <div class="compare-grid cols-3">
+          <div class="thumb-wrap">
+            <img src="boardgame-diorama/2026-04-28-level4_fortress_meeples.png" alt="L4 Hilltop Fortress with new meeples. Iso ortho view of the medieval stone fortress on tiered green hill. Blue-liveried defender meeples (chunky figures with conical helms and vertical spears) stand on every wall segment of the irregular octagonal curtain wall, facing outward. Two archer meeples on the central keep belt with hoods and drawn arrows. A captain meeple in dark blue with gold plumed helmet stands at the gate inside the courtyard. A column of about eight red-liveried attacker meeples — alternating axe-raiders, spearmen, and archers — climbs the switchback dirt path from the bottom-left village. Four red raiders skirmish among the brick houses at the foot of the hill. Wooden walnut tabletop with cream painted edge. Trees ring the lower hill tier." />
+          </div>
+          <div class="thumb-wrap">
+            <img src="boardgame-diorama/2026-04-28-level6_walled_city_meeples.png" alt="L6 Walled Medieval City with new meeples — strongest demonstration of the new figurine style. Camera close enough to read individual pawns. Long oval-shaped curtain wall with corner towers (red conical roofs). Blue defender meeples spaced along the wall interior — visible chunky proportions, oversized round heads, conical helms, and vertical spears. Red attacker meeples in formation outside the wall on the bottom-left, marching toward the gate. Each figure has a wooden disc base. Single solid painted body color reads as a wooden tabletop pawn rather than a chess piece." />
+          </div>
+          <div class="thumb-wrap">
+            <img src="boardgame-diorama/2026-04-28-level7_white_castle_meeples.png" alt="L7 Tiered White Castle (Japanese-style) with new meeple style. White-plastered tiered hilltop castle with stepped pagoda silhouette. Two samurai meeples — dark robe color with conical helm — stand on the upper terraces. A small red torii gate lower-left. Cherry-blossom trees scattered around the base. The samurai figures use the same chunky meeple proportions, demonstrating the figurine style ports cleanly across cultural settings." />
+          </div>
+        </div>
+
+        <p class="note" style="margin-top:0.6rem;">Old chess-pawn signature is fully back-compatible — every existing <code>add_figurine()</code> call across L1–L7 keeps working with the new shape, no changes needed in the level scripts. New pose param is opt-in.</p>
+
+        <p class="note" style="margin-top:0.4rem; font-style: italic;">Review questions: 1) Does the meeple shape land — chunky enough, or push the head bigger / silhouette more iconic (Carcassonne flat extruded shape)? 2) On L4 the camera's a touch wide — tighten so figures read at hero scale, or keep the diorama sweep? 3) Re-populate L6 walled city + L7 white castle with full siege rosters too, or those work as-is?</p>
+
+        <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+      </div>
+    </div>
     <div class="session" data-game="fortress-variations" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-28 13:30</span>
