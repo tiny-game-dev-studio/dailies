@@ -195,6 +195,35 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="boardgame-diorama" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-27 21:30</span>
+        <span class="session-label">boardgame-diorama · Style probe — turn-based diorama puzzler aesthetic 🎲</span>
+      </div>
+      <div class="session-body">
+        <p class="note"><strong>Stylistic exploration</strong> — original levels in the visual language of turn-based diorama puzzlers (the wooden-tabletop / node-graph / figurine look). Two levels rendered in Blender (EEVEE), iso ortho, my own layouts so we're not reproducing anyone else's specific levels.</p>
+        <div class="compare-grid">
+          <div class="thumb-wrap">
+            <img src="boardgame-diorama/2026-04-27-level1_walled_garden.png" alt="Level 1 Walled Garden — square wooden tabletop with painted cream edge frame. Central stone fountain with water-blue dome. Four green hedge clusters in the corners. Eight cream patrol-node discs ring the fountain, four more on the outer cardinal points, all connected by thin dark path lines. Player figurine (black suit, cream collar) at the south outer node; two gray-suit brown-hat guards on opposing ring nodes; burgundy target figurine on a third ring node." />
+          </div>
+          <div class="thumb-wrap">
+            <img src="boardgame-diorama/2026-04-27-level2_office_suite.png" alt="Level 2 Office Suite — same wooden tabletop with cream frame and a peach carpet inset. Four low-poly cubicle desks with dark tops and small chairs scattered through the lower/left quadrants. Top-right corner has an executive office defined by cream walls and a glass divider, containing an exec desk + chair + a small potted plant. Path nodes form an L-shaped corridor from the south entry up to the corner office. Black-suit player figurine at south entry, two gray-suit guards on the corridor, burgundy executive at the corner desk." />
+          </div>
+        </div>
+        <p class="note" style="margin-top:0.4rem;"><strong>What's working:</strong> the wooden-tabletop + cream-frame base reads as boardgame at a glance. The figurines have the right toy-soldier proportions (geometric body + head, no fine detail). Iso ortho ~34° pitch / 45° yaw matches the genre's reading. Path nodes and connection lines are legible from the iso angle.</p>
+        <p class="note" style="margin-top:0.3rem;"><strong>What's still missing for genre-strength:</strong> patrol-direction arrows on each guard (sight cones), shadow detail on the figurines, baseboard color blocks for each level's "theme" cue, and a turn-counter / objective sticker on the frame. Easy to add if this direction has legs.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Does this aesthetic land? Worth iterating into a small playable prototype, or stays as a style reference?</li>
+            <li>Better palette: this warm-walnut wood, or a darker mahogany / lighter oak base?</li>
+            <li>Figurines: more geometric (this) or push toward chess-piece silhouettes?</li>
+            <li>If we prototyped — Godot 3D ortho or 2D mockup first?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="lashings-cam" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-27 20:55</span>
@@ -2224,6 +2253,12 @@
         games: {
           'lashings-cam': { label: 'Lashings — Cam Probe', color: '#9b6acb' },
           'lashings':     { label: 'Lashings',             color: '#7a4ab8' },
+        },
+      },
+      'boardgame': {
+        label: 'Boardgame Diorama',
+        games: {
+          'boardgame-diorama': { label: 'Boardgame Diorama', color: '#c69a4a' },
         },
       },
     };
