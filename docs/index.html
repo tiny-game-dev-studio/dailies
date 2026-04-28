@@ -195,6 +195,32 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="neon-strip" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-28 01:22</span>
+        <span class="session-label">neon-strip · Blender pipeline online — first procedural assets</span>
+      </div>
+      <div class="session-body">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+          <div class="thumb-wrap">
+            <img src="neon-strip/2026-04-28-01-22-blender-racer.png" alt="Low-poly racer car rendered in Blender — pink body, cyan stripe, dark wheels" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="neon-strip/2026-04-28-01-22-blender-pine.png" alt="Snow-capped low-poly pine tree rendered in Blender" />
+          </div>
+        </div>
+        <p class="note"><strong>Headless Blender → GLB pipeline working.</strong> <code>tools/blender/build_assets.py</code> creates primitives via <code>bpy</code>, renders a 3/4 preview PNG, and exports a Y-up GLB to <code>assets/models/</code>. Two assets shipped: a low-poly racer (body/cabin/spoiler/wheels in Z-up native) and a snow-capped pine for the winter theme. Pipeline notes documented as a reusable <code>/blender-asset</code> skill so the Z-up vs Y-up and parent-inverse pitfalls don't bite us next game.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Racer geometry — does the silhouette read as a car, or do the parts still feel scattered? Worth tightening the build before wiring it into Godot?</li>
+            <li>Pine tree — is the snow-cap stack reading right, or should the trunk be shorter / cones tighter?</li>
+            <li>Should the next pipeline asset be a palm tree (miami_sunset / tokyo_neon) or jump straight to wiring the racer in-engine?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="fortress-variations" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-28 13:30</span>
