@@ -195,6 +195,49 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="fortress-typologies" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-28 12:00</span>
+        <span class="session-label">fortress-typologies · Four castle archetypes at half-height in painterly low-poly 🏰</span>
+      </div>
+      <div class="session-body">
+        <p class="note"><strong>Bunch of options to compare.</strong> Same painterly aesthetic, same iso ortho camera, same atmospheric haze, same overcast lighting, same ant-scale (HUMAN_SCALE 0.30) attacker army outside each gate — only the fortress shape changes. <strong>Half-height walls (1.2m)</strong> across all four so silhouette + interior detail read instead of a wall of stone. Each fortress is an original take in the visual language of a recognizable archetype, not a reproduction.</p>
+        <div class="compare-grid">
+          <div class="thumb-wrap">
+            <img src="fortress-typologies/2026-04-28-type1_walled_town.png" alt="Type 1 — Concentric Walled Town. Long oval double curtain walls, half-height, both rings densely packed with small round towers (16 outer + 12 inner) topped with muted-terracotta conical roofs. Town houses, basilica with a slate spire, and a four-towered chateau with a faded red flag visible inside the inner ring. A small wave of attacker figurines clustered at the bottom-right outside the eastern gate. Painterly pale-blue-grey haze, scattered low-poly rocks and grass tussocks across the field." />
+          </div>
+          <div class="thumb-wrap">
+            <img src="fortress-typologies/2026-04-28-type2_crusader_keep.png" alt="Type 2 — Square Crusader Keep. Compact square footprint with four massive square corner towers extending well above the half-height curtain wall, sloped stone glacis at the base of the outer wall. A single tall central keep stands inside the courtyard with crenellations and a faded red flag on top. Iron portcullis bars in the eastern gate. Tiny defender archer figurines on the wall walks. A small wave of attacker figurines outside the eastern gate." />
+          </div>
+        </div>
+        <div class="compare-grid">
+          <div class="thumb-wrap">
+            <img src="fortress-typologies/2026-04-28-type3_round_donjon.png" alt="Type 3 — Concentric Round Donjon. Round outer half-height wall with six small round towers (red conical roofs) regularly spaced along the ring, a higher round inner wall, and a large round drum keep at the center with a red conical dome roof and a faded red flag. Tiny defender archers on the outer ring; small wave of attacker figurines outside the eastern gate. Painterly haze; scattered rocks and tussocks." />
+          </div>
+          <div class="thumb-wrap">
+            <img src="fortress-typologies/2026-04-28-type4_tower_town.png" alt="Type 4 — Walled Tower-Town. Low grass hill base with a stubby half-height eight-sided wall around the perimeter. Inside the wall stands a cluster of seven tall slim square stone towers of varied heights — a few with small red flags on top — and small one-story houses tucked between them at the tower bases. The tallest tower is in the center; the others step down outward. Tiny defender archers on the wall walks; small wave of attacker figurines at the eastern gate." />
+          </div>
+        </div>
+        <p class="note" style="margin-top:0.4rem;"><strong>Quick read on each silhouette:</strong></p>
+        <ul style="font-size:0.75rem; color:#7a6e60; padding-left:1.2rem; margin-top:0.2rem;">
+          <li><strong>T1 Walled Town</strong> — <em>cozy + populated</em>. Lots of small towers and a town inside the walls. Reads as <em>community fortified</em>. Most "boardgame puzzler"-friendly silhouette.</li>
+          <li><strong>T2 Crusader Keep</strong> — <em>compact + brutal</em>. Massive square corner towers, single keep, glacis. Reads as <em>militant outpost</em>, no town. Most "action-strategy" silhouette.</li>
+          <li><strong>T3 Round Donjon</strong> — <em>geometric + symmetric</em>. Round wall + drum keep + spaced ring-towers. Reads as <em>elegant defensive engineering</em>. Strongest hero-shot read.</li>
+          <li><strong>T4 Tower-Town</strong> — <em>vertical + irregular</em>. Tall slim towers cluster like a stone forest above stubby walls. Reads as <em>medieval Italian hill-town</em>. Most distinctive silhouette of the four.</li>
+        </ul>
+        <p class="note" style="margin-top:0.3rem;"><strong>What's deliberately consistent:</strong> camera + lighting + haze + ground + figurine scale + attacker formation. Only the fortress shape varies. Makes them directly comparable.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Pick one or two silhouettes that feel right for a small playable prototype.</li>
+            <li>Half-height walls reading well, or push lower (0.8m) / restore taller (1.6m)?</li>
+            <li>Want a fifth/sixth typology — coastal cliff fortress, motte-and-bailey, walled monastery, fortified bridge?</li>
+            <li>Each shows the same eastern-gate attacker formation. Vary attacker tactics per fortress (e.g. encirclement for round, single-side push for square)?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="siege-scene" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-28 04:30</span>
@@ -2474,6 +2517,7 @@
         label: 'Siege Scene',
         games: {
           'siege-scene': { label: 'Siege Scene', color: '#a04a3a' },
+          'fortress-typologies': { label: 'Fortress Typologies', color: '#9a6a4a' },
         },
       },
     };
