@@ -195,6 +195,48 @@
   <div id="feed-empty" class="hidden">No dailies yet in this category.</div>
 
   <div id="feed">
+    <div class="session" data-game="lashings-cam" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-04-27 20:30</span>
+        <span class="session-label">lashings-cam · Phase 0 — Blender camera-angle probe (5 cams, Stormlight tungsten lighting) 🌀</span>
+      </div>
+      <div class="session-body">
+        <p class="note"><strong>New family pivot — first visual probe.</strong> No Godot scene yet, no Lash mechanic — just a static Blender (EEVEE) render of a 50m hotel-style corridor with a low-poly soldier capsule, lit with warm tungsten sconces (Stormlight cue) plus a cool blue rake from the breach door at the far end. Five candidate camera angles to compare before any prototyping.</p>
+        <div class="compare-grid">
+          <div class="thumb-wrap">
+            <img src="lashings-cam/2026-04-27-cam_A_overshoulder.png" alt="Cam A — over-shoulder 3rd-person, FOV 65, eye-height. Player capsule centered, breach door visible deep in the corridor with cool blue light spilling toward the camera." />
+          </div>
+          <div class="thumb-wrap">
+            <img src="lashings-cam/2026-04-27-cam_B_wide.png" alt="Cam B — wider 3rd-person, FOV 80, mid-height. More establishing. Corridor recedes; the soldier reads as small but the full geometry is legible." />
+          </div>
+        </div>
+        <div class="compare-grid">
+          <div class="thumb-wrap">
+            <img src="lashings-cam/2026-04-27-cam_C_longaxis.png" alt="Cam C — long-axis ortho. Soldier silhouetted against the bright breach door at the end of the corridor, sells the 'one figure, one hallway, one objective' frame." />
+          </div>
+          <div class="thumb-wrap">
+            <img src="lashings-cam/2026-04-27-cam_D_firstperson.png" alt="Cam D — first-person, FOV 90. Dramatic perspective; corridor recedes hard. Useful for nausea baseline only — the silhouette (the whole point of Lashings) is missing." />
+          </div>
+        </div>
+        <div class="compare-grid">
+          <div class="thumb-wrap">
+            <img src="lashings-cam/2026-04-27-cam_E_heroic.png" alt="Cam E — heroic low angle, FOV 70. Looking up at the soldier from 0.5m height; the figure looms against the corridor's vanishing point." />
+          </div>
+          <div></div>
+        </div>
+        <p class="note" style="margin-top:0.4rem;"><strong>My read:</strong> A and B both work — A is the tightest (the player IS the frame), B is the most cinematic. C is unexpectedly the strongest "this is what the game is about" shot (silhouette + breach + hallway) and might earn a place as a transition cam or a framing for the cinematic intro shot. D feels like a corridor walking sim — kills the silhouette, drop it. E is a great hero shot but probably special-occasion (lash-aim moment, finishing blow) rather than gameplay default.</p>
+        <div class="review-questions">
+          <p class="review-label">Review</p>
+          <ol>
+            <li>Default gameplay cam: A (tight) or B (wide)? Or a slider between them based on speed?</li>
+            <li>Is C earning a place — cinematic intro / scene transitions only?</li>
+            <li>Stormlight lighting reads? Or push warmer / cooler / more contrast?</li>
+            <li>Corridor texture — too flat / too plain? Need wallpaper, scuffs, signage detail before the next iteration?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
     <div class="session" data-game="neon-strip" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-04-25 13:15</span>
@@ -2174,6 +2216,13 @@
         label: 'Racing',
         games: {
           'neon-strip': { label: 'Neon Strip', color: '#d8408a' },
+        },
+      },
+      'lashings': {
+        label: 'Lashings',
+        games: {
+          'lashings-cam': { label: 'Lashings — Cam Probe', color: '#9b6acb' },
+          'lashings':     { label: 'Lashings',             color: '#7a4ab8' },
         },
       },
     };
