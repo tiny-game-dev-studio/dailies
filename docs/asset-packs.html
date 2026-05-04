@@ -323,6 +323,156 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section>
+  <h2>Famous Game Recreations</h2>
+  <p class="pack-meta">All three KayKit packs combined · 5 scenes · genre variety test</p>
+  <p>Same asset packs, assembled to recreate the silhouette of famous games. Useful for understanding layout conventions and seeing how far the assets stretch across genres.</p>
+
+  <!-- ── Clash of Clans ── -->
+  <h3 style="margin-top:2rem">Clash of Clans — Base Defense</h3>
+  <div class="scene-shot" onclick="openLB(this)">
+    <img src="thumbnails/game-clash-of-clans.png" alt="Clash of Clans base defense">
+  </div>
+  <div class="asset-grid">
+    <span class="asset-item used">castle.gltf.glb</span>
+    <span class="asset-item used">watchtower.gltf.glb ×8</span>
+    <span class="asset-item used">wall_straight.gltf.glb ×24</span>
+    <span class="asset-item used">wall_gate.gltf.glb ×2</span>
+    <span class="asset-item used">barracks.gltf.glb</span>
+    <span class="asset-item used">archeryrange.gltf.glb</span>
+    <span class="asset-item used">well.gltf.glb</span>
+    <span class="asset-item used">Knight.glb (blue defenders)</span>
+    <span class="asset-item used">Barbarian.glb ×10 (red horde)</span>
+  </div>
+  <div class="notes">
+    <ul>
+      <li>Two concentric rings read clearly as a CoC base layout. The wall_straight + watchtower combo does most of the heavy lifting.</li>
+      <li>Attackers are slightly clipped at bottom — a slightly larger cam_size (14) would frame them better.</li>
+      <li>Inner ring buildings (barracks, archery range) disappear behind the castle. They're there but invisible. Worth raising buildings or using an outer ring.</li>
+    </ul>
+  </div>
+
+  <!-- ── Helm's Deep ── -->
+  <h3 style="margin-top:2rem">Helm's Deep — Siege</h3>
+  <div class="scene-shot" onclick="openLB(this)">
+    <img src="thumbnails/game-helms-deep.png" alt="Helm's Deep siege scene">
+  </div>
+  <div class="asset-grid">
+    <span class="asset-item used">wall_straight.gltf.glb ×18</span>
+    <span class="asset-item used">wall_gate_closed.gltf.glb</span>
+    <span class="asset-item used">watchtower.gltf.glb ×8</span>
+    <span class="asset-item used">castle.gltf.glb (Hornburg)</span>
+    <span class="asset-item used">barracks.gltf.glb ×2</span>
+    <span class="asset-item used">Knight.glb ×6 (defenders)</span>
+    <span class="asset-item used">Barbarian.glb ×20 (horde)</span>
+    <span class="asset-item used">Tree_Bare_1 (cliff atmosphere)</span>
+    <span class="asset-item used">detail_hill.gltf.glb</span>
+  </div>
+  <div class="notes">
+    <ul>
+      <li><strong>Best scene.</strong> The wall spanning edge-to-edge with 20 attackers advancing in waves reads immediately as an epic siege. The bare trees add real atmosphere.</li>
+      <li>wall_gate_closed (vs wall_gate) is the right call here — you want it shut.</li>
+      <li>The barracks behind the wall are mostly hidden — they serve as implied depth, which works.</li>
+    </ul>
+  </div>
+
+  <!-- ── Stardew Valley ── -->
+  <h3 style="margin-top:2rem">Stardew Valley — Cozy Farm</h3>
+  <div class="scene-shot" onclick="openLB(this)">
+    <img src="thumbnails/game-stardew-valley.png" alt="Stardew Valley farm scene">
+  </div>
+  <div class="asset-grid">
+    <span class="asset-item used">farm_plot.gltf.glb ×2</span>
+    <span class="asset-item used">watermill.gltf.glb</span>
+    <span class="asset-item used">market.gltf.glb</span>
+    <span class="asset-item used">mill.gltf.glb</span>
+    <span class="asset-item used">well.gltf.glb</span>
+    <span class="asset-item used">house.gltf.glb ×2</span>
+    <span class="asset-item used">Tree_1..4 (forest pack) ×13</span>
+    <span class="asset-item used">Bush_1..4 ×5</span>
+    <span class="asset-item used">Ranger.glb (golden farmer)</span>
+  </div>
+  <div class="notes">
+    <ul>
+      <li>The green ground override is essential — completely changes the mood vs brown dirt.</li>
+      <li>Trees framing the corners create the "cozy enclosure" feeling that Stardew lives on.</li>
+      <li>The buildings feel a bit sparse in the center. Real Stardew has much denser farm plots — adding 3-4 more farm_plot tiles would help.</li>
+      <li>The golden farmer is barely visible. Scale 0.38 is too small at cam_size=10; try 0.44.</li>
+    </ul>
+  </div>
+
+  <!-- ── Fire Emblem ── -->
+  <h3 style="margin-top:2rem">Fire Emblem — Bridge Battle</h3>
+  <div class="scene-shot" onclick="openLB(this)">
+    <img src="thumbnails/game-fire-emblem.png" alt="Fire Emblem bridge battle scene">
+  </div>
+  <div class="asset-grid">
+    <span class="asset-item used">bridge.gltf.glb</span>
+    <span class="asset-item used">bridge_roofed.gltf.glb</span>
+    <span class="asset-item used">watchtower.gltf.glb ×2</span>
+    <span class="asset-item used">Knight.glb ×3 (blue front)</span>
+    <span class="asset-item used">Ranger.glb ×3 (gold back row)</span>
+    <span class="asset-item used">Rogue_Hooded.glb (blue flanker)</span>
+    <span class="asset-item used">Barbarian.glb ×5 (red)</span>
+    <span class="asset-item used">Mage.glb (purple commander)</span>
+    <span class="asset-item used">Rogue.glb (red flanker)</span>
+    <span class="asset-item used">Tree_1..4 ×12 (forest flanks)</span>
+    <span class="asset-item used">Rock_1, Rock_2</span>
+  </div>
+  <div class="notes">
+    <ul>
+      <li>Two armies in clear formation facing each other reads perfectly as a tactics RPG. The Mage commander in purple stands out well from the back row.</li>
+      <li>The rogues hiding in the trees on each flank are a nice detail — you can spot them if you look.</li>
+      <li>The bridge model renders as a very flat pale arc — fine for layout purposes but wouldn't pass as a real bridge without some height under it.</li>
+      <li>Strongest proof that these assets can support a tactics game like Bad North / Into the Breach.</li>
+    </ul>
+  </div>
+
+  <!-- ── Age of Empires ── -->
+  <h3 style="margin-top:2rem">Age of Empires II — Full Civilization</h3>
+  <div class="scene-shot" onclick="openLB(this)">
+    <img src="thumbnails/game-age-of-empires.png" alt="Age of Empires civilization overview">
+  </div>
+  <div class="asset-grid">
+    <span class="asset-item used">castle.gltf.glb</span>
+    <span class="asset-item used">wall_straight.gltf.glb ×4</span>
+    <span class="asset-item used">watchtower.gltf.glb ×2</span>
+    <span class="asset-item used">wall_gate.gltf.glb</span>
+    <span class="asset-item used">barracks.gltf.glb</span>
+    <span class="asset-item used">archeryrange.gltf.glb</span>
+    <span class="asset-item used">farm_plot.gltf.glb ×2</span>
+    <span class="asset-item used">market.gltf.glb</span>
+    <span class="asset-item used">mill.gltf.glb</span>
+    <span class="asset-item used">lumbermill.gltf.glb</span>
+    <span class="asset-item used">watermill.gltf.glb</span>
+    <span class="asset-item used">mine.gltf.glb</span>
+    <span class="asset-item used">mountain.gltf.glb</span>
+    <span class="asset-item used">house.gltf.glb ×2</span>
+    <span class="asset-item used">Knight.glb ×2, Ranger.glb</span>
+    <span class="asset-item used">detail_forestA/B, forest.gltf.glb</span>
+  </div>
+  <div class="notes">
+    <ul>
+      <li>This scene uses every structure type in the medieval builder pack — useful as a catalogue shot showing the full scope.</li>
+      <li>The distinct districts (military right, farming left, production back, castle center) mirror real AoE base layouts.</li>
+      <li>The mountain + mine in the corner reads immediately as a resource node.</li>
+      <li>The detail_forestA asset renders as a teal-blue clump — interesting palette but inconsistent with the warm ground. Worth investigating whether it has a material override.</li>
+    </ul>
+  </div>
+
+  <div class="review-box">
+    <div class="review-label">Review questions — game recreations</div>
+    <ol>
+      <li>Which of these 5 genres looks most viable to build as an actual proto-lab game?</li>
+      <li>Helm's Deep is essentially a tower-defense wave layout — does the scale feel right for that mechanic?</li>
+      <li>Fire Emblem bridge battle — does this convince you the assets can support a tactics game?</li>
+      <li>The detail_forestA teal-blue color — is that charming or does it look broken?</li>
+      <li>Stardew's cozy farm vibe — missing any key assets? (Crops, fences, animals?)</li>
+    </ol>
+  </div>
+</section>
+
 <!-- Lightbox -->
 <div id="lb" onclick="closeLB()">
   <span id="lb-close" onclick="closeLB()">×</span>
