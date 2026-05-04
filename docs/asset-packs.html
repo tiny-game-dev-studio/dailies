@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asset Pack Demos — Tiny Diorama Co.</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f5f0e8;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    color: #3a3328;
+    padding: 2rem 1.5rem 5rem;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  /* ── Nav ─────────────────────────────────────────────── */
+  .site-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 2rem; gap: 1rem;
+  }
+  .back-link { font-size: 0.78rem; color: #8a7d6b; text-decoration: none; }
+  .back-link:hover { color: #3a3328; }
+  .nav-links { display: flex; gap: 1rem; font-size: 0.78rem; }
+  .nav-links a { color: #8a7d6b; text-decoration: none; }
+  .nav-links a:hover { color: #3a3328; }
+
+  h1 { font-size: 1.15rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .subtitle { font-size: 0.82rem; color: #8a7d6b; margin-bottom: 0.4rem; line-height: 1.5; }
+  .context-note {
+    font-size: 0.75rem; color: #8a7d6b; margin-bottom: 2.5rem;
+    background: #ede8df; border-radius: 6px; padding: 0.65rem 1rem;
+    border-left: 3px solid #bbb1a0; max-width: 600px;
+  }
+
+  /* ── Pack section ────────────────────────────────────── */
+  .pack { margin-bottom: 4rem; }
+  .pack-header {
+    display: flex; align-items: baseline; gap: 0.75rem;
+    margin-bottom: 1rem; padding-bottom: 0.75rem;
+    border-bottom: 2px solid #ddd6c8;
+  }
+  .pack-name { font-size: 1rem; font-weight: 700; letter-spacing: 0.02em; }
+  .pack-source { font-size: 0.72rem; color: #8a7d6b; }
+  .pack-badge {
+    font-size: 0.66rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; padding: 2px 8px; border-radius: 20px;
+    background: #ede8df; color: #6a6055;
+  }
+
+  /* ── Screenshot ──────────────────────────────────────── */
+  .scene-shot {
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid #ddd6c8;
+    margin-bottom: 1.25rem;
+    cursor: zoom-in;
+    line-height: 0;
+  }
+  .scene-shot img { width: 100%; display: block; }
+  .scene-shot:hover img { opacity: 0.92; }
+  .shot-caption {
+    font-size: 0.7rem; color: #8a7d6b; margin-top: 0.4rem;
+    margin-bottom: 1.25rem; font-style: italic;
+  }
+
+  /* ── Asset grid ──────────────────────────────────────── */
+  .asset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .asset-section-label {
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: #8a7d6b;
+    grid-column: 1 / -1; margin-top: 0.5rem;
+  }
+  .asset-item {
+    background: #fff; border: 1px solid #ddd6c8; border-radius: 5px;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.75rem; color: #3a3328;
+    font-family: "SF Mono", "Fira Code", monospace;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .asset-item.highlight { border-color: #bbb1a0; background: #ede8df; font-weight: 600; }
+
+  /* ── Notes ───────────────────────────────────────────── */
+  .notes { margin-top: 1rem; }
+  .notes h3 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #8a7d6b; margin-bottom: 0.5rem; }
+  .notes ul { padding-left: 1.2rem; }
+  .notes li { font-size: 0.8rem; color: #5a5248; line-height: 1.55; margin-bottom: 0.2rem; }
+  .notes li strong { color: #3a3328; }
+
+  /* ── Review prompt ───────────────────────────────────── */
+  .review-box {
+    margin-top: 1.25rem;
+    background: #ede8df; border-radius: 6px;
+    padding: 0.75rem 1rem; border-left: 3px solid #3a3328;
+  }
+  .review-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #8a7d6b; margin-bottom: 0.4rem; }
+  .review-box ol { padding-left: 1.2rem; }
+  .review-box li { font-size: 0.78rem; color: #3a3328; line-height: 1.5; margin-bottom: 0.15rem; }
+
+  /* ── Lightbox ────────────────────────────────────────── */
+  #lb { display: none; position: fixed; inset: 0; background: rgba(30,24,18,0.88); z-index: 100; align-items: center; justify-content: center; cursor: zoom-out; }
+  #lb.open { display: flex; }
+  #lb img { max-width: min(92vw,1280px); max-height: 90vh; border-radius: 6px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+  #lb-close { position: fixed; top: 1rem; right: 1.25rem; color: #fff; font-size: 1.8rem; cursor: pointer; opacity: 0.7; line-height: 1; }
+  #lb-close:hover { opacity: 1; }
+
+  footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #ddd6c8; font-size: 0.72rem; color: #8a7d6b; display: flex; justify-content: space-between; }
+  footer a { color: #8a7d6b; text-decoration: none; }
+  footer a:hover { color: #3a3328; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="back-link">← Dailies feed</a>
+  <div class="nav-links">
+    <a href="style-guide.html">Style guide</a>
+  </div>
+</nav>
+
+<h1>Asset Pack Demos</h1>
+<p class="subtitle">Real Godot scenes built from the KayKit staging packs. Each scene was auto-screenshotted from proto-lab.</p>
+<p class="context-note">These are first-pass showroom scenes to evaluate what each pack looks like assembled. Tell me what's rubbish, needs rescaling, or is missing.</p>
+
+<!-- ══════════════════════════════════════════════════════
+     PACK 1 — KayKit Medieval Builder
+     ══════════════════════════════════════════════════════ -->
+<section class="pack" id="medieval-builder">
+  <div class="pack-header">
+    <span class="pack-name">KayKit Medieval Builder</span>
+    <span class="pack-badge">CC0 Free</span>
+    <span class="pack-source">kaykit.itch.io · staged at <code>assets/staging/kaykit-medieval-builder/</code></span>
+  </div>
+
+  <div class="scene-shot" onclick="openLB(this)">
+    <img src="thumbnails/showroom-village.png" alt="Medieval Builder showroom scene">
+  </div>
+  <p class="shot-caption">Castle courtyard with watchtowers, walls, gate — surrounded by houses, barracks, market, farm, lumbermill, and tree/rock dressing.</p>
+
+  <div class="asset-grid">
+    <span class="asset-section-label">Structures used in this scene</span>
+    <span class="asset-item highlight">castle.gltf.glb</span>
+    <span class="asset-item highlight">watchtower.gltf.glb</span>
+    <span class="asset-item highlight">wall_straight.gltf.glb</span>
+    <span class="asset-item highlight">wall_corner.gltf.glb</span>
+    <span class="asset-item highlight">wall_gate.gltf.glb</span>
+    <span class="asset-item">house.gltf.glb</span>
+    <span class="asset-item">barracks.gltf.glb</span>
+    <span class="asset-item">market.gltf.glb</span>
+    <span class="asset-item">farm_plot.gltf.glb</span>
+    <span class="asset-item">lumbermill.gltf.glb</span>
+    <span class="asset-item">mill.gltf.glb</span>
+    <span class="asset-item">well.gltf.glb</span>
+
+    <span class="asset-section-label">Also in the pack (not shown)</span>
+    <span class="asset-item">archeryrange.gltf.glb</span>
+    <span class="asset-item">bridge.gltf.glb</span>
+    <span class="asset-item">bridge_roofed.gltf.glb</span>
+    <span class="asset-item">mine.gltf.glb</span>
+    <span class="asset-item">mountain.gltf.glb</span>
+    <span class="asset-item">watermill.gltf.glb</span>
+    <span class="asset-item">forest.gltf.glb</span>
+    <span class="asset-item">detail_forestA/B.gltf.glb</span>
+    <span class="asset-item">detail_treeA/B/C.gltf.glb</span>
+    <span class="asset-item">detail_hill.gltf.glb</span>
+    <span class="asset-item">detail_rocks.gltf.glb</span>
+    <span class="asset-item">wall_hexCornerA/B.gltf.glb</span>
+    <span class="asset-item">wall_gate_closed.gltf.glb</span>
+    <span class="asset-item">+ 84 square tile variants</span>
+  </div>
+
+  <div class="notes">
+    <h3>Scene notes</h3>
+    <ul>
+      <li><strong>Scale:</strong> all objects at 0.55 (approved-kit default). Castle + watchtowers feel right together.</li>
+      <li><strong>Ground:</strong> procedural (SceneBuilder.ground) with a stone-coloured courtyard platform. No tile models used.</li>
+      <li><strong>Lighting:</strong> default SceneBuilder (warm tungsten + cool fill). Shadows cast correctly.</li>
+      <li><strong>Tiles:</strong> 84 square tile variants exist (forest, rock, road, water edge) but weren't used — they showed up too large at scale 1.0 in initial tests.</li>
+    </ul>
+  </div>
+
+  <div class="review-box">
+    <div class="review-label">Review questions</div>
+    <ol>
+      <li>Does the castle + wall + watchtower combination read as a proper fortified settlement?</li>
+      <li>Are the building scales believable next to each other (house vs barracks vs castle)?</li>
+      <li>Should the courtyard use stone tile models instead of a flat platform mesh?</li>
+      <li>Any buildings missing that would complete this set?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PACK 2 — KayKit Forest Nature
+     ══════════════════════════════════════════════════════ -->
+<section class="pack" id="forest-nature">
+  <div class="pack-header">
+    <span class="pack-name">KayKit Forest Nature Pack</span>
+    <span class="pack-badge">CC0 Free</span>
+    <span class="pack-source">kaykit.itch.io · staged at <code>assets/staging/kaykit-forest-nature/</code></span>
+  </div>
+
+  <div class="scene-shot" onclick="openLB(this)">
+    <img src="thumbnails/showroom-nature.png" alt="Forest Nature showroom scene">
+  </div>
+  <p class="shot-caption">Four tree types clustered in quadrants — round broadleaf (type 1), layered cone (type 2), multi-sphere (type 3), triangular pine (type 4). Bare/autumn trees at edges. Rock outcroppings center-right. Bush clusters in the clearing.</p>
+
+  <div class="asset-grid">
+    <span class="asset-section-label">Trees (4 types × A/B/C variants + Bare)</span>
+    <span class="asset-item highlight">Tree_1_A/B/C_Color1.gltf</span>
+    <span class="asset-item highlight">Tree_2_A/B/C_Color1.gltf</span>
+    <span class="asset-item highlight">Tree_3_A/B/C_Color1.gltf</span>
+    <span class="asset-item highlight">Tree_4_A/B/C_Color1.gltf</span>
+    <span class="asset-item">Tree_Bare_1_A/B/C_Color1.gltf</span>
+    <span class="asset-item">Tree_Bare_2_A/B/C_Color1.gltf</span>
+
+    <span class="asset-section-label">Rocks (shown) — 59 total variants across 3 types</span>
+    <span class="asset-item highlight">Rock_1_A_Color1.gltf</span>
+    <span class="asset-item highlight">Rock_1_D_Color1.gltf</span>
+    <span class="asset-item highlight">Rock_2_A_Color1.gltf</span>
+    <span class="asset-item highlight">Rock_3_B_Color1.gltf</span>
+    <span class="asset-item">Rock_1_[B–Q]_Color1.gltf</span>
+    <span class="asset-item">Rock_2_[B–H]_Color1.gltf</span>
+    <span class="asset-item">Rock_3_[A,C–R]_Color1.gltf</span>
+
+    <span class="asset-section-label">Bushes (22 variants) + Grass (18 variants) — not yet shown</span>
+    <span class="asset-item">Bush_1_A–G_Color1.gltf</span>
+    <span class="asset-item">Bush_2_A–F_Color1.gltf</span>
+    <span class="asset-item">Bush_3_A–C_Color1.gltf</span>
+    <span class="asset-item">Bush_4_A–F_Color1.gltf</span>
+    <span class="asset-item">Grass_1_A–D + singlesided</span>
+    <span class="asset-item">Grass_2_A–D + singlesided</span>
+  </div>
+
+  <div class="notes">
+    <h3>Scene notes</h3>
+    <ul>
+      <li><strong>Scale:</strong> trees at 0.48, rocks at 0.35–0.70, bushes at 0.40–0.50.</li>
+      <li><strong>Tree variety:</strong> Type 1 = round broadleaf, Type 2 = layered cone, Type 3 = multi-cluster, Type 4 = slim triangular pine.</li>
+      <li><strong>Grass models not placed</strong> — they're flat quads, need to evaluate if they work at this camera angle.</li>
+      <li><strong>Bare trees</strong> give good autumn/winter variation.</li>
+    </ul>
+  </div>
+
+  <div class="review-box">
+    <div class="review-label">Review questions</div>
+    <ol>
+      <li>Which tree type(s) work best for the diorama aesthetic? Any that look off?</li>
+      <li>Do the rock shapes read well from the overhead angle?</li>
+      <li>Worth trying the grass models, or skip them for the camera angle we use?</li>
+      <li>Should the forest ground use a different colour than the standard SceneBuilder dirt?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PACK 3 — KayKit Adventurers
+     ══════════════════════════════════════════════════════ -->
+<section class="pack" id="adventurers">
+  <div class="pack-header">
+    <span class="pack-name">KayKit Adventurers 2.0</span>
+    <span class="pack-badge">CC0 Free</span>
+    <span class="pack-source">kaykit.itch.io · staged at <code>assets/staging/kaykit-adventurers/</code></span>
+  </div>
+
+  <div class="scene-shot" onclick="openLB(this)">
+    <img src="thumbnails/showroom-characters.png" alt="Adventurers showroom scene">
+  </div>
+  <p class="shot-caption">All 6 character types with team-colour tints and matching weapons. Left to right: Knight (blue), Barbarian (red), Ranger (gold + bow), Rogue Hooded (green + dagger), Mage (purple + staff), Rogue (grey + sword).</p>
+
+  <div class="asset-grid">
+    <span class="asset-section-label">Characters (6)</span>
+    <span class="asset-item highlight">Knight.glb</span>
+    <span class="asset-item highlight">Barbarian.glb</span>
+    <span class="asset-item highlight">Ranger.glb</span>
+    <span class="asset-item highlight">Rogue_Hooded.glb</span>
+    <span class="asset-item highlight">Mage.glb</span>
+    <span class="asset-item highlight">Rogue.glb</span>
+
+    <span class="asset-section-label">Weapons + items (31 models, selection shown)</span>
+    <span class="asset-item">sword_1handed.gltf</span>
+    <span class="asset-item">sword_2handed.gltf</span>
+    <span class="asset-item">axe_1handed.gltf</span>
+    <span class="asset-item">axe_2handed.gltf</span>
+    <span class="asset-item">bow_withString.gltf</span>
+    <span class="asset-item">crossbow_2handed.gltf</span>
+    <span class="asset-item">staff.gltf</span>
+    <span class="asset-item">dagger.gltf</span>
+    <span class="asset-item">wand.gltf</span>
+    <span class="asset-item">shield_round.gltf</span>
+    <span class="asset-item">shield_square.gltf</span>
+    <span class="asset-item">shield_spikes.gltf</span>
+    <span class="asset-item">spellbook_open.gltf</span>
+    <span class="asset-item">quiver.gltf</span>
+    <span class="asset-item">smokebomb.gltf</span>
+  </div>
+
+  <div class="notes">
+    <h3>Scene notes</h3>
+    <ul>
+      <li><strong>Scale:</strong> characters at 0.36 (approved-kit default). This makes them feel like figurines on a board, not life-size characters.</li>
+      <li><strong>Tinting:</strong> <code>SceneBuilder.tint_node()</code> applies team colour recursively across all meshes. Works well.</li>
+      <li><strong>Weapons:</strong> placed as separate floating props next to each character — not rigged/attached. Rigging is in the Animations/ subfolder (FBX) but not wired up yet.</li>
+      <li><strong>Animations:</strong> FBX rig files exist (<code>Rig_Medium_General.fbx</code>, <code>Rig_Medium_MovementBasic.fbx</code>) — not used in any experiment yet.</li>
+    </ul>
+  </div>
+
+  <div class="review-box">
+    <div class="review-label">Review questions</div>
+    <ol>
+      <li>Does the character scale (0.36) feel right for board-game figurines?</li>
+      <li>Which characters look most useful for the game concepts in the pipeline?</li>
+      <li>Should any characters be excluded from the approved kit? (E.g., Rogue vs Rogue Hooded overlap.)</li>
+      <li>Worth wiring up the walk animation, even just as a looping idle?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lb" onclick="closeLB()">
+  <span id="lb-close" onclick="closeLB()">×</span>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<footer>
+  <span>Tiny Diorama Co. · Godot 4.6 · KayKit staging packs</span>
+  <span><a href="index.html">Dailies feed</a> · <a href="style-guide.html">Style guide</a></span>
+</footer>
+
+<script>
+function openLB(el) {
+  document.getElementById('lb-img').src = el.querySelector('img').src;
+  document.getElementById('lb').classList.add('open');
+}
+function closeLB() {
+  document.getElementById('lb').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+</script>
+</body>
+</html>
