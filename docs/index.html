@@ -196,6 +196,41 @@
 
   <div id="feed">
 
+    <div class="session" data-game="proto-lab" style="grid-column: 1/-1;">
+      <div class="session-header">
+        <span class="session-date">2026-05-04 16:08</span>
+        <span class="session-label">proto-lab · SceneBuilder — consistent sky &amp; lighting across all 5 experiments</span>
+      </div>
+      <div class="session-body">
+        <div class="compare-grid cols-3" style="grid-template-columns: repeat(5, minmax(0,1fr));">
+          <div class="thumb-wrap">
+            <img src="proto-lab/2026-05-04-16-08-catapult-siege.png" alt="catapult-siege" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="proto-lab/2026-05-04-16-08-stop-flood.png" alt="stop-flood" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="proto-lab/2026-05-04-16-08-avalanche.png" alt="avalanche" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="proto-lab/2026-05-04-16-08-fog-siege.png" alt="fog-siege" />
+          </div>
+          <div class="thumb-wrap">
+            <img src="proto-lab/2026-05-04-16-08-catapult-stratego.png" alt="catapult-stratego" />
+          </div>
+        </div>
+        <p class="note">Added <code>SceneBuilder</code> — a shared module that locks sun angle, color, fill light, and sky across every experiment. All 5 experiments now call it instead of hand-tuning values. Sky was varying 0.44→0.62 on the blue channel; camera size ranged 6×–14× with no formula. Both are now locked. New experiments get canonical diorama lighting for free.</p>
+        <div class="review-questions">
+          <p class="review-label">Review questions</p>
+          <ol>
+            <li>Looking across all 5 — does the sky feel consistently "same world," or does any one still feel off?</li>
+            <li>The warm tungsten sun + cool blue fill is the locked combo — does it work for all experiment types (siege, flood, avalanche), or does one need a different mood?</li>
+          </ol>
+          <p class="reply-prompt">Reply: <code>/dailies-feedback [notes]</code></p>
+        </div>
+      </div>
+    </div>
+
     <div class="session" data-game="fog-siege" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-05-04 15:35</span>
