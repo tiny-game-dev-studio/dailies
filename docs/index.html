@@ -241,13 +241,13 @@
     <div class="session" data-game="proto-lab" style="grid-column: 1/-1;">
       <div class="session-header">
         <span class="session-date">2026-05-04 22:00</span>
-        <span class="session-label">proto-lab · Lighthouse Island — procedural geometry, low-poly water, sky lighting</span>
+        <span class="session-label">proto-lab · Lighthouse Island — Forward+ renderer, SSAO, DOF, Filmic tone mapping</span>
       </div>
       <div class="session-body">
         <div class="thumb-wrap">
-          <img src="proto-lab/2026-05-04-lighthouse-island.png" alt="Lighthouse Island diorama — striped lighthouse on sandy island with low-poly faceted water, KayKit rocks and tree, ProceduralSky lighting" />
+          <img src="proto-lab/2026-05-04-lighthouse-island-v2.png" alt="Lighthouse Island diorama v2 — Forward+ renderer with SSAO contact shadows, specular water, DOF blur on ocean edges, Filmic tone mapping" />
         </div>
-        <p class="note">Fully procedural — no asset pack needed. Square ocean block, flat-shaded ArrayMesh water with raised wave vertices in the surround zone, sandy island from two offset cylinders, striped lighthouse built from stacked cylinder primitives with window panels. Lighting uses ProceduralSkyMaterial for rich ambient wrap + warm key light + cool blue fill. Recreation of a Blender low-poly lighthouse diorama reference.</p>
+        <p class="note">Fully procedural — no asset pack needed. Switched to Forward+ renderer: SSAO adds contact shadows at base of rocks and lighthouse, water catches specular highlights on wave peaks (roughness 0.18), DOF softens the far ocean edges, Filmic tone mapping replaces flat linear output. ProceduralSky provides wrap-around ambient + warm key + cool fill. Recreation of a Blender low-poly lighthouse diorama reference.</p>
         <div class="review-questions">
           <p class="review-label">Review questions</p>
           <ol>
