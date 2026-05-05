@@ -325,6 +325,66 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════════ -->
 <section>
+  <h2>Procedural Geometry — No Asset Pack Required</h2>
+  <p class="pack-meta">Built entirely from Godot primitives · CylinderMesh · BoxMesh · PrismMesh · KayKit forest-nature pack (rocks + tree)</p>
+  <p>Reference recreation test: rebuild a Blender low-poly lighthouse diorama in Godot using only procedural geometry. No building asset packs used — proves you can get the "diorama block" aesthetic without KayKit structures.</p>
+
+  <h3 style="margin-top:1.5rem">Lighthouse Island Diorama</h3>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1rem 0;">
+    <div>
+      <div style="font-size:0.72rem; color:#8a7d6b; margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:0.05em;">Reference (Blender)</div>
+      <img src="thumbnails/lighthouse-island-ref.png" alt="Reference lighthouse Blender scene"
+           style="width:100%; border-radius:4px; border:1px solid #d8cfc4;"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <div style="display:none; padding:2rem; background:#ede8e0; border-radius:4px; text-align:center; color:#8a7d6b; font-size:0.78rem;">Reference image (Blender screenshot)</div>
+    </div>
+    <div>
+      <div style="font-size:0.72rem; color:#8a7d6b; margin-bottom:0.4rem; text-transform:uppercase; letter-spacing:0.05em;">Our version (Godot)</div>
+      <div class="scene-shot" onclick="openLB(this)" style="margin:0">
+        <img src="thumbnails/lighthouse-island.png" alt="Lighthouse island diorama in Godot">
+      </div>
+    </div>
+  </div>
+
+  <div class="asset-grid">
+    <span class="asset-item used">CylinderMesh ×12 (lighthouse tower)</span>
+    <span class="asset-item used">BoxMesh (ocean block + windows + tip)</span>
+    <span class="asset-item used">PrismMesh ×13 (angular wave peaks)</span>
+    <span class="asset-item used">CylinderMesh ×2 (island, overlapping)</span>
+    <span class="asset-item used">Rock_1/2/3 (forest-nature pack) ×7</span>
+    <span class="asset-item used">Tree_2_A_Color1.gltf (forest-nature)</span>
+  </div>
+
+  <div class="notes">
+    <h3>What worked</h3>
+    <ul>
+      <li>The diorama block silhouette is immediately recognizable — thick square ocean platform with sides visible.</li>
+      <li>Stacked 8-segment cylinders give the lighthouse the right low-poly faceted look. Two red stripes read clearly.</li>
+      <li>Window panels (tiny BoxMesh on each white section) add texture without complexity.</li>
+      <li>KayKit nature pack rocks scale well as coastal formations at 0.5–0.7× scale.</li>
+    </ul>
+    <h3 style="margin-top:0.75rem">What needs work</h3>
+    <ul>
+      <li><strong>Wave peaks</strong> read as white paper cutouts rather than folded water facets. They should be darker (near the water color) and flush-mounted, not floating above.</li>
+      <li><strong>Tree</strong> is a KayKit rounded tree, not a palm. A simple procedural palm (thin cylinder trunk + flattened sphere canopy) would be closer to the reference.</li>
+      <li><strong>Lighthouse proportions</strong> — slightly squat vs reference. Thinning the radius from 0.23 to 0.18 and adding height to each section would help.</li>
+    </ul>
+  </div>
+
+  <div class="review-box">
+    <div class="review-label">Review questions</div>
+    <ol>
+      <li>Is this close enough to the reference, or does it need another iteration?</li>
+      <li>Worth adding the procedural palm tree (thin trunk + flat disc canopy)?</li>
+      <li>Should the ocean block use the wave mesh approach (integrated geometry) vs floating prisms?</li>
+      <li>Could this scene structure (island block + lighthouse) be the basis for a game? What mechanic fits?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════ -->
+<section>
   <h2>Famous Game Recreations</h2>
   <p class="pack-meta">All three KayKit packs combined · 5 scenes · genre variety test</p>
   <p>Same asset packs, assembled to recreate the silhouette of famous games. Useful for understanding layout conventions and seeing how far the assets stretch across genres.</p>
